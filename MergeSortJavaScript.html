@@ -1,7 +1,9 @@
 <html>
   <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <style>
       body {
         padding: 10px;
@@ -80,6 +82,23 @@
     <h1>
       Merge Sort
       <span class="button-span">
+        <div class="btn-group">
+          <button class="btn btn-info" disabled="true">Speed:</button>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-info active">
+              <input type="radio" name="speed" id="option1" value="1" checked> 1x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option2" value="2"> 2x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option3" value="4"> 4x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option4" value="8"> 8x
+            </label>
+          </div>
+        </div>
         <button id="play_button" class="btn btn-success">
           <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
@@ -683,7 +702,15 @@
 
         $('#play_button').click(function() {
           // Time for each step
-          var step_time = 250;
+          var step_time = 2000;
+          var speed = 1;
+          var speed_radios = $("[name='speed']");
+          for (var i = 0, len = speed_radios.length; i < len; i++) {
+            if (speed_radios[i].checked) {
+              speed = $(speed_radios[i]).val();
+            }
+          }
+          step_time = (step_time / speed);
           // Disable play button
           $('#play_button').hide();
           $('#pause_button').show();
