@@ -744,21 +744,21 @@
         });
 
         $('#forward_button').click(function() {
-          if (current_step + 1 < code_steps.length) {
+          if (processed_step + 1 < code_steps.length) {
             current_step = current_step + 1;
             processed_step = processed_step + 1;
           }
           clear_everything();
-          draw(current_step);
+          draw(processed_step);
         });
 
         $('#backward_button').click(function() {
-          if (current_step - 1 >= 0) {
+          if (processed_step - 1 >= 0) {
             current_step = current_step - 1;
             processed_step = processed_step - 1;
           }
           clear_everything();
-          draw(current_step);
+          draw(processed_step);
         });
 
         code_steps = create_code_steps();
