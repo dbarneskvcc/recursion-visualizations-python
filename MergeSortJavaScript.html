@@ -80,9 +80,37 @@
     <h1>
       Merge Sort
       <span class="button-span">
-        <button id="play_button" class="btn btn-success">Play</button>
-        <button id="backward_button" class="btn btn-primary">Step Backward</button>
-        <button id="forward_button" class="btn btn-primary">Step Forward</button>
+        <button id="play_button" class="btn btn-success">
+          <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+          </svg>
+          Play
+        </button>
+        <button id="pause_button" class="btn btn-warning" style="display: none;">
+          <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+          Pause
+        </button>
+        <button id="reset_button" class="btn btn-danger">
+          <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+          </svg>
+          Reset
+        </button>
+        <button id="backward_button" class="btn btn-primary">
+          <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          Step Backward
+        </button>
+        <button id="forward_button" class="btn btn-primary">
+          Step Forward
+          <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
       </span>
     </h1>
     <div class="code-div">
@@ -151,7 +179,7 @@
         <div class="array-state-grid-index" style="grid-row: 1; grid-column: 16;">7</div>
 
 
-        <div class="array-state-grid-step" style="grid-row: 2; grid-column: 8;">S:&nbsp;0</span></div>
+        <div class="array-state-grid-step" style="grid-row: 2; grid-column: 8;">S:&nbsp;0</div>
         <div class="array-state-grid-item" style="grid-row: 2; grid-column: 9;">M</div>
         <div class="array-state-grid-item" style="grid-row: 2; grid-column: 10;">E</div>
         <div class="array-state-grid-item" style="grid-row: 2; grid-column: 11;">R</div>
@@ -162,100 +190,100 @@
         <div class="array-state-grid-item" style="grid-row: 2; grid-column: 16;">T</div>
 
 
-        <div class="array-state-grid-step" style="grid-row: 3; grid-column: 4;">S:&nbsp;<span class="step_1">1</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 5;"><span class="step_1">M</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 6;"><span class="step_1">E</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 7;"><span class="step_1">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 8;"><span class="step_1">G</span></div>
+        <div class="array-state-grid-step" style="grid-row: 3; grid-column: 4;">S:&nbsp;<span class="step_1" style="display: none;">1</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 5;"><span class="step_1" style="display: none;">M</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 6;"><span class="step_1" style="display: none;">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 7;"><span class="step_1" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 8;"><span class="step_1" style="display: none;">G</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 3; grid-column: 16;">S:&nbsp;<span class="step_11">11</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 17;"><span class="step_11">S</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 18;"><span class="step_11">O</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 19;"><span class="step_11">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 20;"><span class="step_11">T</span></div>
-
-
-        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 2;">S:&nbsp;<span class="step_2">2</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 3;"><span class="step_2">M</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 4;"><span class="step_2">E</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 8;">S:&nbsp;<span class="step_6">6</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 9;"><span class="step_6">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 10;"><span class="step_6">G</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 14;">S:&nbsp;<span class="step_12">12</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 15;"><span class="step_12">S</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 16;"><span class="step_12">O</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 20;">S:&nbsp;<span class="step_16">16</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 21;"><span class="step_16">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 22;"><span class="step_16">T</span></div>
+        <div class="array-state-grid-step" style="grid-row: 3; grid-column: 16;">S:&nbsp;<span class="step_11" style="display: none;">11</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 17;"><span class="step_11" style="display: none;">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 18;"><span class="step_11" style="display: none;">O</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 19;"><span class="step_11" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 3; grid-column: 20;"><span class="step_11" style="display: none;">T</span></div>
 
 
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 1;">S:&nbsp;<span class="step_3">3</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 2;"><span class="step_3">M</span></div>
+        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 2;">S:&nbsp;<span class="step_2" style="display: none;">2</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 3;"><span class="step_2" style="display: none;">M</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 4;"><span class="step_2" style="display: none;">E</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 4;">S:&nbsp;<span class="step_4">4</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 5;"><span class="step_4">E</span></div>
+        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 8;">S:&nbsp;<span class="step_6" style="display: none;">6</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 9;"><span class="step_6" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 10;"><span class="step_6" style="display: none;">G</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 7;">S:&nbsp;<span class="step_7">7</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 8;"><span class="step_7">R</span></div>
+        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 14;">S:&nbsp;<span class="step_12" style="display: none;">12</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 15;"><span class="step_12" style="display: none;">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 16;"><span class="step_12" style="display: none;">O</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 10;">S:&nbsp;<span class="step_8">8</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 11;"><span class="step_8">G</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 13;">S:&nbsp;<span class="step_13">13</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 14;"><span class="step_13">S</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 16;">S:&nbsp;<span class="step_14">14</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 17;"><span class="step_14">O</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 19;">S:&nbsp;<span class="step_17">17</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 20;"><span class="step_17">R</span></div>
-
-        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 22;">S:&nbsp;<span class="step_18">18</span></div>
-        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 23;"><span class="step_18">T</span></div>
+        <div class="array-state-grid-step" style="grid-row: 4; grid-column: 20;">S:&nbsp;<span class="step_16" style="display: none;">16</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 21;"><span class="step_16" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 22;"><span class="step_16" style="display: none;">T</span></div>
 
 
-        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 2;">S:&nbsp;<span class="step_5">5</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 3;"><span class="step_5">E</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 4;"><span class="step_5">M</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 1;">S:&nbsp;<span class="step_3" style="display: none;">3</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 2;"><span class="step_3" style="display: none;">M</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 8;">S:&nbsp;<span class="step_9">9</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 9;"><span class="step_9">G</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 10;"><span class="step_9">R</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 4;">S:&nbsp;<span class="step_4" style="display: none;">4</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 5;"><span class="step_4" style="display: none;">E</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 14;">S:&nbsp;<span class="step_15">15</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 15;"><span class="step_15">O</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 16;"><span class="step_15">S</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 7;">S:&nbsp;<span class="step_7" style="display: none;">7</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 8;"><span class="step_7" style="display: none;">R</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 20;">S:&nbsp;<span class="step_19">19</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 21;"><span class="step_19">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 22;"><span class="step_19">T</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 10;">S:&nbsp;<span class="step_8" style="display: none;">8</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 11;"><span class="step_8" style="display: none;">G</span></div>
 
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 13;">S:&nbsp;<span class="step_13" style="display: none;">13</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 14;"><span class="step_13" style="display: none;">S</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 7; grid-column: 4;">S:&nbsp;<span class="step_10">10</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 5;"><span class="step_10">E</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 6;"><span class="step_10">G</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 7;"><span class="step_10">M</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 8;"><span class="step_10">R</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 16;">S:&nbsp;<span class="step_14" style="display: none;">14</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 17;"><span class="step_14" style="display: none;">O</span></div>
 
-        <div class="array-state-grid-step" style="grid-row: 7; grid-column: 16;">S:&nbsp;<span class="step_20">20</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 17;"><span class="step_20">O</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 18;"><span class="step_20">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 19;"><span class="step_20">S</span></div>
-        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 20;"><span class="step_20">T</span></div>
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 19;">S:&nbsp;<span class="step_17" style="display: none;">17</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 20;"><span class="step_17" style="display: none;">R</span></div>
+
+        <div class="array-state-grid-step" style="grid-row: 5; grid-column: 22;">S:&nbsp;<span class="step_18" style="display: none;">18</span></div>
+        <div class="array-state-grid-item" style="grid-row: 5; grid-column: 23;"><span class="step_18" style="display: none;">T</span></div>
 
 
-        <div class="array-state-grid-step" style="grid-row: 8; grid-column: 8;">S:&nbsp;<span class="step_21">21</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 9;"><span class="step_21">E</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 10;"><span class="step_21">G</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 11;"><span class="step_21">M</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 12;"><span class="step_21">O</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 13;"><span class="step_21">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 14;"><span class="step_21">R</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 15;"><span class="step_21">S</span></div>
-        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 16;"><span class="step_21">T</span></div>
+        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 2;">S:&nbsp;<span class="step_5" style="display: none;">5</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 3;"><span class="step_5" style="display: none;">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 4;"><span class="step_5" style="display: none;">M</span></div>
+
+        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 8;">S:&nbsp;<span class="step_9" style="display: none;">9</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 9;"><span class="step_9" style="display: none;">G</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 10;"><span class="step_9" style="display: none;">R</span></div>
+
+        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 14;">S:&nbsp;<span class="step_15" style="display: none;">15</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 15;"><span class="step_15" style="display: none;">O</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 16;"><span class="step_15" style="display: none;">S</span></div>
+
+        <div class="array-state-grid-step" style="grid-row: 6; grid-column: 20;">S:&nbsp;<span class="step_19" style="display: none;">19</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 21;"><span class="step_19" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 6; grid-column: 22;"><span class="step_19" style="display: none;">T</span></div>
+
+
+        <div class="array-state-grid-step" style="grid-row: 7; grid-column: 4;">S:&nbsp;<span class="step_10" style="display: none;">10</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 5;"><span class="step_10" style="display: none;">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 6;"><span class="step_10" style="display: none;">G</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 7;"><span class="step_10" style="display: none;">M</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 8;"><span class="step_10" style="display: none;">R</span></div>
+
+        <div class="array-state-grid-step" style="grid-row: 7; grid-column: 16;">S:&nbsp;<span class="step_20" style="display: none;">20</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 17;"><span class="step_20" style="display: none;">O</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 18;"><span class="step_20" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 19;"><span class="step_20" style="display: none;">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 7; grid-column: 20;"><span class="step_20" style="display: none;">T</span></div>
+
+
+        <div class="array-state-grid-step" style="grid-row: 8; grid-column: 8;">S:&nbsp;<span class="step_21" style="display: none;">21</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 9;"><span class="step_21" style="display: none;">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 10;"><span class="step_21" style="display: none;">G</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 11;"><span class="step_21" style="display: none;">M</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 12;"><span class="step_21" style="display: none;">O</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 13;"><span class="step_21" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 14;"><span class="step_21" style="display: none;">R</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 15;"><span class="step_21" style="display: none;">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 8; grid-column: 16;"><span class="step_21" style="display: none;">T</span></div>
 
       </div>
     </div>
@@ -274,11 +302,12 @@
     <script>
       $(document).ready(function() {
 
-        var tree_canvas, tree_ctx;
-        var steps, current_step;
-        var clear_everything, play_all_steps;
+        var tree_canvas, tree_ctx, play_timeouts;
+        var code_steps, tree_code, current_step, processed_step;
+        var clear_everything, play_all_steps, draw, is_null;
+        var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
 
-        var is_null = function(value) {
+        is_null = function(value) {
           return (typeof value === 'undefined' || value === null);
         }
 
@@ -652,23 +681,72 @@
           tree_ctx.clearRect(0, 0, tree_canvas.width, tree_canvas.height);
         };
 
-
         $('#play_button').click(function() {
-          clear_everything();
-          for (current_step = 0; current_step < code_steps.length; current_step++) {
-            var timeout = 250 * current_step;
+          // Time for each step
+          var step_time = 250;
+          // Disable play button
+          $('#play_button').hide();
+          $('#pause_button').show();
+          $('#reset_button').prop('disabled', true);
+          $('#forward_button').prop('disabled', true);
+          $('#backward_button').prop('disabled', true);
+
+          // Reinitialize play_timeouts array
+          play_timeouts = [];
+          // For each step, set a timeout.
+          processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
+          // Calculate offset for when paused in middle.
+          var offset = processed_step * step_time;
+          //console.log(processed_step);
+          for (current_step = processed_step; current_step < code_steps.length; current_step++) {
+            // Calculate timeout
+            var timeout = (step_time * current_step) - offset;
             //console.log("Current Step " + current_step);
             //console.log("Timeout " + timeout);
-            setTimeout(function(current_step) {
+            timeout_id = setTimeout(function(current_step) {
               clear_everything();
               draw(current_step);
+              processed_step++;
             }, timeout, current_step);
+            // Add timeout to array of timeouts
+            play_timeouts.push(timeout_id);
           }
+
+          // Add a timeout to re-enable the play button
+          var button_timeout = (step_time * code_steps.length) - offset;
+          timeout_id = setTimeout(function() {
+            //$('#play_button').prop('disabled', false);
+            $('#pause_button').hide();
+            $('#play_button').show();
+            $('#reset_button').prop('disabled', false);
+            $('#forward_button').prop('disabled', false);
+            $('#backward_button').prop('disabled', false);
+          }, button_timeout);
+          play_timeouts.push(timeout_id);
+        });
+
+        $('#pause_button').click(function() {
+          for (i = 0; i < play_timeouts.length; i++) {
+            clearTimeout(play_timeouts[i]);
+          }
+          $('#pause_button').hide();
+          $('#play_button').show();
+          $('#reset_button').prop('disabled', false);
+          $('#forward_button').prop('disabled', false);
+          $('#backward_button').prop('disabled', false);
+        });
+
+        $('#reset_button').click(function() {
+          processed_step = 0;
+          current_step = 0;
+          clear_everything();
+          draw(current_step);
         });
 
         $('#forward_button').click(function() {
           if (current_step + 1 < code_steps.length) {
             current_step = current_step + 1;
+            processed_step = processed_step + 1;
           }
           clear_everything();
           draw(current_step);
@@ -677,6 +755,7 @@
         $('#backward_button').click(function() {
           if (current_step - 1 >= 0) {
             current_step = current_step - 1;
+            processed_step = processed_step - 1;
           }
           clear_everything();
           draw(current_step);
@@ -686,6 +765,7 @@
         //console.log(code_steps);
 
         // Setup the inital display.
+        processed_step = 0;
         current_step = 0;
         clear_everything();
         draw(current_step);
