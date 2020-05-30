@@ -6,11 +6,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <style>
       body {
-        padding: 10px;
+        padding: 5px 10px;
       }
       .flex-container {
         display: grid;
-        grid-template-rows: 460px 460px;
+        grid-template-rows: 425px 425px;
         grid-template-columns: 40% 60%;
       }
       .code-div {
@@ -40,7 +40,7 @@
       .array-state-index-grid-container {
         display: grid;
         grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
-        grid-template-rows: 34px;
+        grid-template-rows: 24px;
       }
       .array-state-grid-container {
         display: grid;
@@ -69,7 +69,7 @@
       .call-stack-grid-container {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+        grid-template-rows: 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px;
         width: 70%;
         border: 1px solid black;
         margin-left: auto;
@@ -83,7 +83,7 @@
 
       .tree-canvas {
         display: block;
-        margin-top: -42px;
+        margin-top: -50px;
       }
 
     </style>
@@ -328,7 +328,7 @@
       </div>
       <div class="tree-div">
         <h2>Call Tree</h2>
-        <canvas id="tree_canvas" class="tree-canvas" height="470" width="950"></canvas>
+        <canvas id="tree_canvas" class="tree-canvas" height="425" width="950"></canvas>
       </div>
     </div>
 
@@ -358,11 +358,11 @@
           {
             tree_code: 'sort(a, aux, 0, 3)',
             tree_code_x: 250,
-            tree_code_y: 125,
+            tree_code_y: 150,
             tree_line_start_x: 150,
             tree_line_start_y: 350,
             tree_line_end_x: 250,
-            tree_line_end_y: 125,
+            tree_line_end_y: 150,
           },
           // Level 3
           {
@@ -370,7 +370,7 @@
             tree_code_x: 500,
             tree_code_y: 50,
             tree_line_start_x: 400,
-            tree_line_start_y: 125,
+            tree_line_start_y: 150,
             tree_line_end_x: 500,
             tree_line_end_y: 50,
           },
@@ -406,39 +406,39 @@
           {
             tree_code: 'sort(a, aux, 2, 3)',
             tree_code_x: 500,
-            tree_code_y: 125,
+            tree_code_y: 150,
             tree_line_start_x: 400,
-            tree_line_start_y: 125,
+            tree_line_start_y: 150,
             tree_line_end_x: 500,
-            tree_line_end_y: 125,
+            tree_line_end_y: 150,
           },
           // Level 4
           {
             tree_code: 'sort(a, aux, 2, 2)',
             tree_code_x: 750,
-            tree_code_y: 100,
-            tree_line_start_x: 650,
-            tree_line_start_y: 125,
-            tree_line_end_x: 750,
-            tree_line_end_y: 100,
-          },
-          {
-            tree_code: 'sort(a, aux, 3, 3)',
-            tree_code_x: 750,
             tree_code_y: 125,
             tree_line_start_x: 650,
-            tree_line_start_y: 125,
+            tree_line_start_y: 150,
             tree_line_end_x: 750,
             tree_line_end_y: 125,
           },
           {
-            tree_code: 'merge(a, aux, 2, 2, 3)',
+            tree_code: 'sort(a, aux, 3, 3)',
             tree_code_x: 750,
             tree_code_y: 150,
             tree_line_start_x: 650,
-            tree_line_start_y: 125,
+            tree_line_start_y: 150,
             tree_line_end_x: 750,
             tree_line_end_y: 150,
+          },
+          {
+            tree_code: 'merge(a, aux, 2, 2, 3)',
+            tree_code_x: 750,
+            tree_code_y: 175,
+            tree_line_start_x: 650,
+            tree_line_start_y: 150,
+            tree_line_end_x: 750,
+            tree_line_end_y: 175,
           },
           // Level 3
           {
@@ -446,7 +446,7 @@
             tree_code_x: 500,
             tree_code_y: 200,
             tree_line_start_x: 400,
-            tree_line_start_y: 125,
+            tree_line_start_y: 150,
             tree_line_end_x: 500,
             tree_line_end_y: 200,
           },
@@ -465,39 +465,39 @@
           {
             tree_code: 'sort(a, aux, 4, 5)',
             tree_code_x: 500,
-            tree_code_y: 275,
+            tree_code_y: 250,
             tree_line_start_x: 400,
             tree_line_start_y: 350,
             tree_line_end_x: 500,
-            tree_line_end_y: 275,
+            tree_line_end_y: 250,
           },
           // Level 4
           {
             tree_code: 'sort(a, aux, 4, 4)',
             tree_code_x: 750,
-            tree_code_y: 250,
+            tree_code_y: 225,
             tree_line_start_x: 650,
-            tree_line_start_y: 275,
+            tree_line_start_y: 250,
             tree_line_end_x: 750,
-            tree_line_end_y: 250,
+            tree_line_end_y: 225,
           },
           {
             tree_code: 'sort(a, aux, 5, 5)',
             tree_code_x: 750,
-            tree_code_y: 275,
+            tree_code_y: 250,
             tree_line_start_x: 650,
-            tree_line_start_y: 275,
+            tree_line_start_y: 250,
             tree_line_end_x: 750,
-            tree_line_end_y: 275,
+            tree_line_end_y: 250,
           },
           {
             tree_code: 'merge(a, aux, 4, 4, 5)',
             tree_code_x: 750,
-            tree_code_y: 300,
+            tree_code_y: 275,
             tree_line_start_x: 650,
-            tree_line_start_y: 275,
+            tree_line_start_y: 250,
             tree_line_end_x: 750,
-            tree_line_end_y: 300,
+            tree_line_end_y: 275,
           },
           // Level 3
           {
@@ -541,21 +541,21 @@
           {
             tree_code: 'merge(a, aux, 4, 5, 7)',
             tree_code_x: 500,
-            tree_code_y: 425,
+            tree_code_y: 400,
             tree_line_start_x: 400,
             tree_line_start_y: 350,
             tree_line_end_x: 500,
-            tree_line_end_y: 425,
+            tree_line_end_y: 400,
           },
           // Level 2
           {
             tree_code: 'merge(a, aux, 0, 3, 7)',
             tree_code_x: 250,
-            tree_code_y: 450,
+            tree_code_y: 425,
             tree_line_start_x: 150,
             tree_line_start_y: 350,
             tree_line_end_x: 250,
-            tree_line_end_y: 450,
+            tree_line_end_y: 425,
           },
         ];
 
