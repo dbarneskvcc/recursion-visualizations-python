@@ -360,10 +360,10 @@
     <script>
       $(document).ready(function() {
 
-        var tree_canvas, tree_ctx, play_timeouts;
-        var code_steps, tree_code, current_step, processed_step;
-        var clear_everything, play_all_steps, draw, is_null;
-        var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
+        var play_timeouts;
+        var code_steps, current_step, processed_step;
+        var clear_everything, draw, is_null;
+        var create_code_steps;
 
         is_null = function(value) {
           return (typeof value === 'undefined' || value === null);
