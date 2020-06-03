@@ -126,9 +126,7 @@
           <span id="move_disc_declaration">private static void moveDisc(int n, char src, char temp, char dest) {</span>
               <span id="base_case">if (n == 1) {</span>
                   <span id="print_line">Console.WriteLine(
-                      "Move disc from tower {0} to tower {1}",
-                      src,
-                      dest
+                      "Move {0} -> {1}", src, dest
                   );</span>
                   <span id="base_case_return">return;</span>
               <span id="base_case_end">}</span>
@@ -140,7 +138,7 @@
         </pre>
       </div>
       <div class="visualization-div">
-        <h2>Visualization</h2>
+        <h2>Visualization <span style="float: right; margin-right: 30px;">Output</span></h2>
         <canvas id="visualization_canvas" class="visualization-canvas" height="425" width="950"></canvas>
       </div>
       <div class="stack-div">
@@ -260,7 +258,13 @@
             disc_1_x: 560,
             disc_1_y: 170,
           },
-        ]
+        ];
+
+        output_steps = [
+          'Move A -> B',
+          'Move A -> C',
+          'Move B -> C',
+        ];
 
         tree_code = [
           {
@@ -450,22 +454,32 @@
 
           // Draw the current state of the visualization
           var visualization_step = get_current_visualization_step(step_number);
-          console.log(visualization_step);
+          //console.log(visualization_step);
           var disc_step = disc_steps[visualization_step];
-          console.log(disc_step);
+          //console.log(disc_step);
           for (var i = 0; i < disc_code.length; i++) {
             var disc = disc_code[i];
-            console.log(disc);
+            //console.log(disc);
             var x_pos = disc_step['disc_' + i + '_x'];
             var y_pos = disc_step['disc_' + i + '_y'];
             visualization_ctx.fillStyle = disc.color;
             visualization_ctx.beginPath();
             visualization_ctx.moveTo(x_pos, y_pos);
             visualization_ctx.fillRect(x_pos, y_pos, disc.width, disc.height);
-            //visualization_ctx.stroke();
           }
 
           visualization_ctx.strokeStyle = disc_steps
+
+          // Draw output
+          var output_y = 25;
+          var output_x = 850;
+          for (var i = 0; i < visualization_step; i++) {
+            var output_step = output_steps[i];
+            visualization_ctx.fillStyle = '#000000';
+            visualization_ctx.font = '14px courier';
+            visualization_ctx.fillText(output_step, output_x, output_y);
+            output_y += 25;
+          }
         };
 
         draw_pegs = function() {
@@ -484,6 +498,7 @@
             visualization_ctx.stroke();
             // Peg letter
             visualization_ctx.fillStyle = '#000000';
+            visualization_ctx.font = '32px courier';
             visualization_ctx.fillText(peg_step.peg_letter, peg_step.peg_line_v_end_x - 10, peg_step.peg_line_v_end_y + 30);
           }
         }
