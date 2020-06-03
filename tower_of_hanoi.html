@@ -61,7 +61,7 @@
   </head>
   <body>
     <h1>
-      Tower of Hanoi 2-Disc
+      Tower of Hanoi 3-Disc
       <span class="button-span">
         <div class="btn-group">
           <button class="btn btn-info" disabled="true">Speed:</button>
@@ -222,66 +222,152 @@
           },
           {
             color: '#007bff',
-            width: 80,
+            width: 120,
             height: 40,
           },
-          // Danger #dc3545
+          {
+            color: '#dc3545',
+            width: 80,
+            height: 40,
+          }
         ];
 
         disc_steps = [
           // peg 1 center: 100
           // peg 2 center: 350
           // peg 3 center: 600
-          // disc 0 offset: 80
-          // disc 1 offset: 40
+          // disc 2 offset: 40 Top
+          // disc 1 offset: 60 Middle
+          // disc 0 offset: 80 Bottom
+          // Initial State
           {
+            disc_2_x: 60,  // Top
+            disc_2_y: 130,  // Top
+            disc_1_x: 40,  // Middle
+            disc_1_y: 170,  // Middle
             disc_0_x: 20,  // Bottom
             disc_0_y: 210,  // Bottom
-            disc_1_x: 60,  // Top
-            disc_1_y: 170,  // Top
           },
+
+          // Move left side
           {
+            disc_2_x: 560,
+            disc_2_y: 210,
+            disc_1_x: 40,
+            disc_1_y: 170,
             disc_0_x: 20,
             disc_0_y: 210,
-            disc_1_x: 310,
-            disc_1_y: 210,
           },
           {
-            disc_0_x: 520,
-            disc_0_y: 210,
-            disc_1_x: 310,
+            disc_2_x: 560,
+            disc_2_y: 210,
+            disc_1_x: 290,
             disc_1_y: 210,
+            disc_0_x: 20,
+            disc_0_y: 210,
           },
           {
+            disc_2_x: 310,
+            disc_2_y: 170,
+            disc_1_x: 290,
+            disc_1_y: 210,
+            disc_0_x: 20,
+            disc_0_y: 210,
+          },
+
+          // Move base
+          {
+            disc_2_x: 310,
+            disc_2_y: 170,
+            disc_1_x: 290,
+            disc_1_y: 210,
             disc_0_x: 520,
             disc_0_y: 210,
-            disc_1_x: 560,
+          },
+
+          // Move right
+          {
+            disc_2_x: 60,
+            disc_2_y: 210,
+            disc_1_x: 290,
+            disc_1_y: 210,
+            disc_0_x: 520,
+            disc_0_y: 210,
+          },
+          {
+            disc_2_x: 60,
+            disc_2_y: 210,
+            disc_1_x: 540,
             disc_1_y: 170,
+            disc_0_x: 520,
+            disc_0_y: 210,
+          },
+          {
+            disc_2_x: 560,
+            disc_2_y: 130,
+            disc_1_x: 540,
+            disc_1_y: 170,
+            disc_0_x: 520,
+            disc_0_y: 210,
           },
         ];
 
         output_steps = [
-          'Move A -> B',
           'Move A -> C',
+          'Move A -> B',
+          'Move C -> B',
+          'Move A -> C',
+          'Move B -> A',
           'Move B -> C',
+          'Move A -> C',
         ];
 
         tree_code = [
           {
-            tree_code: 'moveDisc(2, A, B, C)',
+            tree_code: 'moveDisc(3, A, B, C)',
             tree_code_x: 0,
             tree_code_y: 100,
           },
+
           // Level 2
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'moveDisc(2, A, C, B)',
             tree_code_x: 250,
-            tree_code_y: 75,
+            tree_code_y: 50,
             tree_line_start_x: 175,
             tree_line_start_y: 100,
             tree_line_end_x: 250,
+            tree_line_end_y: 50,
+          },
+          // Level 3
+          {
+            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code_x: 500,
+            tree_code_y: 25,
+            tree_line_start_x: 425,
+            tree_line_start_y: 50,
+            tree_line_end_x: 500,
+            tree_line_end_y: 25,
+          },
+          {
+            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code_x: 500,
+            tree_code_y: 50,
+            tree_line_start_x: 425,
+            tree_line_start_y: 50,
+            tree_line_end_x: 500,
+            tree_line_end_y: 50,
+          },
+          {
+            tree_code: 'moveDisc(1, C, A, B)',
+            tree_code_x: 500,
+            tree_code_y: 75,
+            tree_line_start_x: 425,
+            tree_line_start_y: 50,
+            tree_line_end_x: 500,
             tree_line_end_y: 75,
           },
+
           // Level 2
           {
             tree_code: 'moveDisc(1, A, B, C)',
@@ -292,15 +378,44 @@
             tree_line_end_x: 250,
             tree_line_end_y: 100,
           },
+
           // Level 2
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'moveDisc(2, B, A, C)',
             tree_code_x: 250,
-            tree_code_y: 125,
+            tree_code_y: 150,
             tree_line_start_x: 175,
             tree_line_start_y: 100,
             tree_line_end_x: 250,
+            tree_line_end_y: 150,
+          },
+          // Level 3
+          {
+            tree_code: 'moveDisc(1, B, C, A)',
+            tree_code_x: 500,
+            tree_code_y: 125,
+            tree_line_start_x: 425,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
             tree_line_end_y: 125,
+          },
+          {
+            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code_x: 500,
+            tree_code_y: 150,
+            tree_line_start_x: 425,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
+            tree_line_end_y: 150,
+          },
+          {
+            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code_x: 500,
+            tree_code_y: 175,
+            tree_line_start_x: 425,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
+            tree_line_end_y: 175,
           },
         ];
 
@@ -327,7 +442,7 @@
             steps.push('move_right_return');
             steps.push('move_disc_end')
           }
-          recursion(2);
+          recursion(3);
           steps.push('move_disc');
           steps.push('solve_return');
           return steps;
