@@ -1,0 +1,817 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+      body {
+        padding: 5px 10px;
+      }
+      .flex-container {
+        display: grid;
+        grid-template-rows: 425px 425px;
+        grid-template-columns: 40% 60%;
+      }
+      .code-div {
+        grid-row: 1;
+        grid-column: 1;
+      }
+      .array-div {
+        grid-row: 1;
+        grid-column: 2;
+      }
+      .stack-div {
+        grid-row: 2;
+        grid-column: 1;
+      }
+      .tree-div {
+        grid-row: 2;
+        grid-column: 2;
+      }
+      .button-span {
+        float: right;
+      }
+
+      .highlight {
+        background-color: yellow;
+      }
+
+      .array-state-index-grid-container {
+        display: grid;
+        grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+        grid-template-rows: 24px;
+      }
+      .array-state-grid-container {
+        display: grid;
+        grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+        grid-template-rows: 34px 34px 34px 34px 34px 34px 34px;
+        grid-row-gap: 20px;
+      }
+      .array-state-grid-item {
+        border: 1px solid black;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-align: center;
+      }
+      .array-state-grid-index {
+        padding-top: 5px;
+        text-align: center;
+      }
+      .array-state-grid-step {
+        border-bottom: 1px solid black;
+        border-top: 1px solid white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+      }
+
+      .call-stack-grid-container {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px;
+        width: 70%;
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 30px;
+      }
+      .call-stack-item {
+        border-top: 1px solid black;
+      }
+
+      .tree-canvas {
+        display: block;
+        margin-top: -50px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>
+      Merge Sort
+      <span class="button-span">
+        <div class="btn-group">
+          <button class="btn btn-info" disabled="true">Speed:</button>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-info active">
+              <input type="radio" name="speed" id="option1" value="1" checked> 1x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option2" value="2"> 2x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option3" value="4"> 4x
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="speed" id="option4" value="8"> 8x
+            </label>
+          </div>
+        </div>
+        <button id="play_button" class="btn btn-success">
+          <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+          </svg>
+          Play
+        </button>
+        <button id="pause_button" class="btn btn-warning" style="display: none;">
+          <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+          Pause
+        </button>
+        <button id="reset_button" class="btn btn-danger">
+          <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+          </svg>
+          Reset
+        </button>
+        <button id="backward_button" class="btn btn-primary">
+          <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          Step Backward
+        </button>
+        <button id="forward_button" class="btn btn-primary">
+          Step Forward
+          <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </span>
+    </h1>
+    <div class="flex-container">
+      <div class="code-div">
+        <h2>Code</h2>
+        <pre style="font-size: 12px;">
+          // Main entry point to sort
+          public static void Sort(IComparable[] a) {
+              IComparable[] aux = new IComparable[a.length];
+              <span id="sort_start">sort(a, aux, 0, a.length-1);</span>
+          }
+
+          // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
+          <span id="sort_declaration">private static void sort(
+              IComparable[] a,
+              IComparable[] aux,
+              int lo,
+              int hi
+            ) {</span>
+              <span id="base_case">if (hi <= lo) return</span>;
+              <span id="mid_point">int mid = lo + (hi - lo) / 2;</span>
+              <span id="sort_left">sort(a, aux, lo, mid);</span>
+              <span id="sort_right">sort(a, aux, mid + 1, hi);</span>
+              <span id="merge">merge(a, aux, lo, mid, hi);</span>
+          }
+
+          <!--
+          // stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
+          private static void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi) {
+
+              // copy to aux[]
+              for (int k = lo; k <= hi; k++) {
+                  aux[k] = a[k];
+              }
+
+              // merge back to a[]
+              int i = lo;
+              int j = mid+1;
+              for (int k = lo; k <= hi; k++) {
+                  if (i > mid) { // Index past left subarray max index
+                    index[k] = aux[j++];
+                  } else if (j > hi) { // index past right subarray max index
+                    index[k] = aux[i++];
+                  } else if (aux[j].compareTo(aux[i]) < 0) {  // compare
+                    index[k] = aux[j++];
+                  } else {
+                    index[k] = aux[i++];
+                  }
+              }
+          }
+          -->
+
+        </pre>
+      </div>
+      <div class="array-div">
+        <h2>Array State</h2>
+        <div class="array-state-index-grid-container">
+          <div style="grid-row: 1; grid-column: 5 / 8;">S: = Step: #</div>
+
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 9;">0</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 10;">1</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 11;">2</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 12;">3</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 13;">4</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 14;">5</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 15;">6</div>
+          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 16;">7</div>
+        </div>
+
+        <div class="array-state-grid-container">
+
+          <div class="array-state-grid-step" style="grid-row: 1; grid-column: 8;">S:&nbsp;0</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 9;">M</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 10;">E</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 11;">R</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 12;">G</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 13;">S</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 14;">O</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 15;">R</div>
+          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 16;">T</div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 2; grid-column: 4;">S:&nbsp;<span class="step_1" style="display: none;">1</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 5;"><span class="step_1" style="display: none;">M</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 6;"><span class="step_1" style="display: none;">E</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 7;"><span class="step_1" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 8;"><span class="step_1" style="display: none;">G</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 2; grid-column: 16;">S:&nbsp;<span class="step_11" style="display: none;">11</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 17;"><span class="step_11" style="display: none;">S</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 18;"><span class="step_11" style="display: none;">O</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 19;"><span class="step_11" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 20;"><span class="step_11" style="display: none;">T</span></div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 2;">S:&nbsp;<span class="step_2" style="display: none;">2</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 3;"><span class="step_2" style="display: none;">M</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 4;"><span class="step_2" style="display: none;">E</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 8;">S:&nbsp;<span class="step_6" style="display: none;">6</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 9;"><span class="step_6" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 10;"><span class="step_6" style="display: none;">G</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 14;">S:&nbsp;<span class="step_12" style="display: none;">12</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 15;"><span class="step_12" style="display: none;">S</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 16;"><span class="step_12" style="display: none;">O</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 20;">S:&nbsp;<span class="step_16" style="display: none;">16</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 21;"><span class="step_16" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 22;"><span class="step_16" style="display: none;">T</span></div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 1;">S:&nbsp;<span class="step_3" style="display: none;">3</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 2;"><span class="step_3" style="display: none;">M</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 4;">S:&nbsp;<span class="step_4" style="display: none;">4</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 5;"><span class="step_4" style="display: none;">E</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 7;">S:&nbsp;<span class="step_7" style="display: none;">7</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 8;"><span class="step_7" style="display: none;">R</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 10;">S:&nbsp;<span class="step_8" style="display: none;">8</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 11;"><span class="step_8" style="display: none;">G</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 13;">S:&nbsp;<span class="step_13" style="display: none;">13</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 14;"><span class="step_13" style="display: none;">S</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 16;">S:&nbsp;<span class="step_14" style="display: none;">14</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 17;"><span class="step_14" style="display: none;">O</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 19;">S:&nbsp;<span class="step_17" style="display: none;">17</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 20;"><span class="step_17" style="display: none;">R</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 22;">S:&nbsp;<span class="step_18" style="display: none;">18</span></div>
+          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 23;"><span class="step_18" style="display: none;">T</span></div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 2;">S:&nbsp;<span class="step_5" style="display: none;">5</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 3;"><span class="step_5" style="display: none;">E</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 4;"><span class="step_5" style="display: none;">M</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 8;">S:&nbsp;<span class="step_9" style="display: none;">9</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 9;"><span class="step_9" style="display: none;">G</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 10;"><span class="step_9" style="display: none;">R</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 14;">S:&nbsp;<span class="step_15" style="display: none;">15</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 15;"><span class="step_15" style="display: none;">O</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 16;"><span class="step_15" style="display: none;">S</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 20;">S:&nbsp;<span class="step_19" style="display: none;">19</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 21;"><span class="step_19" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 22;"><span class="step_19" style="display: none;">T</span></div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 6; grid-column: 4;">S:&nbsp;<span class="step_10" style="display: none;">10</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 5;"><span class="step_10" style="display: none;">E</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 6;"><span class="step_10" style="display: none;">G</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 7;"><span class="step_10" style="display: none;">M</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 8;"><span class="step_10" style="display: none;">R</span></div>
+
+          <div class="array-state-grid-step" style="grid-row: 6; grid-column: 16;">S:&nbsp;<span class="step_20" style="display: none;">20</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 17;"><span class="step_20" style="display: none;">O</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 18;"><span class="step_20" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 19;"><span class="step_20" style="display: none;">S</span></div>
+          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 20;"><span class="step_20" style="display: none;">T</span></div>
+
+
+          <div class="array-state-grid-step" style="grid-row: 7; grid-column: 8;">S:&nbsp;<span class="step_21" style="display: none;">21</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 9;"><span class="step_21" style="display: none;">E</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 10;"><span class="step_21" style="display: none;">G</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 11;"><span class="step_21" style="display: none;">M</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 12;"><span class="step_21" style="display: none;">O</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 13;"><span class="step_21" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 14;"><span class="step_21" style="display: none;">R</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 15;"><span class="step_21" style="display: none;">S</span></div>
+          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 16;"><span class="step_21" style="display: none;">T</span></div>
+
+        </div>
+      </div>
+      <div class="stack-div">
+        <h2>Call Stack</h2>
+        <div id="call_stack_grid_container" class="call-stack-grid-container">
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Sort</div>
+        </div>
+      </div>
+      <div class="tree-div">
+        <h2>Call Tree</h2>
+        <canvas id="tree_canvas" class="tree-canvas" height="425" width="950"></canvas>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+
+        var tree_canvas, tree_ctx, play_timeouts;
+        var code_steps, tree_code, current_step, processed_step;
+        var clear_everything, play_all_steps, draw, is_null;
+        var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
+
+        is_null = function(value) {
+          return (typeof value === 'undefined' || value === null);
+        }
+
+        tree_canvas = document.getElementById('tree_canvas');
+        tree_ctx = tree_canvas.getContext('2d');
+        tree_ctx.font = '14px courier';
+
+        tree_code = [
+          {
+            tree_code: 'sort(a, aux, 0, 7)',
+            tree_code_x: 0,
+            tree_code_y: 350,
+          },
+          // Level 2
+          {
+            tree_code: 'sort(a, aux, 0, 3)',
+            tree_code_x: 250,
+            tree_code_y: 150,
+            tree_line_start_x: 150,
+            tree_line_start_y: 350,
+            tree_line_end_x: 250,
+            tree_line_end_y: 150,
+          },
+          // Level 3
+          {
+            tree_code: 'sort(a, aux, 0, 1)',
+            tree_code_x: 500,
+            tree_code_y: 50,
+            tree_line_start_x: 400,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
+            tree_line_end_y: 50,
+          },
+          // Level 4
+          {
+            tree_code: 'sort(a, aux, 0, 0)',
+            tree_code_x: 750,
+            tree_code_y: 25,
+            tree_line_start_x: 650,
+            tree_line_start_y: 50,
+            tree_line_end_x: 750,
+            tree_line_end_y: 25,
+          },
+          {
+            tree_code: 'sort(a, aux, 1, 1)',
+            tree_code_x: 750,
+            tree_code_y: 50,
+            tree_line_start_x: 650,
+            tree_line_start_y: 50,
+            tree_line_end_x: 750,
+            tree_line_end_y: 50,
+          },
+          {
+            tree_code: 'merge(a, aux, 0, 0, 1)',
+            tree_code_x: 750,
+            tree_code_y: 75,
+            tree_line_start_x: 650,
+            tree_line_start_y: 50,
+            tree_line_end_x: 750,
+            tree_line_end_y: 75,
+          },
+          // Level 3
+          {
+            tree_code: 'sort(a, aux, 2, 3)',
+            tree_code_x: 500,
+            tree_code_y: 150,
+            tree_line_start_x: 400,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
+            tree_line_end_y: 150,
+          },
+          // Level 4
+          {
+            tree_code: 'sort(a, aux, 2, 2)',
+            tree_code_x: 750,
+            tree_code_y: 125,
+            tree_line_start_x: 650,
+            tree_line_start_y: 150,
+            tree_line_end_x: 750,
+            tree_line_end_y: 125,
+          },
+          {
+            tree_code: 'sort(a, aux, 3, 3)',
+            tree_code_x: 750,
+            tree_code_y: 150,
+            tree_line_start_x: 650,
+            tree_line_start_y: 150,
+            tree_line_end_x: 750,
+            tree_line_end_y: 150,
+          },
+          {
+            tree_code: 'merge(a, aux, 2, 2, 3)',
+            tree_code_x: 750,
+            tree_code_y: 175,
+            tree_line_start_x: 650,
+            tree_line_start_y: 150,
+            tree_line_end_x: 750,
+            tree_line_end_y: 175,
+          },
+          // Level 3
+          {
+            tree_code: 'merge(a, aux, 0, 1, 3)',
+            tree_code_x: 500,
+            tree_code_y: 200,
+            tree_line_start_x: 400,
+            tree_line_start_y: 150,
+            tree_line_end_x: 500,
+            tree_line_end_y: 200,
+          },
+
+          // Level 2
+          {
+            tree_code: 'sort(a, aux, 4, 7)',
+            tree_code_x: 250,
+            tree_code_y: 350,
+            tree_line_start_x: 150,
+            tree_line_start_y: 350,
+            tree_line_end_x: 250,
+            tree_line_end_y: 350,
+          },
+          // Level 3
+          {
+            tree_code: 'sort(a, aux, 4, 5)',
+            tree_code_x: 500,
+            tree_code_y: 250,
+            tree_line_start_x: 400,
+            tree_line_start_y: 350,
+            tree_line_end_x: 500,
+            tree_line_end_y: 250,
+          },
+          // Level 4
+          {
+            tree_code: 'sort(a, aux, 4, 4)',
+            tree_code_x: 750,
+            tree_code_y: 225,
+            tree_line_start_x: 650,
+            tree_line_start_y: 250,
+            tree_line_end_x: 750,
+            tree_line_end_y: 225,
+          },
+          {
+            tree_code: 'sort(a, aux, 5, 5)',
+            tree_code_x: 750,
+            tree_code_y: 250,
+            tree_line_start_x: 650,
+            tree_line_start_y: 250,
+            tree_line_end_x: 750,
+            tree_line_end_y: 250,
+          },
+          {
+            tree_code: 'merge(a, aux, 4, 4, 5)',
+            tree_code_x: 750,
+            tree_code_y: 275,
+            tree_line_start_x: 650,
+            tree_line_start_y: 250,
+            tree_line_end_x: 750,
+            tree_line_end_y: 275,
+          },
+          // Level 3
+          {
+            tree_code: 'sort(a, aux, 6, 7)',
+            tree_code_x: 500,
+            tree_code_y: 350,
+            tree_line_start_x: 400,
+            tree_line_start_y: 350,
+            tree_line_end_x: 500,
+            tree_line_end_y: 350,
+          },
+          // Level 4
+          {
+            tree_code: 'sort(a, aux, 6, 6)',
+            tree_code_x: 750,
+            tree_code_y: 325,
+            tree_line_start_x: 650,
+            tree_line_start_y: 350,
+            tree_line_end_x: 750,
+            tree_line_end_y: 325,
+          },
+          {
+            tree_code: 'sort(a, aux, 7, 7)',
+            tree_code_x: 750,
+            tree_code_y: 350,
+            tree_line_start_x: 650,
+            tree_line_start_y: 350,
+            tree_line_end_x: 750,
+            tree_line_end_y: 350,
+          },
+          {
+            tree_code: 'merge(a, aux, 6, 6, 7)',
+            tree_code_x: 750,
+            tree_code_y: 375,
+            tree_line_start_x: 650,
+            tree_line_start_y: 350,
+            tree_line_end_x: 750,
+            tree_line_end_y: 375,
+          },
+          // Level 3
+          {
+            tree_code: 'merge(a, aux, 4, 5, 7)',
+            tree_code_x: 500,
+            tree_code_y: 400,
+            tree_line_start_x: 400,
+            tree_line_start_y: 350,
+            tree_line_end_x: 500,
+            tree_line_end_y: 400,
+          },
+          // Level 2
+          {
+            tree_code: 'merge(a, aux, 0, 3, 7)',
+            tree_code_x: 250,
+            tree_code_y: 425,
+            tree_line_start_x: 150,
+            tree_line_start_y: 350,
+            tree_line_end_x: 250,
+            tree_line_end_y: 425,
+          },
+        ];
+
+        create_code_steps = function() {
+          var steps = ['sort_start'];
+          var recursion = function(lo, hi) {
+            //console.log('lo:' + lo + ' hi:' + hi);
+            steps.push('sort_declaration');
+            steps.push('base_case');
+            if (hi <= lo) { return; }
+            steps.push('mid_point');
+            var mid = lo + Math.floor((hi - lo) / 2);
+            steps.push('sort_left');
+            recursion(lo, mid);
+            steps.push('return_sort_left');
+            steps.push('sort_right');
+            recursion(mid+1, hi);
+            steps.push('return_sort_right');
+            steps.push('merge');
+            steps.push('return_merge');
+          };
+          recursion(0, 7);
+          steps.push('return_sort_start');
+          return steps;
+        };
+
+        get_current_tree_step_stacks = function(step_number) {
+
+          var current_tree_step_stack = [];
+          var current_red_text_stack = [];
+          var current_tree_step = -1;
+          for (var i = 0; i <= step_number; i++) {
+            var code_step = code_steps[i];
+            if (code_step === 'sort_declaration' || code_step === 'merge') {
+              // Increase current_tree_step
+              current_tree_step++;
+              // Add step number to step stack
+              current_tree_step_stack.push(current_tree_step);
+              current_red_text_stack.push(current_tree_step);
+            }
+            if (
+              code_step === 'return_sort_left'
+              || code_step === 'return_sort_right'
+              || code_step === 'return_merge'
+              || code_step === 'return_sort_start'
+            ) {
+              current_red_text_stack.pop();
+            }
+          }
+
+          return {
+            tree_step_stack: current_tree_step_stack,
+            red_text_step_stack: current_red_text_stack,
+          };
+        };
+
+        get_call_stack_div = function(call_stack_number, code_line) {
+          return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
+        };
+
+        draw = function(step_number) {
+          //console.log("Step Number " + step_number)
+
+          var tree_data = get_current_tree_step_stacks(step_number);
+
+          var tree_step_stack = tree_data.tree_step_stack;
+          var red_text_step_stack = tree_data.red_text_step_stack;
+
+          var tree_step = tree_step_stack[tree_step_stack.length-1];
+          var red_text_step = red_text_step_stack[red_text_step_stack.length-1];
+
+          var code_step = code_steps[step_number];
+          //console.log("Step " + code_step);
+
+          code_step = (code_step === 'return_sort_left') ? 'sort_left': code_step;
+          code_step = (code_step === 'return_sort_right') ? 'sort_right': code_step;
+          code_step = (code_step === 'return_merge') ? 'merge': code_step;
+          code_step = (code_step === 'return_sort_start') ? 'sort_start': code_step;
+
+          $('#' + code_step).addClass('highlight');
+
+          var call_stack_number = 10;
+          var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
+          $('#call_stack_grid_container').append(call_stack_div);
+          call_stack_div = get_call_stack_div(call_stack_number--, 'Sort(a)');
+          $('#call_stack_grid_container').append(call_stack_div);
+
+          //console.log(red_text_step_stack);
+          for (var i = 0; i < red_text_step_stack.length; i++) {
+            // Add stack div to call stack grid.
+              var step = tree_code[red_text_step_stack[i]];
+              call_stack_div = get_call_stack_div(call_stack_number--, step.tree_code);
+              $('#call_stack_grid_container').append(call_stack_div);
+          }
+
+          for (var i = 0; i <= tree_step; i++) {
+            var step = tree_code[i];
+            //console.log('Tree Step Index ' + i);
+            //console.log('Tree Step ' + step);
+            text_color = '#000000';
+            line_color = '#000000';
+            if (i === red_text_step) {
+              text_color = '#ff0000';
+            }
+
+            // Draw call tree code if the data to do so exists.
+            if (
+              !is_null(step.tree_code)
+              && !is_null(step.tree_code_x)
+              && !is_null(step.tree_code_y)
+            ) {
+              // Show the correct array state steps
+              var selector = '.step_' + i;
+              $(selector).show();
+
+              // Show the call tree steps
+              tree_ctx.fillStyle = text_color
+              tree_ctx.fillText(step.tree_code, step.tree_code_x, step.tree_code_y);
+            }
+
+            // Add a line between the code calls if the data to do so exists.
+            if (
+              !is_null(step.tree_line_start_x)
+              && !is_null(step.tree_line_start_y)
+              && !is_null(step.tree_line_end_x)
+              && !is_null(step.tree_line_end_y)
+            ) {
+              tree_ctx.strokeStyle = line_color;
+              tree_ctx.beginPath();
+              tree_ctx.moveTo(step.tree_line_start_x, step.tree_line_start_y);
+              tree_ctx.lineTo(step.tree_line_end_x, step.tree_line_end_y);
+              tree_ctx.stroke();
+            }
+          }
+        };
+
+        clear_everything = function() {
+          // clear all things on screen
+          //console.log('Clear Everything');
+
+          $('#sort_start').removeClass('highlight');
+          $('#sort_declaration').removeClass('highlight');
+          $('#base_case').removeClass('highlight');
+          $('#mid_point').removeClass('highlight');
+          $('#sort_left').removeClass('highlight');
+          $('#sort_right').removeClass('highlight');
+          $('#merge').removeClass('highlight');
+
+          for (i = 1; i < 22; i++) {
+            var selector = '.step_' + i;
+            $(selector).hide();
+          }
+
+          $('#call_stack_grid_container').html('');
+
+          tree_ctx.clearRect(0, 0, tree_canvas.width, tree_canvas.height);
+        };
+
+        $('#play_button').click(function() {
+          // Time for each step
+          var step_time = 2000;
+          var speed = 1;
+          var speed_radios = $("[name='speed']");
+          for (var i = 0, len = speed_radios.length; i < len; i++) {
+            if (speed_radios[i].checked) {
+              speed = $(speed_radios[i]).val();
+            }
+          }
+          step_time = (step_time / speed);
+          // Disable play button
+          $('#play_button').hide();
+          $('#pause_button').show();
+          $('#reset_button').prop('disabled', true);
+          $('#forward_button').prop('disabled', true);
+          $('#backward_button').prop('disabled', true);
+
+          // Reinitialize play_timeouts array
+          play_timeouts = [];
+          // For each step, set a timeout.
+          processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
+          // Calculate offset for when paused in middle.
+          var offset = processed_step * step_time;
+          //console.log(processed_step);
+          for (current_step = processed_step; current_step < code_steps.length; current_step++) {
+            // Calculate timeout
+            var timeout = (step_time * current_step) - offset;
+            //console.log("Current Step " + current_step);
+            //console.log("Timeout " + timeout);
+            timeout_id = setTimeout(function(current_step) {
+              clear_everything();
+              draw(current_step);
+              processed_step++;
+            }, timeout, current_step);
+            // Add timeout to array of timeouts
+            play_timeouts.push(timeout_id);
+          }
+
+          // Add a timeout to re-enable the play button
+          var button_timeout = (step_time * code_steps.length) - offset;
+          timeout_id = setTimeout(function() {
+            //$('#play_button').prop('disabled', false);
+            $('#pause_button').hide();
+            $('#play_button').show();
+            $('#reset_button').prop('disabled', false);
+            $('#forward_button').prop('disabled', false);
+            $('#backward_button').prop('disabled', false);
+          }, button_timeout);
+          play_timeouts.push(timeout_id);
+        });
+
+        $('#pause_button').click(function() {
+          for (i = 0; i < play_timeouts.length; i++) {
+            clearTimeout(play_timeouts[i]);
+          }
+          $('#pause_button').hide();
+          $('#play_button').show();
+          $('#reset_button').prop('disabled', false);
+          $('#forward_button').prop('disabled', false);
+          $('#backward_button').prop('disabled', false);
+        });
+
+        $('#reset_button').click(function() {
+          processed_step = 0;
+          current_step = 0;
+          clear_everything();
+          draw(current_step);
+        });
+
+        $('#forward_button').click(function() {
+          if (processed_step + 1 < code_steps.length) {
+            current_step = current_step + 1;
+            processed_step = processed_step + 1;
+          }
+          clear_everything();
+          draw(processed_step);
+        });
+
+        $('#backward_button').click(function() {
+          if (processed_step - 1 >= 0) {
+            current_step = current_step - 1;
+            processed_step = processed_step - 1;
+          }
+          clear_everything();
+          draw(processed_step);
+        });
+
+        code_steps = create_code_steps();
+        //console.log(code_steps);
+
+        // Setup the inital display.
+        processed_step = 0;
+        current_step = 0;
+        clear_everything();
+        draw(current_step);
+
+      });
+    </script>
+  </body>
+</html>
