@@ -175,6 +175,7 @@
 
         visualization_canvas = document.getElementById('visualization_canvas');
         visualization_ctx = visualization_canvas.getContext('2d');
+        visualization_ctx.font = '32px courier';
 
         peg_code = [
           {
@@ -187,6 +188,7 @@
             peg_line_v_start_y: 0,
             peg_line_v_end_x: 100,
             peg_line_v_end_y: 250,
+            peg_letter: 'A',
           },
           {
             // H Mid Point 350
@@ -198,6 +200,7 @@
             peg_line_v_start_y: 0,
             peg_line_v_end_x: 350,
             peg_line_v_end_y: 250,
+            peg_letter: 'B',
           },
           {
             // H Mid Point 600
@@ -209,6 +212,7 @@
             peg_line_v_start_y: 0,
             peg_line_v_end_x: 600,
             peg_line_v_end_y: 250,
+            peg_letter: 'C',
           }
         ];
 
@@ -478,6 +482,9 @@
             visualization_ctx.moveTo(peg_step.peg_line_v_start_x, peg_step.peg_line_v_start_y);
             visualization_ctx.lineTo(peg_step.peg_line_v_end_x, peg_step.peg_line_v_end_y);
             visualization_ctx.stroke();
+            // Peg letter
+            visualization_ctx.fillStyle = '#000000';
+            visualization_ctx.fillText(peg_step.peg_letter, peg_step.peg_line_v_end_x - 10, peg_step.peg_line_v_end_y + 30);
           }
         }
 

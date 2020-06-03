@@ -17,7 +17,7 @@
         grid-row: 1;
         grid-column: 1;
       }
-      .array-div {
+      .visualization-div {
         grid-row: 1;
         grid-column: 2;
       }
@@ -37,35 +37,6 @@
         background-color: yellow;
       }
 
-      .array-state-index-grid-container {
-        display: grid;
-        grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
-        grid-template-rows: 24px;
-      }
-      .array-state-grid-container {
-        display: grid;
-        grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
-        grid-template-rows: 34px 34px 34px 34px 34px 34px 34px;
-        grid-row-gap: 20px;
-      }
-      .array-state-grid-item {
-        border: 1px solid black;
-        padding-top: 6px;
-        padding-bottom: 6px;
-        text-align: center;
-      }
-      .array-state-grid-index {
-        padding-top: 5px;
-        text-align: center;
-      }
-      .array-state-grid-step {
-        border-bottom: 1px solid black;
-        border-top: 1px solid white;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: left;
-      }
-
       .call-stack-grid-container {
         display: grid;
         grid-template-columns: 100%;
@@ -83,14 +54,14 @@
 
       .tree-canvas {
         display: block;
-        margin-top: -50px;
+        /*margin-top: -50px;*/
       }
 
     </style>
   </head>
   <body>
     <h1>
-      Merge Sort
+      Tower of Hanoi 2-Disc
       <span class="button-span">
         <div class="btn-group">
           <button class="btn btn-info" disabled="true">Speed:</button>
@@ -146,184 +117,37 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
-          // Main entry point to sort
-          public static void Sort(IComparable[] a) {
-              IComparable[] aux = new IComparable[a.length];
-              <span id="sort_start">sort(a, aux, 0, a.length-1);</span>
-          }
+          // Main entry point to solve
+          <span id="solve">public static void Solve(int numberOfDiscs) {</span>
+              <span id="move_disc">moveDisc(2, 'A', 'B', 'C');</span>
+          <span id="solve_return">}</span>
 
-          // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-          <span id="sort_declaration">private static void sort(
-              IComparable[] a,
-              IComparable[] aux,
-              int lo,
-              int hi
-            ) {</span>
-              <span id="base_case">if (hi <= lo) return</span>;
-              <span id="mid_point">int mid = lo + (hi - lo) / 2;</span>
-              <span id="sort_left">sort(a, aux, lo, mid);</span>
-              <span id="sort_right">sort(a, aux, mid + 1, hi);</span>
-              <span id="merge">merge(a, aux, lo, mid, hi);</span>
-          }
-
-          <!--
-          // stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
-          private static void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi) {
-
-              // copy to aux[]
-              for (int k = lo; k <= hi; k++) {
-                  aux[k] = a[k];
-              }
-
-              // merge back to a[]
-              int i = lo;
-              int j = mid+1;
-              for (int k = lo; k <= hi; k++) {
-                  if (i > mid) { // Index past left subarray max index
-                    index[k] = aux[j++];
-                  } else if (j > hi) { // index past right subarray max index
-                    index[k] = aux[i++];
-                  } else if (aux[j].compareTo(aux[i]) < 0) {  // compare
-                    index[k] = aux[j++];
-                  } else {
-                    index[k] = aux[i++];
-                  }
-              }
-          }
-          -->
+          // Recursive move discs from one peg to another.
+          <span id="move_disc_declaration">private static void moveDisc(int n, char src, char temp, char dest) {</span>
+              <span id="base_case">if (n == 1) {</span>
+                  <span id="print_line">Console.WriteLine(
+                      "Move disc from tower {0} to tower {1}",
+                      src,
+                      dest
+                  );</span>
+                  <span id="base_case_return">return;</span>
+              <span id="base_case_end">}</span>
+              <span id="move_left">moveDisc(n - 1, src, dest, temp);</span>
+              <span id="move_base">moveDisc(1, src, temp, dest);</span>
+              <span id="move_right">moveDisc(n - 1, temp, src, dest);</span>
+          <span id="move_disc_end">}</span>
 
         </pre>
       </div>
-      <div class="array-div">
-        <h2>Array State</h2>
-        <div class="array-state-index-grid-container">
-          <div style="grid-row: 1; grid-column: 5 / 8;">S: = Step: #</div>
-
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 9;">0</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 10;">1</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 11;">2</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 12;">3</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 13;">4</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 14;">5</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 15;">6</div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 16;">7</div>
-        </div>
-
-        <div class="array-state-grid-container">
-
-          <div class="array-state-grid-step" style="grid-row: 1; grid-column: 8;">S:&nbsp;0</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 9;">M</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 10;">E</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 11;">R</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 12;">G</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 13;">S</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 14;">O</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 15;">R</div>
-          <div class="array-state-grid-item" style="grid-row: 1; grid-column: 16;">T</div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 2; grid-column: 4;">S:&nbsp;<span class="step_1" style="display: none;">1</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 5;"><span class="step_1" style="display: none;">M</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 6;"><span class="step_1" style="display: none;">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 7;"><span class="step_1" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 8;"><span class="step_1" style="display: none;">G</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 2; grid-column: 16;">S:&nbsp;<span class="step_11" style="display: none;">11</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 17;"><span class="step_11" style="display: none;">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 18;"><span class="step_11" style="display: none;">O</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 19;"><span class="step_11" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 2; grid-column: 20;"><span class="step_11" style="display: none;">T</span></div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 2;">S:&nbsp;<span class="step_2" style="display: none;">2</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 3;"><span class="step_2" style="display: none;">M</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 4;"><span class="step_2" style="display: none;">E</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 8;">S:&nbsp;<span class="step_6" style="display: none;">6</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 9;"><span class="step_6" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 10;"><span class="step_6" style="display: none;">G</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 14;">S:&nbsp;<span class="step_12" style="display: none;">12</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 15;"><span class="step_12" style="display: none;">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 16;"><span class="step_12" style="display: none;">O</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 3; grid-column: 20;">S:&nbsp;<span class="step_16" style="display: none;">16</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 21;"><span class="step_16" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 3; grid-column: 22;"><span class="step_16" style="display: none;">T</span></div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 1;">S:&nbsp;<span class="step_3" style="display: none;">3</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 2;"><span class="step_3" style="display: none;">M</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 4;">S:&nbsp;<span class="step_4" style="display: none;">4</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 5;"><span class="step_4" style="display: none;">E</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 7;">S:&nbsp;<span class="step_7" style="display: none;">7</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 8;"><span class="step_7" style="display: none;">R</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 10;">S:&nbsp;<span class="step_8" style="display: none;">8</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 11;"><span class="step_8" style="display: none;">G</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 13;">S:&nbsp;<span class="step_13" style="display: none;">13</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 14;"><span class="step_13" style="display: none;">S</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 16;">S:&nbsp;<span class="step_14" style="display: none;">14</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 17;"><span class="step_14" style="display: none;">O</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 19;">S:&nbsp;<span class="step_17" style="display: none;">17</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 20;"><span class="step_17" style="display: none;">R</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 4; grid-column: 22;">S:&nbsp;<span class="step_18" style="display: none;">18</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 23;"><span class="step_18" style="display: none;">T</span></div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 2;">S:&nbsp;<span class="step_5" style="display: none;">5</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 3;"><span class="step_5" style="display: none;">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 4;"><span class="step_5" style="display: none;">M</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 8;">S:&nbsp;<span class="step_9" style="display: none;">9</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 9;"><span class="step_9" style="display: none;">G</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 10;"><span class="step_9" style="display: none;">R</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 14;">S:&nbsp;<span class="step_15" style="display: none;">15</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 15;"><span class="step_15" style="display: none;">O</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 16;"><span class="step_15" style="display: none;">S</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 5; grid-column: 20;">S:&nbsp;<span class="step_19" style="display: none;">19</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 21;"><span class="step_19" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 5; grid-column: 22;"><span class="step_19" style="display: none;">T</span></div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 6; grid-column: 4;">S:&nbsp;<span class="step_10" style="display: none;">10</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 5;"><span class="step_10" style="display: none;">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 6;"><span class="step_10" style="display: none;">G</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 7;"><span class="step_10" style="display: none;">M</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 8;"><span class="step_10" style="display: none;">R</span></div>
-
-          <div class="array-state-grid-step" style="grid-row: 6; grid-column: 16;">S:&nbsp;<span class="step_20" style="display: none;">20</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 17;"><span class="step_20" style="display: none;">O</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 18;"><span class="step_20" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 19;"><span class="step_20" style="display: none;">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 6; grid-column: 20;"><span class="step_20" style="display: none;">T</span></div>
-
-
-          <div class="array-state-grid-step" style="grid-row: 7; grid-column: 8;">S:&nbsp;<span class="step_21" style="display: none;">21</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 9;"><span class="step_21" style="display: none;">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 10;"><span class="step_21" style="display: none;">G</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 11;"><span class="step_21" style="display: none;">M</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 12;"><span class="step_21" style="display: none;">O</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 13;"><span class="step_21" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 14;"><span class="step_21" style="display: none;">R</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 15;"><span class="step_21" style="display: none;">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 7; grid-column: 16;"><span class="step_21" style="display: none;">T</span></div>
-
-        </div>
+      <div class="visualization-div">
+        <h2>Visualization</h2>
+        <canvas id="visualization_canvas" class="visualization-canvas" height="425" width="950"></canvas>
       </div>
       <div class="stack-div">
         <h2>Call Stack</h2>
         <div id="call_stack_grid_container" class="call-stack-grid-container">
           <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Sort</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Solve</div>
         </div>
       </div>
       <div class="tree-div">
@@ -336,6 +160,7 @@
       $(document).ready(function() {
 
         var tree_canvas, tree_ctx, play_timeouts;
+        var visualization_canvas, visualization_ctx;
         var code_steps, tree_code, current_step, processed_step;
         var clear_everything, play_all_steps, draw, is_null;
         var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
@@ -348,239 +173,161 @@
         tree_ctx = tree_canvas.getContext('2d');
         tree_ctx.font = '14px courier';
 
+        visualization_canvas = document.getElementById('visualization_canvas');
+        visualization_ctx = visualization_canvas.getContext('2d');
+        visualization_ctx.font = '32px courier';
+
+        peg_code = [
+          {
+            // H Mid Point 100
+            peg_line_h_start_x: 0,
+            peg_line_h_start_y: 250,
+            peg_line_h_end_x: 200,
+            peg_line_h_end_y: 250,
+            peg_line_v_start_x: 100,
+            peg_line_v_start_y: 0,
+            peg_line_v_end_x: 100,
+            peg_line_v_end_y: 250,
+            peg_letter: 'A',
+          },
+          {
+            // H Mid Point 350
+            peg_line_h_start_x: 250,
+            peg_line_h_start_y: 250,
+            peg_line_h_end_x: 450,
+            peg_line_h_end_y: 250,
+            peg_line_v_start_x: 350,
+            peg_line_v_start_y: 0,
+            peg_line_v_end_x: 350,
+            peg_line_v_end_y: 250,
+            peg_letter: 'B',
+          },
+          {
+            // H Mid Point 600
+            peg_line_h_start_x: 500,
+            peg_line_h_start_y: 250,
+            peg_line_h_end_x: 700,
+            peg_line_h_end_y: 250,
+            peg_line_v_start_x: 600,
+            peg_line_v_start_y: 0,
+            peg_line_v_end_x: 600,
+            peg_line_v_end_y: 250,
+            peg_letter: 'C',
+          }
+        ];
+
+        disc_code = [
+          {
+            color: '#28a745',
+            width: 160,
+            height: 40,
+          },
+          {
+            color: '#007bff',
+            width: 80,
+            height: 40,
+          },
+          // Danger #dc3545
+        ];
+
+        disc_steps = [
+          // peg 1 center: 100
+          // peg 2 center: 350
+          // peg 3 center: 600
+          // disc 0 offset: 80
+          // disc 1 offset: 40
+          {
+            disc_0_x: 20,  // Bottom
+            disc_0_y: 210,  // Bottom
+            disc_1_x: 60,  // Top
+            disc_1_y: 170,  // Top
+          },
+          {
+            disc_0_x: 20,
+            disc_0_y: 210,
+            disc_1_x: 310,
+            disc_1_y: 210,
+          },
+          {
+            disc_0_x: 520,
+            disc_0_y: 210,
+            disc_1_x: 310,
+            disc_1_y: 210,
+          },
+          {
+            disc_0_x: 520,
+            disc_0_y: 210,
+            disc_1_x: 560,
+            disc_1_y: 170,
+          },
+        ]
+
         tree_code = [
           {
-            tree_code: 'sort(a, aux, 0, 7)',
+            tree_code: 'moveDisc(2, A, B, C)',
             tree_code_x: 0,
-            tree_code_y: 350,
+            tree_code_y: 100,
           },
           // Level 2
           {
-            tree_code: 'sort(a, aux, 0, 3)',
+            tree_code: 'moveDisc(1, A, C, B)',
             tree_code_x: 250,
-            tree_code_y: 150,
-            tree_line_start_x: 150,
-            tree_line_start_y: 350,
-            tree_line_end_x: 250,
-            tree_line_end_y: 150,
-          },
-          // Level 3
-          {
-            tree_code: 'sort(a, aux, 0, 1)',
-            tree_code_x: 500,
-            tree_code_y: 50,
-            tree_line_start_x: 400,
-            tree_line_start_y: 150,
-            tree_line_end_x: 500,
-            tree_line_end_y: 50,
-          },
-          // Level 4
-          {
-            tree_code: 'sort(a, aux, 0, 0)',
-            tree_code_x: 750,
-            tree_code_y: 25,
-            tree_line_start_x: 650,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
-            tree_line_end_y: 25,
-          },
-          {
-            tree_code: 'sort(a, aux, 1, 1)',
-            tree_code_x: 750,
-            tree_code_y: 50,
-            tree_line_start_x: 650,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
-            tree_line_end_y: 50,
-          },
-          {
-            tree_code: 'merge(a, aux, 0, 0, 1)',
-            tree_code_x: 750,
             tree_code_y: 75,
-            tree_line_start_x: 650,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
+            tree_line_start_x: 175,
+            tree_line_start_y: 100,
+            tree_line_end_x: 250,
             tree_line_end_y: 75,
           },
-          // Level 3
+          // Level 2
           {
-            tree_code: 'sort(a, aux, 2, 3)',
-            tree_code_x: 500,
-            tree_code_y: 150,
-            tree_line_start_x: 400,
-            tree_line_start_y: 150,
-            tree_line_end_x: 500,
-            tree_line_end_y: 150,
+            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code_x: 250,
+            tree_code_y: 100,
+            tree_line_start_x: 175,
+            tree_line_start_y: 100,
+            tree_line_end_x: 250,
+            tree_line_end_y: 100,
           },
-          // Level 4
+          // Level 2
           {
-            tree_code: 'sort(a, aux, 2, 2)',
-            tree_code_x: 750,
+            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code_x: 250,
             tree_code_y: 125,
-            tree_line_start_x: 650,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
+            tree_line_start_x: 175,
+            tree_line_start_y: 100,
+            tree_line_end_x: 250,
             tree_line_end_y: 125,
-          },
-          {
-            tree_code: 'sort(a, aux, 3, 3)',
-            tree_code_x: 750,
-            tree_code_y: 150,
-            tree_line_start_x: 650,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
-            tree_line_end_y: 150,
-          },
-          {
-            tree_code: 'merge(a, aux, 2, 2, 3)',
-            tree_code_x: 750,
-            tree_code_y: 175,
-            tree_line_start_x: 650,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
-            tree_line_end_y: 175,
-          },
-          // Level 3
-          {
-            tree_code: 'merge(a, aux, 0, 1, 3)',
-            tree_code_x: 500,
-            tree_code_y: 200,
-            tree_line_start_x: 400,
-            tree_line_start_y: 150,
-            tree_line_end_x: 500,
-            tree_line_end_y: 200,
-          },
-
-          // Level 2
-          {
-            tree_code: 'sort(a, aux, 4, 7)',
-            tree_code_x: 250,
-            tree_code_y: 350,
-            tree_line_start_x: 150,
-            tree_line_start_y: 350,
-            tree_line_end_x: 250,
-            tree_line_end_y: 350,
-          },
-          // Level 3
-          {
-            tree_code: 'sort(a, aux, 4, 5)',
-            tree_code_x: 500,
-            tree_code_y: 250,
-            tree_line_start_x: 400,
-            tree_line_start_y: 350,
-            tree_line_end_x: 500,
-            tree_line_end_y: 250,
-          },
-          // Level 4
-          {
-            tree_code: 'sort(a, aux, 4, 4)',
-            tree_code_x: 750,
-            tree_code_y: 225,
-            tree_line_start_x: 650,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 225,
-          },
-          {
-            tree_code: 'sort(a, aux, 5, 5)',
-            tree_code_x: 750,
-            tree_code_y: 250,
-            tree_line_start_x: 650,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 250,
-          },
-          {
-            tree_code: 'merge(a, aux, 4, 4, 5)',
-            tree_code_x: 750,
-            tree_code_y: 275,
-            tree_line_start_x: 650,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 275,
-          },
-          // Level 3
-          {
-            tree_code: 'sort(a, aux, 6, 7)',
-            tree_code_x: 500,
-            tree_code_y: 350,
-            tree_line_start_x: 400,
-            tree_line_start_y: 350,
-            tree_line_end_x: 500,
-            tree_line_end_y: 350,
-          },
-          // Level 4
-          {
-            tree_code: 'sort(a, aux, 6, 6)',
-            tree_code_x: 750,
-            tree_code_y: 325,
-            tree_line_start_x: 650,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 325,
-          },
-          {
-            tree_code: 'sort(a, aux, 7, 7)',
-            tree_code_x: 750,
-            tree_code_y: 350,
-            tree_line_start_x: 650,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 350,
-          },
-          {
-            tree_code: 'merge(a, aux, 6, 6, 7)',
-            tree_code_x: 750,
-            tree_code_y: 375,
-            tree_line_start_x: 650,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 375,
-          },
-          // Level 3
-          {
-            tree_code: 'merge(a, aux, 4, 5, 7)',
-            tree_code_x: 500,
-            tree_code_y: 400,
-            tree_line_start_x: 400,
-            tree_line_start_y: 350,
-            tree_line_end_x: 500,
-            tree_line_end_y: 400,
-          },
-          // Level 2
-          {
-            tree_code: 'merge(a, aux, 0, 3, 7)',
-            tree_code_x: 250,
-            tree_code_y: 425,
-            tree_line_start_x: 150,
-            tree_line_start_y: 350,
-            tree_line_end_x: 250,
-            tree_line_end_y: 425,
           },
         ];
 
         create_code_steps = function() {
-          var steps = ['sort_start'];
-          var recursion = function(lo, hi) {
-            //console.log('lo:' + lo + ' hi:' + hi);
-            steps.push('sort_declaration');
+          var steps = ['solve'];
+          steps.push('move_disc');
+          var recursion = function(n) {
+            steps.push('move_disc_declaration');
             steps.push('base_case');
-            if (hi <= lo) { return; }
-            steps.push('mid_point');
-            var mid = lo + Math.floor((hi - lo) / 2);
-            steps.push('sort_left');
-            recursion(lo, mid);
-            steps.push('return_sort_left');
-            steps.push('sort_right');
-            recursion(mid+1, hi);
-            steps.push('return_sort_right');
-            steps.push('merge');
-            steps.push('return_merge');
-          };
-          recursion(0, 7);
-          steps.push('return_sort_start');
+            if (n === 1) {
+              steps.push('print_line');
+              steps.push('base_case_return');
+              steps.push('base_case_end');
+              return;
+            }
+            steps.push('move_left');
+            recursion(n - 1);
+            steps.push('move_left_return');
+            steps.push('move_base');
+            recursion(1);
+            steps.push('move_base_return');
+            steps.push('move_right');
+            recursion(n - 1);
+            steps.push('move_right_return');
+            steps.push('move_disc_end')
+          }
+          recursion(2);
+          steps.push('move_disc');
+          steps.push('solve_return');
           return steps;
-        };
+        }
 
         get_current_tree_step_stacks = function(step_number) {
 
@@ -589,7 +336,7 @@
           var current_tree_step = -1;
           for (var i = 0; i <= step_number; i++) {
             var code_step = code_steps[i];
-            if (code_step === 'sort_declaration' || code_step === 'merge') {
+            if (code_step === 'move_disc_declaration') {
               // Increase current_tree_step
               current_tree_step++;
               // Add step number to step stack
@@ -597,10 +344,11 @@
               current_red_text_stack.push(current_tree_step);
             }
             if (
-              code_step === 'return_sort_left'
-              || code_step === 'return_sort_right'
-              || code_step === 'return_merge'
-              || code_step === 'return_sort_start'
+              code_step === 'move_left_return'
+              || code_step === 'move_base_return'
+              || code_step === 'move_right_return'
+              || code_step === 'move_disc_return'
+              || code_step === 'solve_return'
             ) {
               current_red_text_stack.pop();
             }
@@ -612,6 +360,17 @@
           };
         };
 
+        get_current_visualization_step = function(step_number) {
+          var current_visualization_step = 0;
+          for (var i = 0; i <= step_number; i++) {
+            var code_step = code_steps[i];
+            if (code_step === 'base_case_return') {
+              current_visualization_step++;
+            }
+          }
+          return current_visualization_step;
+        }
+
         get_call_stack_div = function(call_stack_number, code_line) {
           return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
         };
@@ -619,6 +378,7 @@
         draw = function(step_number) {
           //console.log("Step Number " + step_number)
 
+          // Get Tree Data
           var tree_data = get_current_tree_step_stacks(step_number);
 
           var tree_step_stack = tree_data.tree_step_stack;
@@ -627,22 +387,22 @@
           var tree_step = tree_step_stack[tree_step_stack.length-1];
           var red_text_step = red_text_step_stack[red_text_step_stack.length-1];
 
+          // Highlight line of code
           var code_step = code_steps[step_number];
           //console.log("Step " + code_step);
-
-          code_step = (code_step === 'return_sort_left') ? 'sort_left': code_step;
-          code_step = (code_step === 'return_sort_right') ? 'sort_right': code_step;
-          code_step = (code_step === 'return_merge') ? 'merge': code_step;
-          code_step = (code_step === 'return_sort_start') ? 'sort_start': code_step;
+          code_step = (code_step === 'move_left_return') ? 'move_left': code_step;
+          code_step = (code_step === 'move_base_return') ? 'move_base': code_step;
+          code_step = (code_step === 'move_right_return') ? 'move_right': code_step;
+          code_step = (code_step === 'move_disc_return') ? 'move_disc': code_step;
 
           $('#' + code_step).addClass('highlight');
 
+          // Draw call stack boxes
           var call_stack_number = 10;
           var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
           $('#call_stack_grid_container').append(call_stack_div);
-          call_stack_div = get_call_stack_div(call_stack_number--, 'Sort(a)');
+          call_stack_div = get_call_stack_div(call_stack_number--, 'Solve(2)');
           $('#call_stack_grid_container').append(call_stack_div);
-
           //console.log(red_text_step_stack);
           for (var i = 0; i < red_text_step_stack.length; i++) {
             // Add stack div to call stack grid.
@@ -651,6 +411,7 @@
               $('#call_stack_grid_container').append(call_stack_div);
           }
 
+          // Draw call tree based on above collected tree data.
           for (var i = 0; i <= tree_step; i++) {
             var step = tree_code[i];
             //console.log('Tree Step Index ' + i);
@@ -667,10 +428,6 @@
               && !is_null(step.tree_code_x)
               && !is_null(step.tree_code_y)
             ) {
-              // Show the correct array state steps
-              var selector = '.step_' + i;
-              $(selector).show();
-
               // Show the call tree steps
               tree_ctx.fillStyle = text_color
               tree_ctx.fillText(step.tree_code, step.tree_code_x, step.tree_code_y);
@@ -690,28 +447,73 @@
               tree_ctx.stroke();
             }
           }
+
+          // Draw the current state of the visualization
+          var visualization_step = get_current_visualization_step(step_number);
+          console.log(visualization_step);
+          var disc_step = disc_steps[visualization_step];
+          console.log(disc_step);
+          for (var i = 0; i < disc_code.length; i++) {
+            var disc = disc_code[i];
+            console.log(disc);
+            var x_pos = disc_step['disc_' + i + '_x'];
+            var y_pos = disc_step['disc_' + i + '_y'];
+            visualization_ctx.fillStyle = disc.color;
+            visualization_ctx.beginPath();
+            visualization_ctx.moveTo(x_pos, y_pos);
+            visualization_ctx.fillRect(x_pos, y_pos, disc.width, disc.height);
+            //visualization_ctx.stroke();
+          }
+
+          visualization_ctx.strokeStyle = disc_steps
         };
+
+        draw_pegs = function() {
+          for (var i = 0; i < peg_code.length; i++) {
+            peg_step = peg_code[i];
+            visualization_ctx.strokeStyle = '#000000';
+            // Horizontal line
+            visualization_ctx.beginPath();
+            visualization_ctx.moveTo(peg_step.peg_line_h_start_x, peg_step.peg_line_h_start_y);
+            visualization_ctx.lineTo(peg_step.peg_line_h_end_x, peg_step.peg_line_h_end_y);
+            visualization_ctx.stroke();
+            // Vertical line
+            visualization_ctx.beginPath();
+            visualization_ctx.moveTo(peg_step.peg_line_v_start_x, peg_step.peg_line_v_start_y);
+            visualization_ctx.lineTo(peg_step.peg_line_v_end_x, peg_step.peg_line_v_end_y);
+            visualization_ctx.stroke();
+            // Peg letter
+            visualization_ctx.fillStyle = '#000000';
+            visualization_ctx.fillText(peg_step.peg_letter, peg_step.peg_line_v_end_x - 10, peg_step.peg_line_v_end_y + 30);
+          }
+        }
 
         clear_everything = function() {
           // clear all things on screen
           //console.log('Clear Everything');
 
-          $('#sort_start').removeClass('highlight');
-          $('#sort_declaration').removeClass('highlight');
+          $('#solve').removeClass('highlight');
+          $('#move_disc').removeClass('highlight');
+          $('#move_disc_declaration').removeClass('highlight');
           $('#base_case').removeClass('highlight');
-          $('#mid_point').removeClass('highlight');
-          $('#sort_left').removeClass('highlight');
-          $('#sort_right').removeClass('highlight');
-          $('#merge').removeClass('highlight');
-
-          for (i = 1; i < 22; i++) {
-            var selector = '.step_' + i;
-            $(selector).hide();
-          }
+          $('#print_line').removeClass('highlight');
+          $('#base_case_return').removeClass('highlight');
+          $('#base_case_end').removeClass('highlight');
+          $('#move_left').removeClass('highlight');
+          //$('#move_left_return').removeClass('highlight');
+          $('#move_base').removeClass('highlight');
+          //$('#move_base_return').removeClass('highlight');
+          $('#move_right').removeClass('highlight');
+          //$('#move_right_return').removeClass('highlight');
+          $('#move_disc_end').removeClass('highlight');
+          $('#solve_return').removeClass('highlight');
 
           $('#call_stack_grid_container').html('');
 
+          visualization_ctx.clearRect(0, 0, visualization_canvas.width, visualization_canvas.height);
           tree_ctx.clearRect(0, 0, tree_canvas.width, tree_canvas.height);
+
+          draw_pegs();
         };
 
         $('#play_button').click(function() {
