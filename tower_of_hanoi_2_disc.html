@@ -119,20 +119,20 @@
         <pre style="font-size: 12px;">
           // Main entry point to solve
           <span id="solve">public static void Solve(int numberOfDiscs) {</span>
-              <span id="move_disc">moveDisc(2, 'A', 'B', 'C');</span>
+              <span id="move_disc">MoveDisc(2, 'A', 'B', 'C');</span>
           <span id="solve_return">}</span>
 
           // Recursive move discs from one peg to another.
-          <span id="move_disc_declaration">private static void moveDisc(int n, char src, char temp, char dest) {</span>
+          <span id="move_disc_declaration">private static void MoveDisc(int n, char src, char temp, char dest) {</span>
               <span id="base_case">if (n == 1) {</span>
                   <span id="print_line">Console.WriteLine(
                       "Move {0} -> {1}", src, dest
                   );</span>
                   <span id="base_case_return">return;</span>
               <span id="base_case_end">}</span>
-              <span id="move_left">moveDisc(n - 1, src, dest, temp);</span>
-              <span id="move_base">moveDisc(1, src, temp, dest);</span>
-              <span id="move_right">moveDisc(n - 1, temp, src, dest);</span>
+              <span id="move_left">MoveDisc(n - 1, src, dest, temp);</span>
+              <span id="move_base">MoveDisc(1, src, temp, dest);</span>
+              <span id="move_right">MoveDisc(n - 1, temp, src, dest);</span>
           <span id="move_disc_end">}</span>
 
         </pre>
@@ -268,13 +268,13 @@
 
         tree_code = [
           {
-            tree_code: 'moveDisc(2, A, B, C)',
+            tree_code: 'MoveDisc(2, A, B, C)',
             tree_code_x: 0,
             tree_code_y: 100,
           },
           // Level 2
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'MoveDisc(1, A, C, B)',
             tree_code_x: 250,
             tree_code_y: 75,
             tree_line_start_x: 175,
@@ -284,7 +284,7 @@
           },
           // Level 2
           {
-            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code: 'MoveDisc(1, A, B, C)',
             tree_code_x: 250,
             tree_code_y: 100,
             tree_line_start_x: 175,
@@ -294,7 +294,7 @@
           },
           // Level 2
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'MoveDisc(1, B, A, C)',
             tree_code_x: 250,
             tree_code_y: 125,
             tree_line_start_x: 175,

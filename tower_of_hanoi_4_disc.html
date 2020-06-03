@@ -34,8 +34,7 @@
       }
 
       .highlight {
-        /*background-color: yellow;*/
-        background-color: #ffc107;
+        background-color: yellow;
       }
 
       .call-stack-grid-container {
@@ -120,20 +119,20 @@
         <pre style="font-size: 12px;">
           // Main entry point to solve
           <span id="solve">public static void Solve(int numberOfDiscs) {</span>
-              <span id="move_disc">moveDisc(2, 'A', 'B', 'C');</span>
+              <span id="move_disc">MoveDisc(2, 'A', 'B', 'C');</span>
           <span id="solve_return">}</span>
 
           // Recursive move discs from one peg to another.
-          <span id="move_disc_declaration">private static void moveDisc(int n, char src, char temp, char dest) {</span>
+          <span id="move_disc_declaration">private static void MoveDisc(int n, char src, char temp, char dest) {</span>
               <span id="base_case">if (n == 1) {</span>
                   <span id="print_line">Console.WriteLine(
                       "Move {0} -> {1}", src, dest
                   );</span>
                   <span id="base_case_return">return;</span>
               <span id="base_case_end">}</span>
-              <span id="move_left">moveDisc(n - 1, src, dest, temp);</span>
-              <span id="move_base">moveDisc(1, src, temp, dest);</span>
-              <span id="move_right">moveDisc(n - 1, temp, src, dest);</span>
+              <span id="move_left">MoveDisc(n - 1, src, dest, temp);</span>
+              <span id="move_base">MoveDisc(1, src, temp, dest);</span>
+              <span id="move_right">MoveDisc(n - 1, temp, src, dest);</span>
           <span id="move_disc_end">}</span>
 
         </pre>
@@ -449,14 +448,14 @@
 
         tree_code = [
           {
-            tree_code: 'moveDisc(4, A, B, C)',
+            tree_code: 'MoveDisc(4, A, B, C)',
             tree_code_x: 0,
             tree_code_y: 200,
           },
 
           // Level 2
           {
-            tree_code: 'moveDisc(3, A, C, B)',
+            tree_code: 'MoveDisc(3, A, C, B)',
             tree_code_x: 250,
             tree_code_y: 100,
             tree_line_start_x: 175,
@@ -467,7 +466,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(2, A, B, C)',
+            tree_code: 'MoveDisc(2, A, B, C)',
             tree_code_x: 500,
             tree_code_y: 50,
             tree_line_start_x: 425,
@@ -477,7 +476,7 @@
           },
           // Level 4
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'MoveDisc(1, A, C, B)',
             tree_code_x: 750,
             tree_code_y: 25,
             tree_line_start_x: 675,
@@ -486,7 +485,7 @@
             tree_line_end_y: 25,
           },
           {
-            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code: 'MoveDisc(1, A, B, C)',
             tree_code_x: 750,
             tree_code_y: 50,
             tree_line_start_x: 675,
@@ -495,7 +494,7 @@
             tree_line_end_y: 50,
           },
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'MoveDisc(1, B, A, C)',
             tree_code_x: 750,
             tree_code_y: 75,
             tree_line_start_x: 675,
@@ -506,7 +505,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'MoveDisc(1, A, C, B)',
             tree_code_x: 500,
             tree_code_y: 100,
             tree_line_start_x: 425,
@@ -517,7 +516,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(2, C, A, B)',
+            tree_code: 'MoveDisc(2, C, A, B)',
             tree_code_x: 500,
             tree_code_y: 150,
             tree_line_start_x: 425,
@@ -527,7 +526,7 @@
           },
           // Level 4
           {
-            tree_code: 'moveDisc(1, C, B, A)',
+            tree_code: 'MoveDisc(1, C, B, A)',
             tree_code_x: 750,
             tree_code_y: 125,
             tree_line_start_x: 675,
@@ -536,7 +535,7 @@
             tree_line_end_y: 125,
           },
           {
-            tree_code: 'moveDisc(1, C, A, B)',
+            tree_code: 'MoveDisc(1, C, A, B)',
             tree_code_x: 750,
             tree_code_y: 150,
             tree_line_start_x: 675,
@@ -545,7 +544,7 @@
             tree_line_end_y: 150,
           },
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'MoveDisc(1, A, C, B)',
             tree_code_x: 750,
             tree_code_y: 175,
             tree_line_start_x: 675,
@@ -556,7 +555,7 @@
 
           // Level 2
           {
-            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code: 'MoveDisc(1, A, B, C)',
             tree_code_x: 250,
             tree_code_y: 200,
             tree_line_start_x: 175,
@@ -566,7 +565,7 @@
           },
           // Level 2
           {
-            tree_code: 'moveDisc(3, B, A, C)',
+            tree_code: 'MoveDisc(3, B, A, C)',
             tree_code_x: 250,
             tree_code_y: 300,
             tree_line_start_x: 175,
@@ -577,7 +576,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(2, B, C, A)',
+            tree_code: 'MoveDisc(2, B, C, A)',
             tree_code_x: 500,
             tree_code_y: 250,
             tree_line_start_x: 425,
@@ -587,7 +586,7 @@
           },
           // Level 4
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'MoveDisc(1, B, A, C)',
             tree_code_x: 750,
             tree_code_y: 225,
             tree_line_start_x: 675,
@@ -596,7 +595,7 @@
             tree_line_end_y: 225,
           },
           {
-            tree_code: 'moveDisc(1, B, C, A)',
+            tree_code: 'MoveDisc(1, B, C, A)',
             tree_code_x: 750,
             tree_code_y: 250,
             tree_line_start_x: 675,
@@ -605,7 +604,7 @@
             tree_line_end_y: 250,
           },
           {
-            tree_code: 'moveDisc(1, C, B, A)',
+            tree_code: 'MoveDisc(1, C, B, A)',
             tree_code_x: 750,
             tree_code_y: 275,
             tree_line_start_x: 675,
@@ -616,7 +615,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'MoveDisc(1, B, A, C)',
             tree_code_x: 500,
             tree_code_y: 300,
             tree_line_start_x: 425,
@@ -627,7 +626,7 @@
 
           // Level 3
           {
-            tree_code: 'moveDisc(2, A, B, C)',
+            tree_code: 'MoveDisc(2, A, B, C)',
             tree_code_x: 500,
             tree_code_y: 350,
             tree_line_start_x: 425,
@@ -637,7 +636,7 @@
           },
           // Level 4
           {
-            tree_code: 'moveDisc(1, A, C, B)',
+            tree_code: 'MoveDisc(1, A, C, B)',
             tree_code_x: 750,
             tree_code_y: 325,
             tree_line_start_x: 675,
@@ -646,7 +645,7 @@
             tree_line_end_y: 325,
           },
           {
-            tree_code: 'moveDisc(1, A, B, C)',
+            tree_code: 'MoveDisc(1, A, B, C)',
             tree_code_x: 750,
             tree_code_y: 350,
             tree_line_start_x: 675,
@@ -655,7 +654,7 @@
             tree_line_end_y: 350,
           },
           {
-            tree_code: 'moveDisc(1, B, A, C)',
+            tree_code: 'MoveDisc(1, B, A, C)',
             tree_code_x: 750,
             tree_code_y: 375,
             tree_line_start_x: 675,
@@ -766,7 +765,7 @@
           var call_stack_number = 10;
           var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
           $('#call_stack_grid_container').append(call_stack_div);
-          call_stack_div = get_call_stack_div(call_stack_number--, 'Solve(2)');
+          call_stack_div = get_call_stack_div(call_stack_number--, 'Solve(4)');
           $('#call_stack_grid_container').append(call_stack_div);
           //console.log(red_text_step_stack);
           for (var i = 0; i < red_text_step_stack.length; i++) {
