@@ -116,6 +116,11 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
+          // Main entry for program
+          <span id="main">public static void Main(string[] args) {</span>
+              <span id="solve_init">Solve(5);</span>
+          <span id="main_return">}</span>
+
           // Main entry point to solve
           <span id="solve">public static void Solve(int number) {</span>
               <span id="base_case_if">if (number == 1) {</span>
@@ -126,6 +131,10 @@
         </pre>
       </div>
       <div class="visualization-div">
+        <h2>Return Code</h2>
+        <div>
+          <h1 id="factorial_return">&nbsp;</h1>
+        </div>
         <h2>Value</h2>
         <div>
           <h1 id="factorial_value"></h1>
@@ -168,6 +177,15 @@
           '24',
           '120',
         ];
+
+        return_values = [
+          '&nbsp;',
+          'return 1;',
+          'return 2 * 1;',
+          'return 3 * 2;',
+          'return 4 * 6;',
+          'return 5 * 24;',
+        ]
 
         tree_code = [
           // Level 1
@@ -220,12 +238,15 @@
 
         create_code_steps = function() {
           var steps = [];
+          steps.push('main');
+          steps.push('solve_init');
           var recursion = function(n) {
             steps.push('solve');
             steps.push('base_case_if');
             if (n === 1) {
               steps.push('base_case_return');
-              steps.push('base_case_endif');
+              //steps.push('base_case_endif');
+              steps.push('solve_return');
               return n;
             }
             steps.push('recursive');
@@ -235,6 +256,8 @@
             return return_val;
           }
           recursion(5);
+          steps.push('solve_init_return');
+          steps.push('main_return');
           return steps;
         }
 
@@ -253,8 +276,8 @@
               current_red_text_stack.push(current_tree_step);
             }
             if (
-              code_step === 'base_case_endif'
-              || code_step === 'solve_return'
+              code_step === 'recursive_return'
+              || code_step === 'solve_init_return'
             ) {
               current_red_text_stack.pop();
             }
@@ -271,13 +294,27 @@
           for (var i = 0; i <= step_number; i++) {
             var code_step = code_steps[i];
             if (
-              code_step === 'base_case_endif'
-              || code_step === 'solve_return'
+              code_step === 'recursive_return'
+              || code_step === 'solve_init_return'
             ) {
               current_value_step++;
             }
           }
           return current_value_step;
+        }
+
+        get_current_return_step = function(step_number) {
+          var current_return_step = 0;
+          for (var i = 0; i <= step_number; i++) {
+            var code_step = code_steps[i];
+            if (
+              code_step === 'base_case_return'
+              || code_step === 'recursive_return'
+            ) {
+              current_return_step++;
+            }
+          }
+          return current_return_step;
         }
 
         get_call_stack_div = function(call_stack_number, code_line) {
@@ -300,6 +337,7 @@
           var code_step = code_steps[step_number];
           //console.log("Step " + code_step);
           code_step = (code_step === 'recursive_return') ? 'recursive': code_step;
+          code_step = (code_step === 'solve_init_return') ? 'solve_init': code_step;
 
           $('#' + code_step).addClass('highlight');
 
@@ -352,6 +390,9 @@
             }
           }
 
+          var return_step = get_current_return_step(step_number);
+          $('#factorial_return').html(return_values[return_step]);
+
           // Show the current value
           var value_step = get_current_value_step(step_number);
           $('#factorial_value').html(output_values[value_step]);
@@ -361,12 +402,15 @@
           // clear all things on screen
           //console.log('Clear Everything');
 
+          $('#main').removeClass('highlight');
+          $('#solve_init').removeClass('highlight');
           $('#solve').removeClass('highlight');
           $('#base_case_if').removeClass('highlight');
           $('#base_case_return').removeClass('highlight');
           $('#base_case_endif').removeClass('highlight');
           $('#recursive').removeClass('highlight');
           $('#solve_return').removeClass('highlight');
+          $('#main_end').removeClass('highlight');
 
           $('#call_stack_grid_container').html('');
 
