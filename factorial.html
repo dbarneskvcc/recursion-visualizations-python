@@ -116,18 +116,20 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
-          // Main entry for program
-          <span id="main">public static void Main(string[] args) {</span>
-              <span id="solve_init">Solve(5);</span>
-          <span id="main_return">}</span>
+          # Main entry for program
+          <span id="main">def main(*args):</span>
+              <span id="solve_init">solve(5)</span>
+          <!-- <span id="main_return">}</span> -->
 
-          // Main entry point to solve
-          <span id="solve">public static void Solve(int number) {</span>
-              <span id="base_case_if">if (number == 1) {</span>
-                  <span id="base_case_return">return number;</span>
-              <span id="base_case_endif">}</span>
-              <span id="recursive">return number * Solve(number - 1);</span>
-          <span id="solve_return">}</span>
+          # Main entry point to solve
+          <span id="solve">def solve(number):</span>
+              <span id="base_case_if">if number == 1:</span>
+                  <span id="base_case_return">return number</span>
+              <span id="recursive">return number * solve(number - 1)</span>
+
+          # Prevent running on import.
+          if __name__ == "__main__":
+              main(*sys.argv[1:])
         </pre>
       </div>
       <div class="visualization-div">
@@ -143,8 +145,8 @@
       <div class="stack-div">
         <h2>Call Stack</h2>
         <div id="call_stack_grid_container" class="call-stack-grid-container">
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Solve</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">main</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">solve</div>
         </div>
       </div>
       <div class="tree-div">
@@ -190,13 +192,13 @@
         tree_code = [
           // Level 1
           {
-            tree_code: 'Solve(5)',
+            tree_code: 'solve(5)',
             tree_code_x: 0,
             tree_code_y: 100,
           },
           // Level 2
           {
-            tree_code: 'Solve(4)',
+            tree_code: 'solve(4)',
             tree_code_x: 200,
             tree_code_y: 100,
             tree_line_start_x: 75,
@@ -206,7 +208,7 @@
           },
           // Level 3
           {
-            tree_code: 'Solve(3)',
+            tree_code: 'solve(3)',
             tree_code_x: 400,
             tree_code_y: 100,
             tree_line_start_x: 275,
@@ -216,7 +218,7 @@
           },
           // Level 4
           {
-            tree_code: 'Solve(2)',
+            tree_code: 'solve(2)',
             tree_code_x: 600,
             tree_code_y: 100,
             tree_line_start_x: 475,
@@ -226,7 +228,7 @@
           },
           // Level 5
           {
-            tree_code: 'Solve(1)',
+            tree_code: 'solve(1)',
             tree_code_x: 800,
             tree_code_y: 100,
             tree_line_start_x: 675,
@@ -245,19 +247,15 @@
             steps.push('base_case_if');
             if (n === 1) {
               steps.push('base_case_return');
-              //steps.push('base_case_endif');
-              steps.push('solve_return');
               return n;
             }
             steps.push('recursive');
             var return_val = n * recursion(n - 1);
             steps.push('recursive_return');
-            steps.push('solve_return');
             return return_val;
           }
           recursion(5);
           steps.push('solve_init_return');
-          steps.push('main_return');
           return steps;
         }
 
@@ -343,7 +341,7 @@
 
           // Draw call stack boxes
           var call_stack_number = 10;
-          var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
+          var call_stack_div = get_call_stack_div(call_stack_number--, 'main');
           $('#call_stack_grid_container').append(call_stack_div);
           //console.log(red_text_step_stack);
           for (var i = 0; i < red_text_step_stack.length; i++) {
@@ -407,10 +405,7 @@
           $('#solve').removeClass('highlight');
           $('#base_case_if').removeClass('highlight');
           $('#base_case_return').removeClass('highlight');
-          $('#base_case_endif').removeClass('highlight');
           $('#recursive').removeClass('highlight');
-          $('#solve_return').removeClass('highlight');
-          $('#main_return').removeClass('highlight');
 
           $('#call_stack_grid_container').html('');
 
