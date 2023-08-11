@@ -116,24 +116,20 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
-          // Main entry point to solve
-          <span id="solve">public static void Solve(int numberOfDiscs) {</span>
-              <span id="move_disc">MoveDisc(numberOfDiscs, 'A', 'B', 'C');</span>
-          <span id="solve_return">}</span>
+          # Main entry point to solve
+          <span id="solve">def solve(number_of_discs):</span>
+              <span id="move_disc">move_disc(number_of_discs, 'A', 'B', 'C');</span>
 
-          // Recursive move discs from one peg to another.
-          <span id="move_disc_declaration">private static void MoveDisc(int n, char src, char temp, char dest) {</span>
-              <span id="base_case">if (n == 1) {</span>
-                  <span id="print_line">Console.WriteLine(
-                      "Move {0} -> {1}", src, dest
-                  );</span>
-                  <span id="base_case_return">return;</span>
-              <span id="base_case_end">}</span>
-              <span id="move_left">MoveDisc(n - 1, src, dest, temp);</span>
-              <span id="move_base">MoveDisc(1, src, temp, dest);</span>
-              <span id="move_right">MoveDisc(n - 1, temp, src, dest);</span>
-          <span id="move_disc_end">}</span>
-
+          # Recursive move discs from one peg to another.
+          <span id="move_disc_declaration">def move_disc(n, src, temp, dest):</span>
+              <span id="base_case">if n == 1:</span>
+                  <span id="print_line">print(
+                      f"Move {src} -> {dest}"
+                  )</span>
+                  <span id="base_case_return">return</span>
+              <span id="move_left">move_disc(n - 1, src, dest, temp)</span>
+              <span id="move_base">move_disc(1, src, temp, dest)</span>
+              <span id="move_right">move_disc(n - 1, temp, src, dest)</span>
         </pre>
       </div>
       <div class="visualization-div">
@@ -427,7 +423,6 @@
             if (n === 1) {
               steps.push('print_line');
               steps.push('base_case_return');
-              steps.push('base_case_end');
               return;
             }
             steps.push('move_left');
@@ -439,11 +434,9 @@
             steps.push('move_right');
             recursion(n - 1);
             steps.push('move_right_return');
-            steps.push('move_disc_end')
           }
           recursion(3);
           steps.push('move_disc');
-          steps.push('solve_return');
           return steps;
         }
 
@@ -466,7 +459,6 @@
               || code_step === 'move_base_return'
               || code_step === 'move_right_return'
               || code_step === 'move_disc_return'
-              || code_step === 'solve_return'
             ) {
               current_red_text_stack.pop();
             }
@@ -627,15 +619,12 @@
           $('#base_case').removeClass('highlight');
           $('#print_line').removeClass('highlight');
           $('#base_case_return').removeClass('highlight');
-          $('#base_case_end').removeClass('highlight');
           $('#move_left').removeClass('highlight');
           //$('#move_left_return').removeClass('highlight');
           $('#move_base').removeClass('highlight');
           //$('#move_base_return').removeClass('highlight');
           $('#move_right').removeClass('highlight');
           //$('#move_right_return').removeClass('highlight');
-          $('#move_disc_end').removeClass('highlight');
-          $('#solve_return').removeClass('highlight');
 
           $('#call_stack_grid_container').html('');
 
