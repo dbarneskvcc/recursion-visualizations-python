@@ -117,62 +117,59 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
-          public class Program
-          {
-            public static void Main(string[] args)
-            {
-              int number = 12;
-              Employee myEmp = new Employee();
-              myEmp.Name = "Ben";
-              <span id="print_1">Print("Main", number, myEmp);</span>
-              <span id="do_stuff_call">DoStuff(number, myEmp);</span>
-              <span id="print_2">Print("Main", number, myEmp);</span>
-              <span id="new_emp">myEmp = new Employee();</span>
-              <span id="new_emp_name">myEmp.Name = "Fred";</span>
-              <span id="print_3">Print("Main", number, myEmp);</span>
-            }
-            private static void DoStuff(int num, Employee emp)
-            {
-              <span id="do_stuff_print_1">Print("DoStuff", num, emp);</span>
+          def main(*args):
+              number = 12;
+              my_emp = new Employee();
+              my_emp.name = "Ben";
+              <span id="print_1">show("main", number, my_emp)</span>
+              <span id="do_stuff_call">do_stuff(number, my_emp)</span>
+              <span id="print_2">show("main", number, my_emp)</span>
+              <span id="new_emp">my_emp = Employee()</span>
+              <span id="new_emp_name">my_emp.name = "Fred"</span>
+              <span id="print_3">show("main", number, my_emp)</span>
+
+          def do_stuff(num, emp):
+              <span id="do_stuff_print_1">show("do_stuff", num, emp);</span>
               <span id="new_num">num = 24;</span>
-              <span id="new_name">emp.Name = "Joe";</span>
-              <span id="do_stuff_print_2">Print("DoStuff", num, emp);</span>
-            }
-            private static void Print(string method, int num, Employee emp)
-            {
-              <span id="cw_1">Console.WriteLine(method);</span>
-              <span id="cw_2">Console.WriteLine(num);</span>
-              <span id="cw_3">Console.WriteLine(emp.GetHashCode());</span>
-              <span id="cw_4">Console.WriteLine(emp.Name);</span>
-              <span id="cw_5">Console.WriteLine();</span>
-            }
-          }
+              <span id="new_name">emp.name = "Joe";</span>
+              <span id="do_stuff_print_2">show("do_stuff", num, emp);</span>
+
+          def show(method, num, emp):
+              <span id="cw_1">print(method)</span>
+              <span id="cw_2">print(num)</span>
+              <span id="cw_3">print(hash(emp))</span>
+              <span id="cw_4">print(emp.name)</span>
+              <span id="cw_5">print()</span>
+
+          # Prevent running on import.
+          if __name__ == "__main__":
+              run(*sys.argv[1:])
         </pre>
       </div>
       <div class="output-div">
         <h2>Output</h2>
         <pre>
-          <span id="out_1">Main</span>
+          <span id="out_1">main</span>
           <span id="out_2">12</span>
           <span id="out_3">37489757</span>
           <span id="out_4">Ben</span>
           <span id="out_5"></span>
-          <span id="out_6">DoStuff</span>
+          <span id="out_6">do_stuff</span>
           <span id="out_7">12</span>
           <span id="out_8">37489757</span>
           <span id="out_9">Ben</span>
           <span id="out_10"></span>
-          <span id="out_11">DoStuff</span>
+          <span id="out_11">do_stuff</span>
           <span id="out_12">24</span>
           <span id="out_13">37489757</span>
           <span id="out_14">Joe</span>
           <span id="out_15"></span>
-          <span id="out_16">Main</span>
+          <span id="out_16">main</span>
           <span id="out_17">12</span>
           <span id="out_18">37489757</span>
           <span id="out_19">Joe</span>
           <span id="out_20"></span>
-          <span id="out_21">Main</span>
+          <span id="out_21">main</span>
           <span id="out_22">12</span>
           <span id="out_23">64828693</span>
           <span id="out_24">Fred</span>
@@ -184,64 +181,61 @@
         <div id="memory_grid_container" class="memory-grid-container">
           <div class="memory-item section-item" style="grid-row: 1; grid-column: 1;">Stack</div>
           <div class="memory-item stack-item" style="grid-row: 2; grid-column: 1;">
-            <span id="method_1_name" class="method-name">Main</span><br>
+            <span id="method_1_name" class="method-name">main</span><br>
             <span id="num_1">number = 12;</span><br>
-            <span id="emp_1">myEmp = 0x5b42314e</span><br>
+            <span id="emp_1">my_emp = 0x5b42314e</span><br>
           </div>
           <div id="stack_2" class="memory-item stack-item" style="grid-row: 3; grid-column: 1; display: none;">
-            <span id="method_2_name" class="method-name">Print</span><br>
+            <span id="method_2_name" class="method-name">show</span><br>
             <span id="num_2">num = 12;</span><br>
             <span id="emp_2">emp = 0x5b42314e</span><br>
           </div>
           <div id="stack_3" class="memory-item stack-item" style="grid-row: 4; grid-column: 1; display: none;">
-            <span id="method_3_name" class="method-name">Print</span><br>
+            <span id="method_3_name" class="method-name">show</span><br>
             <span id="num_3">num = 12;</span><br>
             <span id="emp_3">emp = 0x5b42314e</span><br>
           </div>
           <div class="memory-item section-item" style="grid-row: 5; grid-column: 1;">Heap</div>
           <div id="heap_2" class="memory-item heap-item" style="grid-row: 7; grid-column: 1; display: none;">
             Employee Instance @ 0x8a429df<br>
-            <span id="emp_2_name">instance.Name = "Fred"</span>
+            <span id="emp_2_name">instance.name = "Fred"</span>
           </div>
           <div class="memory-item heap-item" style="grid-row: 8; grid-column: 1;">
             Employee Instance @ 0x5b42314e<br>
-            <span id="emp_1_name">instance.Name = "Ben"</span>
+            <span id="emp_1_name">instance.name = "Ben"</span>
           </div>
           <div class="memory-item section-item" style="grid-row: 9; grid-column: 1;">BSS</div>
           <div class="memory-item section-item" style="grid-row: 10; grid-column: 1;">Data</div>
           <div class="memory-item section-item" style="grid-row: 11; grid-column: 1;">Text</div>
           <div class="memory-item text-item" style="grid-row: 12; grid-column: 1;">
             <pre style="font-size: 8pt; text-align: left;">
-              public class Program
-              {
-                public static void Main(string[] args)
-                {
-                  int number = 12;
-                  Employee myEmp = new Employee();
-                  myEmp.Name = "Ben";
-                  Print("Main", number, myEmp);
-                  DoStuff(number, myEmp);
-                  Print("Main", number, myEmp);
-                  myEmp = new Employee();
-                  myEmp.Name = "Fred";
-                  Print("Main", number, myEmp);
-                }
-                private static void DoStuff(int num, Employee emp)
-                {
-                  Print("DoStuff", num, emp);
-                  num = 24;
-                  emp.Name = "Joe";
-                  Print("DoStuff", num, emp);
-                }
-                private static void Print(string method, int num, Employee emp)
-                {
-                  Console.WriteLine(method);
-                  Console.WriteLine(num);
-                  Console.WriteLine(emp.GetHashCode());
-                  Console.WriteLine(emp.Name);
-                  Console.WriteLine();
-                }
-              }
+              def main(*args):
+                  number = 12;
+                  my_emp = new Employee();
+                  my_emp.name = "Ben";
+                  show("main", number, my_emp)
+                  do_stuff(number, my_emp)
+                  show("main", number, my_emp)
+                  my_emp = Employee()
+                  my_emp.name = "Fred"
+                  show("main", number, my_emp)
+
+              def do_stuff(num, emp):
+                  show("do_stuff", num, emp)
+                  num = 24
+                  emp.name = "Joe"
+                  show("do_stuff", num, emp)
+
+              def show(method, num, emp):
+                  print(method)
+                  print(num)
+                  print(hash(emp))
+                  print(emp.name)
+                  print()
+
+              # Prevent running on import.
+              if __name__ == "__main__":
+                  run(*sys.argv[1:])
             </pre>
           </div>
         </div>
@@ -422,68 +416,69 @@
             stack_step === 'return_print_2'
           ) {
             clear_stack_entries();
+            $('#emp_1').html('my_emp = 0x5b42314e');
           }
           if (stack_step === 'print_1') {
             clear_stack_entries();
-            update_stack_entry('2', 'Print', 'num = 12;', 'emp = 0x5b42314e');
+            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
           }
           if (
             stack_step === 'do_stuff_call' ||
             stack_step === 'return_do_stuff_print_1'
           ) {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 12;', 'emp = 0x5b42314e');
+            update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
           }
           if (stack_step === 'do_stuff_print_1') {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 12;', 'emp = 0x5b42314e');
-            update_stack_entry('3', 'Print', 'num = 12;', 'emp = 0x5b42314e');
+            update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
+            update_stack_entry('3', 'show', 'num = 12;', 'emp = 0x5b42314e');
           }
           if (stack_step === 'new_num') {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 24;', 'emp = 0x5b42314e');
+            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
           }
           if (stack_step === 'new_name') {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 24;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
           if (stack_step === 'do_stuff_print_2') {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 24;', 'emp = 0x5b42314e');
-            update_stack_entry('3', 'Print', 'num = 24;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+            update_stack_entry('3', 'show', 'num = 24;', 'emp = 0x5b42314e');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
           if (stack_step === 'return_do_stuff_print_2') {
             clear_stack_entries();
-            update_stack_entry('2', 'DoStuff', 'num = 24', 'emp = 0x5b42314e')
+            update_stack_entry('2', 'do_stuff', 'num = 24', 'emp = 0x5b42314e')
           }
           if (stack_step === 'print_2') {
             clear_stack_entries();
-            update_stack_entry('2', 'Print', 'num = 12;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
           if (stack_step === 'new_emp') {
             clear_stack_entries();
-            $('#emp_1').html('myEmp = 0x8a429df');
+            $('#emp_1').html('my_emp = 0x8a429df');
             $('#heap_2').show();
             $('#emp_2_name').html('');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
           if (stack_step === 'new_emp_name') {
             clear_stack_entries();
-            $('#emp_1').html('myEmp = 0x8a429df');
+            $('#emp_1').html('my_emp = 0x8a429df');
             $('#heap_2').show();
-            $('#emp_2_name').html('instance.Name = "Fred"');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            $('#emp_2_name').html('instance.name = "Fred"');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
           if (stack_step === 'print_3') {
             clear_stack_entries();
-            $('#emp_1').html('myEmp = 0x8a429df');
-            update_stack_entry('2', 'Print', 'num = 12;', 'emp = 0x8a429df');
+            $('#emp_1').html('my_emp = 0x8a429df');
+            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x8a429df');
             $('#heap_2').show();
-            $('#emp_2_name').html('instance.Name = "Fred"');
-            $('#emp_1_name').html('instance.Name = "Joe"');
+            $('#emp_2_name').html('instance.name = "Fred"');
+            $('#emp_1_name').html('instance.name = "Joe"');
           }
 
           code_step = (code_step === 'return_print_1') ? 'print_1': code_step;
