@@ -146,50 +146,47 @@
       <div class="code-div">
         <h2>Code</h2>
         <pre style="font-size: 12px;">
-          // Main entry point to sort
-          public static void Sort(IComparable[] a) {
-              IComparable[] aux = new IComparable[a.length];
-              <span id="sort_start">sort(a, aux, 0, a.length-1);</span>
+          # Constructor
+          def __init__(self):
+              self._aux = []
+
+          # Main entry point to sort
+          def sort(self, iter):
+              self._aux = [None for i in range(len(iter))]
+              <span id="sort_start">self._sort(iter, 0, len(iter) - 1)</span>
           }
 
-          // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-          <span id="sort_declaration">private static void sort(
-              IComparable[] a,
-              IComparable[] aux,
-              int lo,
-              int hi
-            ) {</span>
-              <span id="base_case">if (hi <= lo) return</span>;
-              <span id="mid_point">int mid = lo + (hi - lo) / 2;</span>
-              <span id="sort_left">sort(a, aux, lo, mid);</span>
-              <span id="sort_right">sort(a, aux, mid + 1, hi);</span>
-              <span id="merge">merge(a, aux, lo, mid, hi);</span>
+          # mergesort a[lo..hi] using auxiliary array aux[lo..hi]
+          <span id="sort_declaration">def _sort(self, iter, lo, hi):</span>
+              <span id="base_case">if hi <= lo:
+                  return</span>
+              <span id="mid_point">mid = lo + int((hi - lo) / 2)</span>
+              <span id="sort_left">self._sort(iter, lo, mid)</span>
+              <span id="sort_right">self._sort(iter, mid + 1, hi)</span>
+              <span id="merge">self._merge(iter, lo, mid, hi)</span>
           }
 
           <!--
-          // stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
-          private static void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi) {
+          # Stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
+          def _merge(self, iter, lo, mid, hi):
 
-              // copy to aux[]
-              for (int k = lo; k <= hi; k++) {
-                  aux[k] = a[k];
-              }
+              # Copy to aux[]
+              for k in range(lo, hi + 1):
+                  self._aux[k] = iter[k]
 
-              // merge back to a[]
-              int i = lo;
-              int j = mid+1;
-              for (int k = lo; k <= hi; k++) {
-                  if (i > mid) { // Index past left subarray max index
-                    index[k] = aux[j++];
-                  } else if (j > hi) { // index past right subarray max index
-                    index[k] = aux[i++];
-                  } else if (aux[j].compareTo(aux[i]) < 0) {  // compare
-                    index[k] = aux[j++];
-                  } else {
-                    index[k] = aux[i++];
-                  }
-              }
-          }
+              # Merge back to a[]
+              i = lo
+              j = mid+1
+              for k in range(lo, hi + 1):
+                  if i > mid: # Index past left subarray max index
+                      iter[k] = self._aux[j++]
+                  if j > hi: # index past right subarray max index
+                      iter[k] = self._aux[i++]
+                  elif self._aux[j] < self._aux[i]:  # compare
+                      iter[k] = self._aux[j++]
+                  else:
+                      iter[k] = self._aux[i++]
+              return
           -->
 
         </pre>
@@ -322,8 +319,8 @@
       <div class="stack-div">
         <h2>Call Stack</h2>
         <div id="call_stack_grid_container" class="call-stack-grid-container">
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Sort</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">main</div>
+          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">sort</div>
         </div>
       </div>
       <div class="tree-div">
@@ -350,13 +347,13 @@
 
         tree_code = [
           {
-            tree_code: 'sort(a, aux, 0, 7)',
+            tree_code: '_sort(iter, 0, 7)',
             tree_code_x: 0,
             tree_code_y: 350,
           },
           // Level 2
           {
-            tree_code: 'sort(a, aux, 0, 3)',
+            tree_code: '_sort(iter, 0, 3)',
             tree_code_x: 250,
             tree_code_y: 150,
             tree_line_start_x: 150,
@@ -366,7 +363,7 @@
           },
           // Level 3
           {
-            tree_code: 'sort(a, aux, 0, 1)',
+            tree_code: '_sort(iter, 0, 1)',
             tree_code_x: 500,
             tree_code_y: 50,
             tree_line_start_x: 400,
@@ -376,7 +373,7 @@
           },
           // Level 4
           {
-            tree_code: 'sort(a, aux, 0, 0)',
+            tree_code: '_sort(iter, 0, 0)',
             tree_code_x: 750,
             tree_code_y: 25,
             tree_line_start_x: 650,
@@ -385,7 +382,7 @@
             tree_line_end_y: 25,
           },
           {
-            tree_code: 'sort(a, aux, 1, 1)',
+            tree_code: '_sort(iter, 1, 1)',
             tree_code_x: 750,
             tree_code_y: 50,
             tree_line_start_x: 650,
@@ -394,7 +391,7 @@
             tree_line_end_y: 50,
           },
           {
-            tree_code: 'merge(a, aux, 0, 0, 1)',
+            tree_code: 'merge(iter, 0, 0, 1)',
             tree_code_x: 750,
             tree_code_y: 75,
             tree_line_start_x: 650,
@@ -404,7 +401,7 @@
           },
           // Level 3
           {
-            tree_code: 'sort(a, aux, 2, 3)',
+            tree_code: '_sort(iter, 2, 3)',
             tree_code_x: 500,
             tree_code_y: 150,
             tree_line_start_x: 400,
@@ -414,7 +411,7 @@
           },
           // Level 4
           {
-            tree_code: 'sort(a, aux, 2, 2)',
+            tree_code: '_sort(iter, 2, 2)',
             tree_code_x: 750,
             tree_code_y: 125,
             tree_line_start_x: 650,
@@ -423,7 +420,7 @@
             tree_line_end_y: 125,
           },
           {
-            tree_code: 'sort(a, aux, 3, 3)',
+            tree_code: '_sort(iter, 3, 3)',
             tree_code_x: 750,
             tree_code_y: 150,
             tree_line_start_x: 650,
@@ -432,7 +429,7 @@
             tree_line_end_y: 150,
           },
           {
-            tree_code: 'merge(a, aux, 2, 2, 3)',
+            tree_code: 'merge(iter, 2, 2, 3)',
             tree_code_x: 750,
             tree_code_y: 175,
             tree_line_start_x: 650,
@@ -442,7 +439,7 @@
           },
           // Level 3
           {
-            tree_code: 'merge(a, aux, 0, 1, 3)',
+            tree_code: 'merge(iter, 0, 1, 3)',
             tree_code_x: 500,
             tree_code_y: 200,
             tree_line_start_x: 400,
@@ -453,7 +450,7 @@
 
           // Level 2
           {
-            tree_code: 'sort(a, aux, 4, 7)',
+            tree_code: '_sort(iter, 4, 7)',
             tree_code_x: 250,
             tree_code_y: 350,
             tree_line_start_x: 150,
@@ -463,7 +460,7 @@
           },
           // Level 3
           {
-            tree_code: 'sort(a, aux, 4, 5)',
+            tree_code: '_sort(iter, 4, 5)',
             tree_code_x: 500,
             tree_code_y: 250,
             tree_line_start_x: 400,
@@ -473,7 +470,7 @@
           },
           // Level 4
           {
-            tree_code: 'sort(a, aux, 4, 4)',
+            tree_code: '_sort(iter, 4, 4)',
             tree_code_x: 750,
             tree_code_y: 225,
             tree_line_start_x: 650,
@@ -482,7 +479,7 @@
             tree_line_end_y: 225,
           },
           {
-            tree_code: 'sort(a, aux, 5, 5)',
+            tree_code: '_sort(iter, 5, 5)',
             tree_code_x: 750,
             tree_code_y: 250,
             tree_line_start_x: 650,
@@ -491,7 +488,7 @@
             tree_line_end_y: 250,
           },
           {
-            tree_code: 'merge(a, aux, 4, 4, 5)',
+            tree_code: 'merge(iter, 4, 4, 5)',
             tree_code_x: 750,
             tree_code_y: 275,
             tree_line_start_x: 650,
@@ -501,7 +498,7 @@
           },
           // Level 3
           {
-            tree_code: 'sort(a, aux, 6, 7)',
+            tree_code: '_sort(iter, 6, 7)',
             tree_code_x: 500,
             tree_code_y: 350,
             tree_line_start_x: 400,
@@ -511,7 +508,7 @@
           },
           // Level 4
           {
-            tree_code: 'sort(a, aux, 6, 6)',
+            tree_code: '_sort(iter, 6, 6)',
             tree_code_x: 750,
             tree_code_y: 325,
             tree_line_start_x: 650,
@@ -520,7 +517,7 @@
             tree_line_end_y: 325,
           },
           {
-            tree_code: 'sort(a, aux, 7, 7)',
+            tree_code: '_sort(iter, 7, 7)',
             tree_code_x: 750,
             tree_code_y: 350,
             tree_line_start_x: 650,
@@ -529,7 +526,7 @@
             tree_line_end_y: 350,
           },
           {
-            tree_code: 'merge(a, aux, 6, 6, 7)',
+            tree_code: 'merge(iter, 6, 6, 7)',
             tree_code_x: 750,
             tree_code_y: 375,
             tree_line_start_x: 650,
@@ -539,7 +536,7 @@
           },
           // Level 3
           {
-            tree_code: 'merge(a, aux, 4, 5, 7)',
+            tree_code: 'merge(iter, 4, 5, 7)',
             tree_code_x: 500,
             tree_code_y: 400,
             tree_line_start_x: 400,
@@ -549,7 +546,7 @@
           },
           // Level 2
           {
-            tree_code: 'merge(a, aux, 0, 3, 7)',
+            tree_code: 'merge(iter, 0, 3, 7)',
             tree_code_x: 250,
             tree_code_y: 425,
             tree_line_start_x: 150,
@@ -638,9 +635,9 @@
           $('#' + code_step).addClass('highlight');
 
           var call_stack_number = 10;
-          var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
+          var call_stack_div = get_call_stack_div(call_stack_number--, 'main');
           $('#call_stack_grid_container').append(call_stack_div);
-          call_stack_div = get_call_stack_div(call_stack_number--, 'Sort(a)');
+          call_stack_div = get_call_stack_div(call_stack_number--, 'sort(iter)');
           $('#call_stack_grid_container').append(call_stack_div);
 
           //console.log(red_text_step_stack);
@@ -805,7 +802,7 @@
         code_steps = create_code_steps();
         //console.log(code_steps);
 
-        // Setup the inital display.
+        // Setup the initial display.
         processed_step = 0;
         current_step = 0;
         clear_everything();
