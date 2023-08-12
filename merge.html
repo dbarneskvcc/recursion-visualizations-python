@@ -116,29 +116,30 @@
         <h2>Code</h2>
         <pre style="font-size: 12px;">
 
-          // Merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
-          <span id="merge_declaration">private static void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi) {</span>
+          # Merge iter[lo .. mid] with iter[mid+1 .. hi] using aux[lo .. hi]
+          <span id="merge_declaration">def _merge(self, iter, lo, mid, hi):</span>
 
-            // Copy to aux[]
-            <span id="copy_for">for (int k = lo; k <= hi; k++) {</span>
-              <span id="copy_action">aux[k] = a[k];</span>
-            <span id="copy_for_end">}</span>
+              # Copy to aux[]
+              <span id="copy_for">for k in range(lo, hi + 1):</span>
+                  <span id="copy_action">self._aux[k] = iter[k]</span>
 
-            // Merge back to a[]
-            <span id="init_i">int i = lo;</span>
-            <span id="init_j">int j = mid+1;</span>
-            <span id="merge_for">for (int k = lo; k <= hi; k++) {</span>
-              <span id="merge_if_i_out_bounds">if (i > mid) { // Index past left subarray max index</span>
-                <span id="merge_move_j_out">a[k] = aux[j++];</span>
-              <span id="merge_if_j_out_bounds">} else if (j > hi) { // index past right subarray max index</span>
-                <span id="merge_move_i_out">a[k] = aux[i++];</span>
-              <span id="merge_if_j_less_than_i">} else if (aux[j].compareTo(aux[i]) < 0) {  // compare</span>
-                <span id="merge_move_j">a[k] = aux[j++];</span>
-              <span id="merge_else_i_less_than_j">} else {</span>
-                <span id="merge_move_i">a[k] = aux[i++];</span>
-              <span id="merge_if_end">}</span>
-            <span id="merge_for_end">}</span>
-          <span id="merge_declaration_end">}</span>
+              # Merge back to iter[]
+              <span id="init_i">i = lo</span>
+              <span id="init_j">j = mid+1</span>
+              <span id="merge_for">for k in range(lo, hi + 1):</span>
+                  <span id="merge_if_i_out_bounds">if i > mid: # Index past left subarray max index</span>
+                      <span id="merge_move_j_out">iter[k] = self._aux[j]</span>
+                      <span id="increment_j_out">j += 1</span>
+                  <span id="merge_if_j_out_bounds">elif j > hi: # index past right subarray max index</span>
+                      <span id="merge_move_i_out">iter[k] = self._aux[i]</span>
+                      <span id="increment_i_out">i += 1</span>
+                  <span id="merge_if_j_less_than_i">elif self._aux[j] < self._aux[i]:  # compare</span>
+                      <span id="merge_move_j">iter[k] = self._aux[j]</span>
+                      <span id="increment_j">j += 1</span>
+                  <span id="merge_else_i_less_than_j">else:</span>
+                      <span id="merge_move_i">iter[k] = self._aux[i]</span>
+                      <span id="increment_i">i += 1</span>
+              <span id="merge_for_end">return</span>
 
         </pre>
       </div>
@@ -343,7 +344,7 @@
           <div class="array-state-grid-index" style="grid-row: 8; grid-column: 10;"><span id="a_index_6">6</span></div>
           <div class="array-state-grid-index" style="grid-row: 8; grid-column: 11;"><span id="a_index_7">7</span></div>
 
-          <div class="array-state-grid-index" style="grid-row: 9; grid-column: 1;"><span id="a_array_title">a</span></div>
+          <div class="array-state-grid-index" style="grid-row: 9; grid-column: 1;"><span id="a_array_title">iter</span></div>
           <div class="array-state-grid-item" style="grid-row: 9; grid-column: 4;"><span id="a_array_0">B</span></div>
           <div class="array-state-grid-item" style="grid-row: 9; grid-column: 5;"><span id="a_array_1">E</span></div>
           <div class="array-state-grid-item" style="grid-row: 9; grid-column: 6;"><span id="a_array_2">S</span></div>
@@ -386,7 +387,6 @@
           }
           //console.log(a);
           //console.log(aux);
-          steps.push('copy_for_end');
           steps.push('init_i');
           steps.push('init_j');
           for (var k = lo; k <= hi; k++) {
@@ -394,28 +394,30 @@
             steps.push('merge_if_i_out_bounds');
             if (i > mid) {
               steps.push('merge_move_j_out');
+              steps.push('increment_j_out');
               a[k] = aux[j++];
             } else {
               steps.push('merge_if_j_out_bounds');
               if (j > hi) {
                 steps.push('merge_move_i_out');
+                steps.push('increment_i_out');
                 a[k] = aux[i++];
               } else {
                 steps.push('merge_if_j_less_than_i');
                 if (aux[j] < aux[i]) {
                   steps.push('merge_move_j');
+                  steps.push('increment_j');
                   a[k] = aux[j++];
                 } else {
                   steps.push('merge_else_i_less_than_j');
                   steps.push('merge_move_i');
+                  steps.push('increment_i');
                   a[k] = aux[i++];
                 }
               }
             }
-            steps.push('merge_if_end');
           }
           steps.push('merge_for_end');
-          steps.push('merge_declaration_end');
           return steps;
         }
 
@@ -471,19 +473,23 @@
               var aux_entry_to_use = null;
               if (i > mid) {
                 aux_entry_to_use = right_aux_entry;
-                j++;
               } else if (j > hi) {
                 aux_entry_to_use = left_aux_entry;
-                i++;
               } else if (right_aux_entry < left_aux_entry) {
                 aux_entry_to_use = right_aux_entry;
-                j++;
               } else {
                 aux_entry_to_use = left_aux_entry;
-                i++;
               }
               $('#a_array_' + move_index).html(aux_entry_to_use);
               last_moved_index = move_index;
+            }
+
+            // Handle when step is a increment pointer step.
+            if (code_steps[c] === 'increment_i' || code_steps[c] === 'increment_i_out') {
+              i++;
+            }
+            if (code_steps[c] === 'increment_j' || code_steps[c] === 'increment_j_out') {
+              j++;
             }
           }
 
@@ -521,7 +527,6 @@
           $('#merge_declaration').removeClass('highlight');
           $('#copy_for').removeClass('highlight');
           $('#copy_action').removeClass('highlight');
-          $('#copy_for_end').removeClass('highlight');
           $('#init_i').removeClass('highlight');
           $('#init_j').removeClass('highlight');
           $('#merge_for').removeClass('highlight');
@@ -534,9 +539,11 @@
           $('#merge_else_i_less_than_j').removeClass('highlight');
           $('#merge_move_i').removeClass('highlight');
           $('#merge_move_j').removeClass('highlight');
-          $('#merge_if_end').removeClass('highlight');
           $('#merge_for_end').removeClass('highlight');
-          $('#merge_declaration_end').removeClass('highlight');
+          $('#increment_i_out').removeClass('highlight');
+          $('#increment_j_out').removeClass('highlight');
+          $('#increment_i').removeClass('highlight');
+          $('#increment_j').removeClass('highlight');
 
           for (var i = 0; i < 9; i++) {
             // Re-hide pointers, arrows, and aux values.
