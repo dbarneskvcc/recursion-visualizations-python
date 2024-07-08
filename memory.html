@@ -144,7 +144,7 @@
       <pre style="font-size: 12px;">
           def main(*args):
               number = 12;
-              my_emp = new Employee();
+              my_emp = Employee();
               my_emp.name = "Ben";
               <span id="print_1">show("main", number, my_emp)</span>
               <span id="do_stuff_call">do_stuff(number, my_emp)</span>
@@ -436,16 +436,24 @@
 
         if (
           stack_step === '' ||
-          stack_step === 'return_print_1' ||
-          stack_step === 'return_do_stuff_call' ||
-          stack_step === 'return_print_2'
+          stack_step === 'return_print_1'
         ) {
           clear_stack_entries();
           $('#emp_1').html('my_emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Ben"');
+        }
+        if (
+          stack_step === 'return_print_2' ||
+          stack_step === 'return_do_stuff_call'
+        ) {
+          clear_stack_entries();
+          $('#emp_1').html('my_emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Joe"');
         }
         if (stack_step === 'print_1') {
           clear_stack_entries();
           update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Ben"');
         }
         if (
           stack_step === 'do_stuff_call' ||
@@ -453,15 +461,18 @@
         ) {
           clear_stack_entries();
           update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Ben"');
         }
         if (stack_step === 'do_stuff_print_1') {
           clear_stack_entries();
           update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
           update_stack_entry('3', 'show', 'num = 12;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Ben"');
         }
         if (stack_step === 'new_num') {
           clear_stack_entries();
           update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Ben"');
         }
         if (stack_step === 'new_name') {
           clear_stack_entries();
