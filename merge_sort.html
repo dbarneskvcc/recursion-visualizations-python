@@ -182,7 +182,7 @@
           def sort(self, iter):
               self._aux = [None for i in range(len(iter))]
               <span id="sort_start">self._sort(iter, 0, len(iter) - 1)</span>
-          }
+
 
           # mergesort a[lo..hi] using auxiliary array aux[lo..hi]
           <span id="sort_declaration">def _sort(self, iter, lo, hi):</span>
@@ -192,7 +192,7 @@
               <span id="sort_left">self._sort(iter, lo, mid)</span>
               <span id="sort_right">self._sort(iter, mid + 1, hi)</span>
               <span id="merge">self._merge(iter, lo, mid, hi)</span>
-          }
+
 
           <!--
           # Stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
