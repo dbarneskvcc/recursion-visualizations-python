@@ -1,120 +1,143 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <style>
-      body {
-        padding: 5px 10px;
-      }
-      .flex-container {
-        display: grid;
-        grid-template-rows: 425px;
-        grid-template-columns: 50% 50%;
-      }
-      .code-div {
-        grid-row: 1;
-        grid-column: 1;
-      }
-      .array-div {
-        grid-row: 1;
-        grid-column: 2;
-      }
-      .button-span {
-        float: right;
-      }
 
-      .highlight {
-        background-color: yellow;
-      }
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 5px 10px;
+    }
 
-      .array-state-grid-container {
-        display: grid;
-        grid-template-columns: 60px 10px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
-        grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px;
-        font-size: 30px;
-      }
+    .flex-container {
+      display: grid;
+      grid-template-rows: 425px;
+      grid-template-columns: 50% 50%;
+    }
 
-      .array-state-grid-index {
-        padding-top: 6px;
-        padding-bottom: 6px;
-        text-align: center;
-      }
-      .array-state-grid-item {
-        border: 1px solid black;
-        padding-top: 6px;
-        padding-bottom: 6px;
-        text-align: center;
-      }
-      .array-state-grid-step {
-        border-bottom: 1px solid black;
-        border-top: 1px solid white;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: left;
-      }
+    .code-div {
+      grid-row: 1;
+      grid-column: 1;
+    }
 
-    </style>
-  </head>
-  <body>
-    <h1>
-      Merge Method
-      <span class="button-span">
-        <div class="btn-group">
-          <button class="btn btn-info" disabled="true">Speed:</button>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-info active">
-              <input type="radio" name="speed" id="option1" value="1" checked> 1x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option2" value="2"> 2x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option3" value="4"> 4x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option4" value="8"> 8x
-            </label>
-          </div>
+    .array-div {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    .button-span {
+      float: right;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+
+    .array-state-grid-container {
+      display: grid;
+      grid-template-columns: 60px 10px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+      grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+      font-size: 30px;
+    }
+
+    .array-state-grid-index {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      text-align: center;
+    }
+
+    .array-state-grid-item {
+      border: 1px solid black;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      text-align: center;
+    }
+
+    .array-state-grid-step {
+      border-bottom: 1px solid black;
+      border-top: 1px solid white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    Merge Method
+    <span class="button-span">
+      <div class="btn-group">
+        <button class="btn btn-info" disabled="true">Speed:</button>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info active">
+            <input type="radio" name="speed" id="option1" value="1" checked> 1x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option2" value="2"> 2x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option3" value="4"> 4x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option4" value="8"> 8x
+          </label>
         </div>
-        <button id="play_button" class="btn btn-success">
-          <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-          </svg>
-          Play
-        </button>
-        <button id="pause_button" class="btn btn-warning" style="display: none;">
-          <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
-          </svg>
-          Pause
-        </button>
-        <button id="reset_button" class="btn btn-danger">
-          <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
-            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
-          </svg>
-          Reset
-        </button>
-        <button id="backward_button" class="btn btn-primary">
-          <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-          </svg>
-          Step Backward
-        </button>
-        <button id="forward_button" class="btn btn-primary">
-          Step Forward
-          <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-          </svg>
-        </button>
-      </span>
-    </h1>
-    <div class="flex-container">
-      <div class="code-div">
-        <h2>Code</h2>
-        <pre style="font-size: 12px;">
+      </div>
+      <button id="play_button" class="btn btn-success">
+        <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+        </svg>
+        Play
+      </button>
+      <button id="pause_button" class="btn btn-warning" style="display: none;">
+        <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+        </svg>
+        Pause
+      </button>
+      <button id="reset_button" class="btn btn-danger">
+        <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z" />
+          <path fill-rule="evenodd"
+            d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z" />
+        </svg>
+        Reset
+      </button>
+      <button id="backward_button" class="btn btn-primary">
+        <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+        </svg>
+        Step Backward
+      </button>
+      <button id="forward_button" class="btn btn-primary">
+        Step Forward
+        <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </button>
+    </span>
+  </h1>
+  <div class="flex-container">
+    <div class="code-div">
+      <h2>Code</h2>
+      <pre style="font-size: 12px;">
 
           # Merge iter[lo .. mid] with iter[mid+1 .. hi] using aux[lo .. hi]
           <span id="merge_declaration">def _merge(self, iter, lo, mid, hi):</span>
@@ -142,522 +165,584 @@
               <span id="merge_for_end">return</span>
 
         </pre>
-      </div>
-      <div class="array-div">
-        <h2>Array State</h2>
+    </div>
+    <div class="array-div">
+      <h2>Array State</h2>
 
-        <div class="array-state-grid-container">
+      <div class="array-state-grid-container">
 
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 3;"><span id="aux_pointer_0" style="display: none;">i</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 4;"><span id="aux_pointer_1" style="display: none;">i</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 5;"><span id="aux_pointer_2" style="display: none;">i</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 6;"><span id="aux_pointer_3" style="display: none;">i</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 3;"><span id="aux_pointer_0"
+            style="display: none;">i</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 4;"><span id="aux_pointer_1"
+            style="display: none;">i</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 5;"><span id="aux_pointer_2"
+            style="display: none;">i</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 6;"><span id="aux_pointer_3"
+            style="display: none;">i</span></div>
 
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 9;"><span id="aux_pointer_4" style="display: none;">j</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 10;"><span id="aux_pointer_5" style="display: none;">j</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 11;"><span id="aux_pointer_6" style="display: none;">j</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 12;"><span id="aux_pointer_7" style="display: none;">j</span></div>
-          <div class="array-state-grid-index" style="grid-row: 1; grid-column: 13;"><span id="aux_pointer_8" style="display: none;">j</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 9;"><span id="aux_pointer_4"
+            style="display: none;">j</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 10;"><span id="aux_pointer_5"
+            style="display: none;">j</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 11;"><span id="aux_pointer_6"
+            style="display: none;">j</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 12;"><span id="aux_pointer_7"
+            style="display: none;">j</span></div>
+        <div class="array-state-grid-index" style="grid-row: 1; grid-column: 13;"><span id="aux_pointer_8"
+            style="display: none;">j</span></div>
 
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 3;">
-            <span id="aux_arrow_0" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 4;">
-            <span id="aux_arrow_1" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 5;">
-            <span id="aux_arrow_2" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 6;">
-            <span id="aux_arrow_3" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 9;">
-            <span id="aux_arrow_4" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 10;">
-            <span id="aux_arrow_5" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 11;">
-            <span id="aux_arrow_6" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 12;">
-            <span id="aux_arrow_7" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 2; grid-column: 13;">
-            <span id="aux_arrow_8" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-
-
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 3;"><span id="aux_index_0">0</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 4;"><span id="aux_index_1">1</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 5;"><span id="aux_index_2">2</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 6;"><span id="aux_index_3">3</span></div>
-
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 9;"><span id="aux_index_4">4</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 10;"><span id="aux_index_5">5</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 11;"><span id="aux_index_6">6</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 12;"><span id="aux_index_7">7</span></div>
-          <div class="array-state-grid-index" style="grid-row: 3; grid-column: 13;"><span id="aux_index_8"></span></div>
-
-
-          <div class="array-state-grid-index" style="grid-row: 4; grid-column: 1;"><span id="aux_title">aux</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 3;"><span id="aux_0" style="display: none;">B</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 4;"><span id="aux_1" style="display: none;">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 5;"><span id="aux_2" style="display: none;">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 6;"><span id="aux_3" style="display: none;">T</span></div>
-
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 9;"><span id="aux_4" style="display: none;">C</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 10;"><span id="aux_5" style="display: none;">H</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 11;"><span id="aux_6" style="display: none;">I</span></div>
-          <div class="array-state-grid-item" style="grid-row: 4; grid-column: 12;"><span id="aux_7" style="display: none;">P</span></div>
-          <div class="array-state-grid-index" style="grid-row: 4; grid-column: 13;"><span id="aux_7" style="display: none;"></span></div>
-
-
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 4;"><span id="a_pointer_0" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 5;"><span id="a_pointer_1" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 6;"><span id="a_pointer_2" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 7;"><span id="a_pointer_3" style="display: none;">k</span></div>
-
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 8;"><span id="a_pointer_4" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 9;"><span id="a_pointer_5" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 10;"><span id="a_pointer_6" style="display: none;">k</span></div>
-          <div class="array-state-grid-index" style="grid-row: 6; grid-column: 11;"><span id="a_pointer_7" style="display: none;">k</span></div>
-
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 4;">
-            <span id="a_arrow_0" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 5;">
-            <span id="a_arrow_1" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 6;">
-            <span id="a_arrow_2" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 7;">
-            <span id="a_arrow_3" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 8;">
-            <span id="a_arrow_4" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 9;">
-            <span id="a_arrow_5" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 10;">
-            <span id="a_arrow_6" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="array-state-grid-index" style="grid-row: 7; grid-column: 11;">
-            <span id="a_arrow_7" style="display: none;">
-              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-            </span>
-          </div>
-
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 4;"><span id="a_index_0">0</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 5;"><span id="a_index_1">1</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 6;"><span id="a_index_2">2</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 7;"><span id="a_index_3">3</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 8;"><span id="a_index_4">4</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 9;"><span id="a_index_5">5</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 10;"><span id="a_index_6">6</span></div>
-          <div class="array-state-grid-index" style="grid-row: 8; grid-column: 11;"><span id="a_index_7">7</span></div>
-
-          <div class="array-state-grid-index" style="grid-row: 9; grid-column: 1;"><span id="a_array_title">iter</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 4;"><span id="a_array_0">B</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 5;"><span id="a_array_1">E</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 6;"><span id="a_array_2">S</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 7;"><span id="a_array_3">T</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 8;"><span id="a_array_4">C</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 9;"><span id="a_array_5">H</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 10;"><span id="a_array_6">I</span></div>
-          <div class="array-state-grid-item" style="grid-row: 9; grid-column: 11;"><span id="a_array_7">P</span></div>
-
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 3;">
+          <span id="aux_arrow_0" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
         </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 4;">
+          <span id="aux_arrow_1" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 5;">
+          <span id="aux_arrow_2" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 6;">
+          <span id="aux_arrow_3" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 9;">
+          <span id="aux_arrow_4" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 10;">
+          <span id="aux_arrow_5" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 11;">
+          <span id="aux_arrow_6" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 12;">
+          <span id="aux_arrow_7" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 2; grid-column: 13;">
+          <span id="aux_arrow_8" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+
+
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 3;"><span id="aux_index_0">0</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 4;"><span id="aux_index_1">1</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 5;"><span id="aux_index_2">2</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 6;"><span id="aux_index_3">3</span></div>
+
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 9;"><span id="aux_index_4">4</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 10;"><span id="aux_index_5">5</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 11;"><span id="aux_index_6">6</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 12;"><span id="aux_index_7">7</span></div>
+        <div class="array-state-grid-index" style="grid-row: 3; grid-column: 13;"><span id="aux_index_8"></span></div>
+
+
+        <div class="array-state-grid-index" style="grid-row: 4; grid-column: 1;"><span id="aux_title">aux</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 3;"><span id="aux_0"
+            style="display: none;">B</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 4;"><span id="aux_1"
+            style="display: none;">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 5;"><span id="aux_2"
+            style="display: none;">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 6;"><span id="aux_3"
+            style="display: none;">T</span></div>
+
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 9;"><span id="aux_4"
+            style="display: none;">C</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 10;"><span id="aux_5"
+            style="display: none;">H</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 11;"><span id="aux_6"
+            style="display: none;">I</span></div>
+        <div class="array-state-grid-item" style="grid-row: 4; grid-column: 12;"><span id="aux_7"
+            style="display: none;">P</span></div>
+        <div class="array-state-grid-index" style="grid-row: 4; grid-column: 13;"><span id="aux_7"
+            style="display: none;"></span></div>
+
+
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 4;"><span id="a_pointer_0"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 5;"><span id="a_pointer_1"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 6;"><span id="a_pointer_2"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 7;"><span id="a_pointer_3"
+            style="display: none;">k</span></div>
+
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 8;"><span id="a_pointer_4"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 9;"><span id="a_pointer_5"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 10;"><span id="a_pointer_6"
+            style="display: none;">k</span></div>
+        <div class="array-state-grid-index" style="grid-row: 6; grid-column: 11;"><span id="a_pointer_7"
+            style="display: none;">k</span></div>
+
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 4;">
+          <span id="a_arrow_0" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 5;">
+          <span id="a_arrow_1" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 6;">
+          <span id="a_arrow_2" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 7;">
+          <span id="a_arrow_3" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 8;">
+          <span id="a_arrow_4" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 9;">
+          <span id="a_arrow_5" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 10;">
+          <span id="a_arrow_6" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+        <div class="array-state-grid-index" style="grid-row: 7; grid-column: 11;">
+          <span id="a_arrow_7" style="display: none;">
+            <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+              <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </span>
+        </div>
+
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 4;"><span id="a_index_0">0</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 5;"><span id="a_index_1">1</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 6;"><span id="a_index_2">2</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 7;"><span id="a_index_3">3</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 8;"><span id="a_index_4">4</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 9;"><span id="a_index_5">5</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 10;"><span id="a_index_6">6</span></div>
+        <div class="array-state-grid-index" style="grid-row: 8; grid-column: 11;"><span id="a_index_7">7</span></div>
+
+        <div class="array-state-grid-index" style="grid-row: 9; grid-column: 1;"><span id="a_array_title">iter</span>
+        </div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 4;"><span id="a_array_0">B</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 5;"><span id="a_array_1">E</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 6;"><span id="a_array_2">S</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 7;"><span id="a_array_3">T</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 8;"><span id="a_array_4">C</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 9;"><span id="a_array_5">H</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 10;"><span id="a_array_6">I</span></div>
+        <div class="array-state-grid-item" style="grid-row: 9; grid-column: 11;"><span id="a_array_7">P</span></div>
+
       </div>
     </div>
+  </div>
 
-    <script>
-      $(document).ready(function() {
+  <script>
+    $(document).ready(function () {
 
-        var play_timeouts;
-        var code_steps, current_step, processed_step;
-        var clear_everything, draw, is_null;
-        var create_code_steps;
+      var play_timeouts;
+      var code_steps, current_step, processed_step;
+      var clear_everything, draw, is_null;
+      var create_code_steps;
 
-        is_null = function(value) {
-          return (typeof value === 'undefined' || value === null);
+      is_null = function (value) {
+        return (typeof value === 'undefined' || value === null);
+      }
+
+      create_code_steps = function () {
+        var aux = [];
+        var a = ['B', 'E', 'S', 'T', 'C', 'H', 'I', 'P'];
+        var lo = 0;
+        var mid = 3;
+        var hi = 7;
+        var i = lo;
+        var j = mid + 1;
+
+        var steps = ['merge_declaration'];
+        for (var k = lo; k <= hi; k++) {
+          steps.push('copy_for');
+          steps.push('copy_action');
+          aux[k] = a[k];
         }
-
-        create_code_steps = function() {
-          var aux = [];
-          var a = ['B', 'E', 'S', 'T', 'C', 'H', 'I', 'P'];
-          var lo = 0;
-          var mid = 3;
-          var hi = 7;
-          var i = lo;
-          var j = mid + 1;
-
-          var steps = ['merge_declaration'];
-          for (var k = lo; k <= hi; k++) {
-            steps.push('copy_for');
-            steps.push('copy_action');
-            aux[k] = a[k];
-          }
-          //console.log(a);
-          //console.log(aux);
-          steps.push('init_i');
-          steps.push('init_j');
-          for (var k = lo; k <= hi; k++) {
-            steps.push('merge_for');
-            steps.push('merge_if_i_out_bounds');
-            if (i > mid) {
-              steps.push('merge_move_j_out');
-              steps.push('increment_j_out');
-              a[k] = aux[j++];
+        //console.log(a);
+        //console.log(aux);
+        steps.push('init_i');
+        steps.push('init_j');
+        for (var k = lo; k <= hi; k++) {
+          steps.push('merge_for');
+          steps.push('merge_if_i_out_bounds');
+          if (i > mid) {
+            steps.push('merge_move_j_out');
+            steps.push('increment_j_out');
+            a[k] = aux[j++];
+          } else {
+            steps.push('merge_if_j_out_bounds');
+            if (j > hi) {
+              steps.push('merge_move_i_out');
+              steps.push('increment_i_out');
+              a[k] = aux[i++];
             } else {
-              steps.push('merge_if_j_out_bounds');
-              if (j > hi) {
-                steps.push('merge_move_i_out');
-                steps.push('increment_i_out');
-                a[k] = aux[i++];
+              steps.push('merge_if_j_less_than_i');
+              if (aux[j] < aux[i]) {
+                steps.push('merge_move_j');
+                steps.push('increment_j');
+                a[k] = aux[j++];
               } else {
-                steps.push('merge_if_j_less_than_i');
-                if (aux[j] < aux[i]) {
-                  steps.push('merge_move_j');
-                  steps.push('increment_j');
-                  a[k] = aux[j++];
-                } else {
-                  steps.push('merge_else_i_less_than_j');
-                  steps.push('merge_move_i');
-                  steps.push('increment_i');
-                  a[k] = aux[i++];
-                }
+                steps.push('merge_else_i_less_than_j');
+                steps.push('merge_move_i');
+                steps.push('increment_i');
+                a[k] = aux[i++];
               }
             }
           }
-          steps.push('merge_for_end');
-          return steps;
+        }
+        steps.push('merge_for_end');
+        return steps;
+      }
+
+      draw = function (step_number) {
+        //console.log("Step Number " + step_number)
+
+        var current_code_step = code_steps[step_number];
+        //console.log("Step " + current_code_step);
+
+        var lo = 0;
+        var mid = 3;
+        var hi = 7;
+        var i = null;
+        var j = null;
+        var last_copied_index = -1;
+        var last_moved_index = -1;
+        for (var c = 0; c < step_number; c++) {
+          var copy_index;
+          var move_index;
+
+          // Process Copy Steps
+          if (code_steps[c] === 'copy_for') {
+            copy_index = last_copied_index + 1;
+          }
+          if (code_steps[c].startsWith('copy_action')) {
+            $('#aux_' + copy_index).show();
+            last_copied_index = copy_index;
+          }
+
+          // Process Move Steps
+          if (code_steps[c] === 'init_i') {
+            i = lo;
+          }
+          if (code_steps[c] === 'init_j') {
+            j = mid + 1;
+          }
+          if (code_steps[c] === 'merge_for') {
+            move_index = last_moved_index + 1;
+            //console.log(move_index);
+          }
+
+          // Remove index pointers when done looping.
+          if (code_steps[c] === 'merge_for_end') {
+            i = null;
+            j = null;
+            move_index = null;
+          }
+
+          // Handle when step is a move step.
+          if (code_steps[c].startsWith('merge_move')) {
+            var left_aux_entry = $('#aux_' + i).html();
+            var right_aux_entry = $('#aux_' + j).html();
+            var aux_entry_to_use = null;
+            if (i > mid) {
+              aux_entry_to_use = right_aux_entry;
+            } else if (j > hi) {
+              aux_entry_to_use = left_aux_entry;
+            } else if (right_aux_entry < left_aux_entry) {
+              aux_entry_to_use = right_aux_entry;
+            } else {
+              aux_entry_to_use = left_aux_entry;
+            }
+            $('#a_array_' + move_index).html(aux_entry_to_use);
+            last_moved_index = move_index;
+          }
+
+          // Handle when step is a increment pointer step.
+          if (code_steps[c] === 'increment_i' || code_steps[c] === 'increment_i_out') {
+            i++;
+          }
+          if (code_steps[c] === 'increment_j' || code_steps[c] === 'increment_j_out') {
+            j++;
+          }
         }
 
-        draw = function(step_number) {
-          //console.log("Step Number " + step_number)
 
-          var current_code_step = code_steps[step_number];
-          //console.log("Step " + current_code_step);
+        // Display arrows and index var for copy
+        if (last_copied_index < 8 && step_number < 18) {
+          $('#aux_arrow_' + copy_index).show();
+          $('#a_pointer_' + copy_index).show();
+          $('#a_arrow_' + copy_index).show();
+        }
 
-          var lo = 0;
-          var mid = 3;
-          var hi = 7;
-          var i = null;
-          var j = null;
-          var last_copied_index = -1;
-          var last_moved_index = -1;
-          for (var c = 0; c < step_number; c++) {
-            var copy_index;
-            var move_index;
+        // Display arrows and index var for move
+        if (i !== null) {
+          $('#aux_arrow_' + i).show();
+          $('#aux_pointer_' + i).show();
+        }
+        if (j !== null) {
+          $('#aux_arrow_' + j).show();
+          $('#aux_pointer_' + j).show();
+        }
+        if (move_index < 8) {
+          $('#a_pointer_' + move_index).show();
+          $('#a_arrow_' + move_index).show();
+        }
 
-            // Process Copy Steps
-            if (code_steps[c] === 'copy_for') {
-              copy_index = last_copied_index + 1;
-            }
-            if (code_steps[c].startsWith('copy_action')) {
-              $('#aux_' + copy_index).show();
-              last_copied_index = copy_index;
-            }
+        // Highlight correct code line.
+        $('#' + current_code_step).addClass('highlight');
 
-            // Process Move Steps
-            if (code_steps[c] === 'init_i') {
-              i = lo;
-            }
-            if (code_steps[c] === 'init_j') {
-              j = mid + 1;
-            }
-            if (code_steps[c] === 'merge_for') {
-              move_index = last_moved_index + 1;
-              //console.log(move_index);
-            }
+      };
 
-            // Remove index pointers when done looping.
-            if (code_steps[c] === 'merge_for_end') {
-              i = null;
-              j = null;
-              move_index = null;
-            }
+      clear_everything = function () {
+        // clear all things on screen
+        //console.log('Clear Everything');
 
-            // Handle when step is a move step.
-            if (code_steps[c].startsWith('merge_move')) {
-              var left_aux_entry = $('#aux_' + i).html();
-              var right_aux_entry = $('#aux_' + j).html();
-              var aux_entry_to_use = null;
-              if (i > mid) {
-                aux_entry_to_use = right_aux_entry;
-              } else if (j > hi) {
-                aux_entry_to_use = left_aux_entry;
-              } else if (right_aux_entry < left_aux_entry) {
-                aux_entry_to_use = right_aux_entry;
-              } else {
-                aux_entry_to_use = left_aux_entry;
-              }
-              $('#a_array_' + move_index).html(aux_entry_to_use);
-              last_moved_index = move_index;
-            }
+        $('#merge_declaration').removeClass('highlight');
+        $('#copy_for').removeClass('highlight');
+        $('#copy_action').removeClass('highlight');
+        $('#init_i').removeClass('highlight');
+        $('#init_j').removeClass('highlight');
+        $('#merge_for').removeClass('highlight');
+        $('#merge_if_i_out_bounds').removeClass('highlight');
+        $('#merge_move_j_out').removeClass('highlight');
+        $('#merge_if_j_out_bounds').removeClass('highlight');
+        $('#merge_move_i_out').removeClass('highlight');
+        $('#merge_if_j_less_than_i').removeClass('highlight');
+        $('#mermerge_move_jge_for').removeClass('highlight');
+        $('#merge_else_i_less_than_j').removeClass('highlight');
+        $('#merge_move_i').removeClass('highlight');
+        $('#merge_move_j').removeClass('highlight');
+        $('#merge_for_end').removeClass('highlight');
+        $('#increment_i_out').removeClass('highlight');
+        $('#increment_j_out').removeClass('highlight');
+        $('#increment_i').removeClass('highlight');
+        $('#increment_j').removeClass('highlight');
 
-            // Handle when step is a increment pointer step.
-            if (code_steps[c] === 'increment_i' || code_steps[c] === 'increment_i_out') {
-              i++;
-            }
-            if (code_steps[c] === 'increment_j' || code_steps[c] === 'increment_j_out') {
-              j++;
-            }
+        for (var i = 0; i < 9; i++) {
+          // Re-hide pointers, arrows, and aux values.
+          $('#aux_pointer_' + i).hide();
+          $('#aux_arrow_' + i).hide();
+          $('#aux_' + i).hide();
+          $('#a_pointer_' + i).hide();
+          $('#a_arrow_' + i).hide();
+
+          // Copy original aux values back to a.
+          var aux_val = $('#aux_' + i).html();
+          $('#a_array_' + i).html(aux_val);
+        }
+
+      };
+
+      $('#play_button').click(function () {
+        // Time for each step
+        var step_time = 2000;
+        var speed = 1;
+        var speed_radios = $("[name='speed']");
+        for (var i = 0, len = speed_radios.length; i < len; i++) {
+          if (speed_radios[i].checked) {
+            speed = $(speed_radios[i]).val();
           }
+        }
+        step_time = (step_time / speed);
+        // Disable play button
+        $('#play_button').hide();
+        $('#pause_button').show();
+        $('#reset_button').prop('disabled', true);
+        $('#forward_button').prop('disabled', true);
+        $('#backward_button').prop('disabled', true);
 
-
-          // Display arrows and index var for copy
-          if (last_copied_index < 8 && step_number < 18) {
-            $('#aux_arrow_' + copy_index).show();
-            $('#a_pointer_' + copy_index).show();
-            $('#a_arrow_' + copy_index).show();
-          }
-
-          // Display arrows and index var for move
-          if (i !== null) {
-            $('#aux_arrow_' + i).show();
-            $('#aux_pointer_' + i).show();
-          }
-          if (j !== null) {
-            $('#aux_arrow_' + j).show();
-            $('#aux_pointer_' + j).show();
-          }
-          if (move_index < 8) {
-            $('#a_pointer_' + move_index).show();
-            $('#a_arrow_' + move_index).show();
-          }
-
-          // Highlight correct code line.
-          $('#' + current_code_step).addClass('highlight');
-
-        };
-
-        clear_everything = function() {
-          // clear all things on screen
-          //console.log('Clear Everything');
-
-          $('#merge_declaration').removeClass('highlight');
-          $('#copy_for').removeClass('highlight');
-          $('#copy_action').removeClass('highlight');
-          $('#init_i').removeClass('highlight');
-          $('#init_j').removeClass('highlight');
-          $('#merge_for').removeClass('highlight');
-          $('#merge_if_i_out_bounds').removeClass('highlight');
-          $('#merge_move_j_out').removeClass('highlight');
-          $('#merge_if_j_out_bounds').removeClass('highlight');
-          $('#merge_move_i_out').removeClass('highlight');
-          $('#merge_if_j_less_than_i').removeClass('highlight');
-          $('#mermerge_move_jge_for').removeClass('highlight');
-          $('#merge_else_i_less_than_j').removeClass('highlight');
-          $('#merge_move_i').removeClass('highlight');
-          $('#merge_move_j').removeClass('highlight');
-          $('#merge_for_end').removeClass('highlight');
-          $('#increment_i_out').removeClass('highlight');
-          $('#increment_j_out').removeClass('highlight');
-          $('#increment_i').removeClass('highlight');
-          $('#increment_j').removeClass('highlight');
-
-          for (var i = 0; i < 9; i++) {
-            // Re-hide pointers, arrows, and aux values.
-            $('#aux_pointer_' + i).hide();
-            $('#aux_arrow_' + i).hide();
-            $('#aux_' + i).hide();
-            $('#a_pointer_' + i).hide();
-            $('#a_arrow_' + i).hide();
-
-            // Copy original aux values back to a.
-            var aux_val = $('#aux_' + i).html();
-            $('#a_array_' + i).html(aux_val);
-          }
-
-        };
-
-        $('#play_button').click(function() {
-          // Time for each step
-          var step_time = 2000;
-          var speed = 1;
-          var speed_radios = $("[name='speed']");
-          for (var i = 0, len = speed_radios.length; i < len; i++) {
-            if (speed_radios[i].checked) {
-              speed = $(speed_radios[i]).val();
-            }
-          }
-          step_time = (step_time / speed);
-          // Disable play button
-          $('#play_button').hide();
-          $('#pause_button').show();
-          $('#reset_button').prop('disabled', true);
-          $('#forward_button').prop('disabled', true);
-          $('#backward_button').prop('disabled', true);
-
-          // Reinitialize play_timeouts array
-          play_timeouts = [];
-          // For each step, set a timeout.
-          processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
-          // Calculate offset for when paused in middle.
-          var offset = processed_step * step_time;
-          //console.log(processed_step);
-          for (current_step = processed_step; current_step < code_steps.length; current_step++) {
-            // Calculate timeout
-            var timeout = (step_time * current_step) - offset;
-            //console.log("Current Step " + current_step);
-            //console.log("Timeout " + timeout);
-            timeout_id = setTimeout(function(current_step) {
-              clear_everything();
-              draw(current_step);
-              processed_step++;
-            }, timeout, current_step);
-            // Add timeout to array of timeouts
-            play_timeouts.push(timeout_id);
-          }
-
-          // Add a timeout to re-enable the play button
-          var button_timeout = (step_time * code_steps.length) - offset;
-          timeout_id = setTimeout(function() {
-            //$('#play_button').prop('disabled', false);
-            $('#pause_button').hide();
-            $('#play_button').show();
-            $('#reset_button').prop('disabled', false);
-            $('#forward_button').prop('disabled', false);
-            $('#backward_button').prop('disabled', false);
-          }, button_timeout);
+        // Reinitialize play_timeouts array
+        play_timeouts = [];
+        // For each step, set a timeout.
+        processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
+        // Calculate offset for when paused in middle.
+        var offset = processed_step * step_time;
+        //console.log(processed_step);
+        for (current_step = processed_step; current_step < code_steps.length; current_step++) {
+          // Calculate timeout
+          var timeout = (step_time * current_step) - offset;
+          //console.log("Current Step " + current_step);
+          //console.log("Timeout " + timeout);
+          timeout_id = setTimeout(function (current_step) {
+            clear_everything();
+            draw(current_step);
+            processed_step++;
+          }, timeout, current_step);
+          // Add timeout to array of timeouts
           play_timeouts.push(timeout_id);
-        });
+        }
 
-        $('#pause_button').click(function() {
-          for (i = 0; i < play_timeouts.length; i++) {
-            clearTimeout(play_timeouts[i]);
-          }
+        // Add a timeout to re-enable the play button
+        var button_timeout = (step_time * code_steps.length) - offset;
+        timeout_id = setTimeout(function () {
+          //$('#play_button').prop('disabled', false);
           $('#pause_button').hide();
           $('#play_button').show();
           $('#reset_button').prop('disabled', false);
           $('#forward_button').prop('disabled', false);
           $('#backward_button').prop('disabled', false);
-        });
+        }, button_timeout);
+        play_timeouts.push(timeout_id);
+      });
 
-        $('#reset_button').click(function() {
-          processed_step = 0;
-          current_step = 0;
-          clear_everything();
-          draw(current_step);
-        });
+      $('#pause_button').click(function () {
+        for (i = 0; i < play_timeouts.length; i++) {
+          clearTimeout(play_timeouts[i]);
+        }
+        $('#pause_button').hide();
+        $('#play_button').show();
+        $('#reset_button').prop('disabled', false);
+        $('#forward_button').prop('disabled', false);
+        $('#backward_button').prop('disabled', false);
+      });
 
-        $('#forward_button').click(function() {
-          if (processed_step + 1 < code_steps.length) {
-            current_step = current_step + 1;
-            processed_step = processed_step + 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        $('#backward_button').click(function() {
-          if (processed_step - 1 >= 0) {
-            current_step = current_step - 1;
-            processed_step = processed_step - 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        code_steps = create_code_steps();
-        //console.log(code_steps);
-
-        // Setup the inital display.
+      $('#reset_button').click(function () {
         processed_step = 0;
         current_step = 0;
         clear_everything();
         draw(current_step);
-
       });
-    </script>
-  </body>
+
+      $('#forward_button').click(function () {
+        if (processed_step + 1 < code_steps.length) {
+          current_step = current_step + 1;
+          processed_step = processed_step + 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      $('#backward_button').click(function () {
+        if (processed_step - 1 >= 0) {
+          current_step = current_step - 1;
+          processed_step = processed_step - 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      code_steps = create_code_steps();
+      //console.log(code_steps);
+
+      // Setup the inital display.
+      processed_step = 0;
+      current_step = 0;
+      clear_everything();
+      draw(current_step);
+
+    });
+  </script>
+</body>
+
 </html>

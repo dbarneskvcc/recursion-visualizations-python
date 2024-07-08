@@ -1,121 +1,145 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <style>
-      body {
-        padding: 5px 10px;
-      }
-      .flex-container {
-        display: grid;
-        grid-template-rows: 425px 425px;
-        grid-template-columns: 40% 60%;
-      }
-      .code-div {
-        grid-row: 1;
-        grid-column: 1;
-      }
-      .visualization-div {
-        grid-row: 1;
-        grid-column: 2;
-      }
-      .stack-div {
-        grid-row: 2;
-        grid-column: 1;
-      }
-      .tree-div {
-        grid-row: 2;
-        grid-column: 2;
-      }
-      .button-span {
-        float: right;
-      }
 
-      .highlight {
-        background-color: yellow;
-      }
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 5px 10px;
+    }
 
-      .call-stack-grid-container {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px;
-        width: 70%;
-        border: 1px solid black;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        font-size: 30px;
-      }
-      .call-stack-item {
-        border-top: 1px solid black;
-      }
+    .flex-container {
+      display: grid;
+      grid-template-rows: 425px 425px;
+      grid-template-columns: 40% 60%;
+    }
 
-      .tree-canvas {
-        display: block;
-      }
+    .code-div {
+      grid-row: 1;
+      grid-column: 1;
+    }
 
-    </style>
-  </head>
-  <body>
-    <h1>
-      Tower of Hanoi 4-Disc
-      <span class="button-span">
-        <div class="btn-group">
-          <button class="btn btn-info" disabled="true">Speed:</button>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-info active">
-              <input type="radio" name="speed" id="option1" value="1" checked> 1x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option2" value="2"> 2x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option3" value="4"> 4x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option4" value="8"> 8x
-            </label>
-          </div>
+    .visualization-div {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    .stack-div {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    .tree-div {
+      grid-row: 2;
+      grid-column: 2;
+    }
+
+    .button-span {
+      float: right;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+
+    .call-stack-grid-container {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 38px 38px 38px 38px 38px 38px 38px 38px 38px 38px;
+      width: 70%;
+      border: 1px solid black;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .call-stack-item {
+      border-top: 1px solid black;
+    }
+
+    .tree-canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    Tower of Hanoi 4-Disc
+    <span class="button-span">
+      <div class="btn-group">
+        <button class="btn btn-info" disabled="true">Speed:</button>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info active">
+            <input type="radio" name="speed" id="option1" value="1" checked> 1x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option2" value="2"> 2x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option3" value="4"> 4x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option4" value="8"> 8x
+          </label>
         </div>
-        <button id="play_button" class="btn btn-success">
-          <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-          </svg>
-          Play
-        </button>
-        <button id="pause_button" class="btn btn-warning" style="display: none;">
-          <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
-          </svg>
-          Pause
-        </button>
-        <button id="reset_button" class="btn btn-danger">
-          <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
-            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
-          </svg>
-          Reset
-        </button>
-        <button id="backward_button" class="btn btn-primary">
-          <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-          </svg>
-          Step Backward
-        </button>
-        <button id="forward_button" class="btn btn-primary">
-          Step Forward
-          <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-          </svg>
-        </button>
-      </span>
-    </h1>
-    <div class="flex-container">
-      <div class="code-div">
-        <h2>Code</h2>
-        <pre style="font-size: 12px;">
+      </div>
+      <button id="play_button" class="btn btn-success">
+        <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+        </svg>
+        Play
+      </button>
+      <button id="pause_button" class="btn btn-warning" style="display: none;">
+        <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+        </svg>
+        Pause
+      </button>
+      <button id="reset_button" class="btn btn-danger">
+        <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z" />
+          <path fill-rule="evenodd"
+            d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z" />
+        </svg>
+        Reset
+      </button>
+      <button id="backward_button" class="btn btn-primary">
+        <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+        </svg>
+        Step Backward
+      </button>
+      <button id="forward_button" class="btn btn-primary">
+        Step Forward
+        <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </button>
+    </span>
+  </h1>
+  <div class="flex-container">
+    <div class="code-div">
+      <h2>Code</h2>
+      <pre style="font-size: 12px;">
           # Main entry point to solve
           <span id="solve">def solve(number_of_discs):</span>
               <span id="move_disc">move_disc(number_of_discs, 'A', 'B', 'C');</span>
@@ -131,852 +155,853 @@
               <span id="move_base">move_disc(1, src, temp, dest)</span>
               <span id="move_right">move_disc(n - 1, temp, src, dest)</span>
         </pre>
-      </div>
-      <div class="visualization-div">
-        <h2>Visualization <span style="float: right; margin-right: 30px;">Output</span></h2>
-        <canvas id="visualization_canvas" class="visualization-canvas" height="425" width="950"></canvas>
-      </div>
-      <div class="stack-div">
-        <h2>Call Stack</h2>
-        <div id="call_stack_grid_container" class="call-stack-grid-container">
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
-          <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Solve</div>
-        </div>
-      </div>
-      <div class="tree-div">
-        <h2>Call Tree</h2>
-        <canvas id="tree_canvas" class="tree-canvas" height="425" width="950"></canvas>
+    </div>
+    <div class="visualization-div">
+      <h2>Visualization <span style="float: right; margin-right: 30px;">Output</span></h2>
+      <canvas id="visualization_canvas" class="visualization-canvas" height="425" width="950"></canvas>
+    </div>
+    <div class="stack-div">
+      <h2>Call Stack</h2>
+      <div id="call_stack_grid_container" class="call-stack-grid-container">
+        <div class="call-stack-item call-stack-main-item" style="grid-row: 10; grid-column: 1;">Main</div>
+        <div class="call-stack-item call-stack-main-item" style="grid-row: 9; grid-column: 1;">Solve</div>
       </div>
     </div>
+    <div class="tree-div">
+      <h2>Call Tree</h2>
+      <canvas id="tree_canvas" class="tree-canvas" height="425" width="950"></canvas>
+    </div>
+  </div>
 
-    <script>
-      $(document).ready(function() {
+  <script>
+    $(document).ready(function () {
 
-        var tree_canvas, tree_ctx, play_timeouts;
-        var visualization_canvas, visualization_ctx;
-        var code_steps, tree_code, current_step, processed_step;
-        var clear_everything, play_all_steps, draw, is_null;
-        var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
+      var tree_canvas, tree_ctx, play_timeouts;
+      var visualization_canvas, visualization_ctx;
+      var code_steps, tree_code, current_step, processed_step;
+      var clear_everything, play_all_steps, draw, is_null;
+      var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
 
-        is_null = function(value) {
-          return (typeof value === 'undefined' || value === null);
+      is_null = function (value) {
+        return (typeof value === 'undefined' || value === null);
+      }
+
+      tree_canvas = document.getElementById('tree_canvas');
+      tree_ctx = tree_canvas.getContext('2d');
+      tree_ctx.font = '14px courier';
+
+      visualization_canvas = document.getElementById('visualization_canvas');
+      visualization_ctx = visualization_canvas.getContext('2d');
+      visualization_ctx.font = '32px courier';
+
+      peg_code = [
+        {
+          // H Mid Point 100
+          peg_line_h_start_x: 0,
+          peg_line_h_start_y: 250,
+          peg_line_h_end_x: 200,
+          peg_line_h_end_y: 250,
+          peg_line_v_start_x: 100,
+          peg_line_v_start_y: 0,
+          peg_line_v_end_x: 100,
+          peg_line_v_end_y: 250,
+          peg_letter: 'A',
+        },
+        {
+          // H Mid Point 350
+          peg_line_h_start_x: 250,
+          peg_line_h_start_y: 250,
+          peg_line_h_end_x: 450,
+          peg_line_h_end_y: 250,
+          peg_line_v_start_x: 350,
+          peg_line_v_start_y: 0,
+          peg_line_v_end_x: 350,
+          peg_line_v_end_y: 250,
+          peg_letter: 'B',
+        },
+        {
+          // H Mid Point 600
+          peg_line_h_start_x: 500,
+          peg_line_h_start_y: 250,
+          peg_line_h_end_x: 700,
+          peg_line_h_end_y: 250,
+          peg_line_v_start_x: 600,
+          peg_line_v_start_y: 0,
+          peg_line_v_end_x: 600,
+          peg_line_v_end_y: 250,
+          peg_letter: 'C',
+        }
+      ];
+
+      disc_code = [
+        {
+          color: '#28a745',
+          width: 160,
+          height: 40,
+        },
+        {
+          color: '#007bff',
+          width: 120,
+          height: 40,
+        },
+        {
+          color: '#dc3545',
+          width: 80,
+          height: 40,
+        },
+        {
+          color: '#ffc107',
+          width: 40,
+          height: 40,
+        }
+      ];
+
+      disc_steps = [
+        // peg 1 center: 100
+        // peg 2 center: 350
+        // peg 3 center: 600
+        // disc 3 offset: 20 Top
+        // disc 2 offset: 40 Mid-Top
+        // disc 1 offset: 60 Mid-Bottom
+        // disc 0 offset: 80 Bottom
+
+        // Initial State
+        {
+          disc_3_x: 80,  // Top
+          disc_3_y: 90,  // Top
+          disc_2_x: 60,  // Mid-Top
+          disc_2_y: 130,  // Mid-Top
+          disc_1_x: 40,  // Mid-Bottom
+          disc_1_y: 170,  // Mid-Bottom
+          disc_0_x: 20,  // Bottom
+          disc_0_y: 210,  // Bottom
+        },
+
+        // Move left side level 2
+        // Move left side level 3
+        {
+          disc_3_x: 330,
+          disc_3_y: 210,
+          disc_2_x: 60,
+          disc_2_y: 130,
+          disc_1_x: 40,
+          disc_1_y: 170,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 330,
+          disc_3_y: 210,
+          disc_2_x: 560,
+          disc_2_y: 210,
+          disc_1_x: 40,
+          disc_1_y: 170,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 580,
+          disc_3_y: 170,
+          disc_2_x: 560,
+          disc_2_y: 210,
+          disc_1_x: 40,
+          disc_1_y: 170,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+
+        // Move base level 3
+        {
+          disc_3_x: 580,
+          disc_3_y: 170,
+          disc_2_x: 560,
+          disc_2_y: 210,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+
+        // Move right level 3
+        {
+          disc_3_x: 80,
+          disc_3_y: 170,
+          disc_2_x: 560,
+          disc_2_y: 210,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 80,
+          disc_3_y: 170,
+          disc_2_x: 310,
+          disc_2_y: 170,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 330,
+          disc_3_y: 130,
+          disc_2_x: 310,
+          disc_2_y: 170,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 20,
+          disc_0_y: 210,
+        },
+
+
+        // Move base level 2
+        {
+          disc_3_x: 330,
+          disc_3_y: 130,
+          disc_2_x: 310,
+          disc_2_y: 170,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+
+        // Move right side level 2
+        // Move left side level 3
+        {
+          disc_3_x: 580,
+          disc_3_y: 170,
+          disc_2_x: 310,
+          disc_2_y: 170,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 580,
+          disc_3_y: 170,
+          disc_2_x: 60,
+          disc_2_y: 210,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 80,
+          disc_3_y: 170,
+          disc_2_x: 60,
+          disc_2_y: 210,
+          disc_1_x: 290,
+          disc_1_y: 210,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+
+        // Move base level 3
+        {
+          disc_3_x: 80,
+          disc_3_y: 170,
+          disc_2_x: 60,
+          disc_2_y: 210,
+          disc_1_x: 540,
+          disc_1_y: 170,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+
+        // Move right level 3
+        {
+          disc_3_x: 330,
+          disc_3_y: 210,
+          disc_2_x: 60,
+          disc_2_y: 210,
+          disc_1_x: 540,
+          disc_1_y: 170,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 330,
+          disc_3_y: 210,
+          disc_2_x: 560,
+          disc_2_y: 130,
+          disc_1_x: 540,
+          disc_1_y: 170,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+        {
+          disc_3_x: 580,
+          disc_3_y: 90,
+          disc_2_x: 560,
+          disc_2_y: 130,
+          disc_1_x: 540,
+          disc_1_y: 170,
+          disc_0_x: 520,
+          disc_0_y: 210,
+        },
+      ];
+
+      output_steps = [
+        'Move A -> B',
+        'Move A -> C',
+        'Move B -> C',
+        'Move A -> B',
+        'Move C -> A',
+        'Move C -> B',
+        'Move A -> B',
+
+        'Move A -> C',
+
+        'Move B -> C',
+        'Move B -> A',
+        'Move C -> A',
+        'Move B -> C',
+        'Move A -> B',
+        'Move A -> C',
+        'Move B -> C',
+      ];
+
+      tree_code = [
+        {
+          tree_code: 'MoveDisc(4, A, B, C)',
+          tree_code_x: 0,
+          tree_code_y: 200,
+        },
+
+        // Level 2
+        {
+          tree_code: 'MoveDisc(3, A, C, B)',
+          tree_code_x: 250,
+          tree_code_y: 100,
+          tree_line_start_x: 175,
+          tree_line_start_y: 200,
+          tree_line_end_x: 250,
+          tree_line_end_y: 100,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(2, A, B, C)',
+          tree_code_x: 500,
+          tree_code_y: 50,
+          tree_line_start_x: 425,
+          tree_line_start_y: 100,
+          tree_line_end_x: 500,
+          tree_line_end_y: 50,
+        },
+        // Level 4
+        {
+          tree_code: 'MoveDisc(1, A, C, B)',
+          tree_code_x: 750,
+          tree_code_y: 25,
+          tree_line_start_x: 675,
+          tree_line_start_y: 50,
+          tree_line_end_x: 750,
+          tree_line_end_y: 25,
+        },
+        {
+          tree_code: 'MoveDisc(1, A, B, C)',
+          tree_code_x: 750,
+          tree_code_y: 50,
+          tree_line_start_x: 675,
+          tree_line_start_y: 50,
+          tree_line_end_x: 750,
+          tree_line_end_y: 50,
+        },
+        {
+          tree_code: 'MoveDisc(1, B, A, C)',
+          tree_code_x: 750,
+          tree_code_y: 75,
+          tree_line_start_x: 675,
+          tree_line_start_y: 50,
+          tree_line_end_x: 750,
+          tree_line_end_y: 75,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(1, A, C, B)',
+          tree_code_x: 500,
+          tree_code_y: 100,
+          tree_line_start_x: 425,
+          tree_line_start_y: 100,
+          tree_line_end_x: 500,
+          tree_line_end_y: 100,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(2, C, A, B)',
+          tree_code_x: 500,
+          tree_code_y: 150,
+          tree_line_start_x: 425,
+          tree_line_start_y: 100,
+          tree_line_end_x: 500,
+          tree_line_end_y: 150,
+        },
+        // Level 4
+        {
+          tree_code: 'MoveDisc(1, C, B, A)',
+          tree_code_x: 750,
+          tree_code_y: 125,
+          tree_line_start_x: 675,
+          tree_line_start_y: 150,
+          tree_line_end_x: 750,
+          tree_line_end_y: 125,
+        },
+        {
+          tree_code: 'MoveDisc(1, C, A, B)',
+          tree_code_x: 750,
+          tree_code_y: 150,
+          tree_line_start_x: 675,
+          tree_line_start_y: 150,
+          tree_line_end_x: 750,
+          tree_line_end_y: 150,
+        },
+        {
+          tree_code: 'MoveDisc(1, A, C, B)',
+          tree_code_x: 750,
+          tree_code_y: 175,
+          tree_line_start_x: 675,
+          tree_line_start_y: 150,
+          tree_line_end_x: 750,
+          tree_line_end_y: 175,
+        },
+
+        // Level 2
+        {
+          tree_code: 'MoveDisc(1, A, B, C)',
+          tree_code_x: 250,
+          tree_code_y: 200,
+          tree_line_start_x: 175,
+          tree_line_start_y: 200,
+          tree_line_end_x: 250,
+          tree_line_end_y: 200,
+        },
+        // Level 2
+        {
+          tree_code: 'MoveDisc(3, B, A, C)',
+          tree_code_x: 250,
+          tree_code_y: 300,
+          tree_line_start_x: 175,
+          tree_line_start_y: 200,
+          tree_line_end_x: 250,
+          tree_line_end_y: 300,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(2, B, C, A)',
+          tree_code_x: 500,
+          tree_code_y: 250,
+          tree_line_start_x: 425,
+          tree_line_start_y: 300,
+          tree_line_end_x: 500,
+          tree_line_end_y: 250,
+        },
+        // Level 4
+        {
+          tree_code: 'MoveDisc(1, B, A, C)',
+          tree_code_x: 750,
+          tree_code_y: 225,
+          tree_line_start_x: 675,
+          tree_line_start_y: 250,
+          tree_line_end_x: 750,
+          tree_line_end_y: 225,
+        },
+        {
+          tree_code: 'MoveDisc(1, B, C, A)',
+          tree_code_x: 750,
+          tree_code_y: 250,
+          tree_line_start_x: 675,
+          tree_line_start_y: 250,
+          tree_line_end_x: 750,
+          tree_line_end_y: 250,
+        },
+        {
+          tree_code: 'MoveDisc(1, C, B, A)',
+          tree_code_x: 750,
+          tree_code_y: 275,
+          tree_line_start_x: 675,
+          tree_line_start_y: 250,
+          tree_line_end_x: 750,
+          tree_line_end_y: 275,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(1, B, A, C)',
+          tree_code_x: 500,
+          tree_code_y: 300,
+          tree_line_start_x: 425,
+          tree_line_start_y: 300,
+          tree_line_end_x: 500,
+          tree_line_end_y: 300,
+        },
+
+        // Level 3
+        {
+          tree_code: 'MoveDisc(2, A, B, C)',
+          tree_code_x: 500,
+          tree_code_y: 350,
+          tree_line_start_x: 425,
+          tree_line_start_y: 300,
+          tree_line_end_x: 500,
+          tree_line_end_y: 350,
+        },
+        // Level 4
+        {
+          tree_code: 'MoveDisc(1, A, C, B)',
+          tree_code_x: 750,
+          tree_code_y: 325,
+          tree_line_start_x: 675,
+          tree_line_start_y: 350,
+          tree_line_end_x: 750,
+          tree_line_end_y: 325,
+        },
+        {
+          tree_code: 'MoveDisc(1, A, B, C)',
+          tree_code_x: 750,
+          tree_code_y: 350,
+          tree_line_start_x: 675,
+          tree_line_start_y: 350,
+          tree_line_end_x: 750,
+          tree_line_end_y: 350,
+        },
+        {
+          tree_code: 'MoveDisc(1, B, A, C)',
+          tree_code_x: 750,
+          tree_code_y: 375,
+          tree_line_start_x: 675,
+          tree_line_start_y: 350,
+          tree_line_end_x: 750,
+          tree_line_end_y: 375,
+        },
+      ];
+
+      create_code_steps = function () {
+        var steps = ['solve'];
+        steps.push('move_disc');
+        var recursion = function (n) {
+          steps.push('move_disc_declaration');
+          steps.push('base_case');
+          if (n === 1) {
+            steps.push('print_line');
+            steps.push('base_case_return');
+            return;
+          }
+          steps.push('move_left');
+          recursion(n - 1);
+          steps.push('move_left_return');
+          steps.push('move_base');
+          recursion(1);
+          steps.push('move_base_return');
+          steps.push('move_right');
+          recursion(n - 1);
+          steps.push('move_right_return');
+        }
+        recursion(4);
+        steps.push('move_disc');
+        return steps;
+      }
+
+      get_current_tree_step_stacks = function (step_number) {
+
+        var current_tree_step_stack = [];
+        var current_red_text_stack = [];
+        var current_tree_step = -1;
+        for (var i = 0; i <= step_number; i++) {
+          var code_step = code_steps[i];
+          if (code_step === 'move_disc_declaration') {
+            // Increase current_tree_step
+            current_tree_step++;
+            // Add step number to step stack
+            current_tree_step_stack.push(current_tree_step);
+            current_red_text_stack.push(current_tree_step);
+          }
+          if (
+            code_step === 'move_left_return'
+            || code_step === 'move_base_return'
+            || code_step === 'move_right_return'
+            || code_step === 'move_disc_return'
+          ) {
+            current_red_text_stack.pop();
+          }
         }
 
-        tree_canvas = document.getElementById('tree_canvas');
-        tree_ctx = tree_canvas.getContext('2d');
-        tree_ctx.font = '14px courier';
-
-        visualization_canvas = document.getElementById('visualization_canvas');
-        visualization_ctx = visualization_canvas.getContext('2d');
-        visualization_ctx.font = '32px courier';
-
-        peg_code = [
-          {
-            // H Mid Point 100
-            peg_line_h_start_x: 0,
-            peg_line_h_start_y: 250,
-            peg_line_h_end_x: 200,
-            peg_line_h_end_y: 250,
-            peg_line_v_start_x: 100,
-            peg_line_v_start_y: 0,
-            peg_line_v_end_x: 100,
-            peg_line_v_end_y: 250,
-            peg_letter: 'A',
-          },
-          {
-            // H Mid Point 350
-            peg_line_h_start_x: 250,
-            peg_line_h_start_y: 250,
-            peg_line_h_end_x: 450,
-            peg_line_h_end_y: 250,
-            peg_line_v_start_x: 350,
-            peg_line_v_start_y: 0,
-            peg_line_v_end_x: 350,
-            peg_line_v_end_y: 250,
-            peg_letter: 'B',
-          },
-          {
-            // H Mid Point 600
-            peg_line_h_start_x: 500,
-            peg_line_h_start_y: 250,
-            peg_line_h_end_x: 700,
-            peg_line_h_end_y: 250,
-            peg_line_v_start_x: 600,
-            peg_line_v_start_y: 0,
-            peg_line_v_end_x: 600,
-            peg_line_v_end_y: 250,
-            peg_letter: 'C',
-          }
-        ];
-
-        disc_code = [
-          {
-            color: '#28a745',
-            width: 160,
-            height: 40,
-          },
-          {
-            color: '#007bff',
-            width: 120,
-            height: 40,
-          },
-          {
-            color: '#dc3545',
-            width: 80,
-            height: 40,
-          },
-          {
-            color: '#ffc107',
-            width: 40,
-            height: 40,
-          }
-        ];
-
-        disc_steps = [
-          // peg 1 center: 100
-          // peg 2 center: 350
-          // peg 3 center: 600
-          // disc 3 offset: 20 Top
-          // disc 2 offset: 40 Mid-Top
-          // disc 1 offset: 60 Mid-Bottom
-          // disc 0 offset: 80 Bottom
-
-          // Initial State
-          {
-            disc_3_x: 80,  // Top
-            disc_3_y: 90,  // Top
-            disc_2_x: 60,  // Mid-Top
-            disc_2_y: 130,  // Mid-Top
-            disc_1_x: 40,  // Mid-Bottom
-            disc_1_y: 170,  // Mid-Bottom
-            disc_0_x: 20,  // Bottom
-            disc_0_y: 210,  // Bottom
-          },
-
-          // Move left side level 2
-          // Move left side level 3
-          {
-            disc_3_x: 330,
-            disc_3_y: 210,
-            disc_2_x: 60,
-            disc_2_y: 130,
-            disc_1_x: 40,
-            disc_1_y: 170,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 330,
-            disc_3_y: 210,
-            disc_2_x: 560,
-            disc_2_y: 210,
-            disc_1_x: 40,
-            disc_1_y: 170,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 580,
-            disc_3_y: 170,
-            disc_2_x: 560,
-            disc_2_y: 210,
-            disc_1_x: 40,
-            disc_1_y: 170,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-
-          // Move base level 3
-          {
-            disc_3_x: 580,
-            disc_3_y: 170,
-            disc_2_x: 560,
-            disc_2_y: 210,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-
-          // Move right level 3
-          {
-            disc_3_x: 80,
-            disc_3_y: 170,
-            disc_2_x: 560,
-            disc_2_y: 210,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 80,
-            disc_3_y: 170,
-            disc_2_x: 310,
-            disc_2_y: 170,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 330,
-            disc_3_y: 130,
-            disc_2_x: 310,
-            disc_2_y: 170,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 20,
-            disc_0_y: 210,
-          },
-
-
-          // Move base level 2
-          {
-            disc_3_x: 330,
-            disc_3_y: 130,
-            disc_2_x: 310,
-            disc_2_y: 170,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-
-          // Move right side level 2
-          // Move left side level 3
-          {
-            disc_3_x: 580,
-            disc_3_y: 170,
-            disc_2_x: 310,
-            disc_2_y: 170,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 580,
-            disc_3_y: 170,
-            disc_2_x: 60,
-            disc_2_y: 210,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 80,
-            disc_3_y: 170,
-            disc_2_x: 60,
-            disc_2_y: 210,
-            disc_1_x: 290,
-            disc_1_y: 210,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-
-          // Move base level 3
-          {
-            disc_3_x: 80,
-            disc_3_y: 170,
-            disc_2_x: 60,
-            disc_2_y: 210,
-            disc_1_x: 540,
-            disc_1_y: 170,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-
-          // Move right level 3
-          {
-            disc_3_x: 330,
-            disc_3_y: 210,
-            disc_2_x: 60,
-            disc_2_y: 210,
-            disc_1_x: 540,
-            disc_1_y: 170,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 330,
-            disc_3_y: 210,
-            disc_2_x: 560,
-            disc_2_y: 130,
-            disc_1_x: 540,
-            disc_1_y: 170,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-          {
-            disc_3_x: 580,
-            disc_3_y: 90,
-            disc_2_x: 560,
-            disc_2_y: 130,
-            disc_1_x: 540,
-            disc_1_y: 170,
-            disc_0_x: 520,
-            disc_0_y: 210,
-          },
-        ];
-
-        output_steps = [
-          'Move A -> B',
-          'Move A -> C',
-          'Move B -> C',
-          'Move A -> B',
-          'Move C -> A',
-          'Move C -> B',
-          'Move A -> B',
-
-          'Move A -> C',
-
-          'Move B -> C',
-          'Move B -> A',
-          'Move C -> A',
-          'Move B -> C',
-          'Move A -> B',
-          'Move A -> C',
-          'Move B -> C',
-        ];
-
-        tree_code = [
-          {
-            tree_code: 'MoveDisc(4, A, B, C)',
-            tree_code_x: 0,
-            tree_code_y: 200,
-          },
-
-          // Level 2
-          {
-            tree_code: 'MoveDisc(3, A, C, B)',
-            tree_code_x: 250,
-            tree_code_y: 100,
-            tree_line_start_x: 175,
-            tree_line_start_y: 200,
-            tree_line_end_x: 250,
-            tree_line_end_y: 100,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(2, A, B, C)',
-            tree_code_x: 500,
-            tree_code_y: 50,
-            tree_line_start_x: 425,
-            tree_line_start_y: 100,
-            tree_line_end_x: 500,
-            tree_line_end_y: 50,
-          },
-          // Level 4
-          {
-            tree_code: 'MoveDisc(1, A, C, B)',
-            tree_code_x: 750,
-            tree_code_y: 25,
-            tree_line_start_x: 675,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
-            tree_line_end_y: 25,
-          },
-          {
-            tree_code: 'MoveDisc(1, A, B, C)',
-            tree_code_x: 750,
-            tree_code_y: 50,
-            tree_line_start_x: 675,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
-            tree_line_end_y: 50,
-          },
-          {
-            tree_code: 'MoveDisc(1, B, A, C)',
-            tree_code_x: 750,
-            tree_code_y: 75,
-            tree_line_start_x: 675,
-            tree_line_start_y: 50,
-            tree_line_end_x: 750,
-            tree_line_end_y: 75,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(1, A, C, B)',
-            tree_code_x: 500,
-            tree_code_y: 100,
-            tree_line_start_x: 425,
-            tree_line_start_y: 100,
-            tree_line_end_x: 500,
-            tree_line_end_y: 100,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(2, C, A, B)',
-            tree_code_x: 500,
-            tree_code_y: 150,
-            tree_line_start_x: 425,
-            tree_line_start_y: 100,
-            tree_line_end_x: 500,
-            tree_line_end_y: 150,
-          },
-          // Level 4
-          {
-            tree_code: 'MoveDisc(1, C, B, A)',
-            tree_code_x: 750,
-            tree_code_y: 125,
-            tree_line_start_x: 675,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
-            tree_line_end_y: 125,
-          },
-          {
-            tree_code: 'MoveDisc(1, C, A, B)',
-            tree_code_x: 750,
-            tree_code_y: 150,
-            tree_line_start_x: 675,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
-            tree_line_end_y: 150,
-          },
-          {
-            tree_code: 'MoveDisc(1, A, C, B)',
-            tree_code_x: 750,
-            tree_code_y: 175,
-            tree_line_start_x: 675,
-            tree_line_start_y: 150,
-            tree_line_end_x: 750,
-            tree_line_end_y: 175,
-          },
-
-          // Level 2
-          {
-            tree_code: 'MoveDisc(1, A, B, C)',
-            tree_code_x: 250,
-            tree_code_y: 200,
-            tree_line_start_x: 175,
-            tree_line_start_y: 200,
-            tree_line_end_x: 250,
-            tree_line_end_y: 200,
-          },
-          // Level 2
-          {
-            tree_code: 'MoveDisc(3, B, A, C)',
-            tree_code_x: 250,
-            tree_code_y: 300,
-            tree_line_start_x: 175,
-            tree_line_start_y: 200,
-            tree_line_end_x: 250,
-            tree_line_end_y: 300,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(2, B, C, A)',
-            tree_code_x: 500,
-            tree_code_y: 250,
-            tree_line_start_x: 425,
-            tree_line_start_y: 300,
-            tree_line_end_x: 500,
-            tree_line_end_y: 250,
-          },
-          // Level 4
-          {
-            tree_code: 'MoveDisc(1, B, A, C)',
-            tree_code_x: 750,
-            tree_code_y: 225,
-            tree_line_start_x: 675,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 225,
-          },
-          {
-            tree_code: 'MoveDisc(1, B, C, A)',
-            tree_code_x: 750,
-            tree_code_y: 250,
-            tree_line_start_x: 675,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 250,
-          },
-          {
-            tree_code: 'MoveDisc(1, C, B, A)',
-            tree_code_x: 750,
-            tree_code_y: 275,
-            tree_line_start_x: 675,
-            tree_line_start_y: 250,
-            tree_line_end_x: 750,
-            tree_line_end_y: 275,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(1, B, A, C)',
-            tree_code_x: 500,
-            tree_code_y: 300,
-            tree_line_start_x: 425,
-            tree_line_start_y: 300,
-            tree_line_end_x: 500,
-            tree_line_end_y: 300,
-          },
-
-          // Level 3
-          {
-            tree_code: 'MoveDisc(2, A, B, C)',
-            tree_code_x: 500,
-            tree_code_y: 350,
-            tree_line_start_x: 425,
-            tree_line_start_y: 300,
-            tree_line_end_x: 500,
-            tree_line_end_y: 350,
-          },
-          // Level 4
-          {
-            tree_code: 'MoveDisc(1, A, C, B)',
-            tree_code_x: 750,
-            tree_code_y: 325,
-            tree_line_start_x: 675,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 325,
-          },
-          {
-            tree_code: 'MoveDisc(1, A, B, C)',
-            tree_code_x: 750,
-            tree_code_y: 350,
-            tree_line_start_x: 675,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 350,
-          },
-          {
-            tree_code: 'MoveDisc(1, B, A, C)',
-            tree_code_x: 750,
-            tree_code_y: 375,
-            tree_line_start_x: 675,
-            tree_line_start_y: 350,
-            tree_line_end_x: 750,
-            tree_line_end_y: 375,
-          },
-        ];
-
-        create_code_steps = function() {
-          var steps = ['solve'];
-          steps.push('move_disc');
-          var recursion = function(n) {
-            steps.push('move_disc_declaration');
-            steps.push('base_case');
-            if (n === 1) {
-              steps.push('print_line');
-              steps.push('base_case_return');
-              return;
-            }
-            steps.push('move_left');
-            recursion(n - 1);
-            steps.push('move_left_return');
-            steps.push('move_base');
-            recursion(1);
-            steps.push('move_base_return');
-            steps.push('move_right');
-            recursion(n - 1);
-            steps.push('move_right_return');
-          }
-          recursion(4);
-          steps.push('move_disc');
-          return steps;
-        }
-
-        get_current_tree_step_stacks = function(step_number) {
-
-          var current_tree_step_stack = [];
-          var current_red_text_stack = [];
-          var current_tree_step = -1;
-          for (var i = 0; i <= step_number; i++) {
-            var code_step = code_steps[i];
-            if (code_step === 'move_disc_declaration') {
-              // Increase current_tree_step
-              current_tree_step++;
-              // Add step number to step stack
-              current_tree_step_stack.push(current_tree_step);
-              current_red_text_stack.push(current_tree_step);
-            }
-            if (
-              code_step === 'move_left_return'
-              || code_step === 'move_base_return'
-              || code_step === 'move_right_return'
-              || code_step === 'move_disc_return'
-            ) {
-              current_red_text_stack.pop();
-            }
-          }
-
-          return {
-            tree_step_stack: current_tree_step_stack,
-            red_text_step_stack: current_red_text_stack,
-          };
+        return {
+          tree_step_stack: current_tree_step_stack,
+          red_text_step_stack: current_red_text_stack,
         };
+      };
 
-        get_current_visualization_step = function(step_number) {
-          var current_visualization_step = 0;
-          for (var i = 0; i <= step_number; i++) {
-            var code_step = code_steps[i];
-            if (code_step === 'base_case_return') {
-              current_visualization_step++;
-            }
+      get_current_visualization_step = function (step_number) {
+        var current_visualization_step = 0;
+        for (var i = 0; i <= step_number; i++) {
+          var code_step = code_steps[i];
+          if (code_step === 'base_case_return') {
+            current_visualization_step++;
           }
-          return current_visualization_step;
         }
+        return current_visualization_step;
+      }
 
-        get_call_stack_div = function(call_stack_number, code_line) {
-          return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
-        };
+      get_call_stack_div = function (call_stack_number, code_line) {
+        return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
+      };
 
-        draw = function(step_number) {
-          //console.log("Step Number " + step_number)
+      draw = function (step_number) {
+        //console.log("Step Number " + step_number)
 
-          // Get Tree Data
-          var tree_data = get_current_tree_step_stacks(step_number);
+        // Get Tree Data
+        var tree_data = get_current_tree_step_stacks(step_number);
 
-          var tree_step_stack = tree_data.tree_step_stack;
-          var red_text_step_stack = tree_data.red_text_step_stack;
+        var tree_step_stack = tree_data.tree_step_stack;
+        var red_text_step_stack = tree_data.red_text_step_stack;
 
-          var tree_step = tree_step_stack[tree_step_stack.length-1];
-          var red_text_step = red_text_step_stack[red_text_step_stack.length-1];
+        var tree_step = tree_step_stack[tree_step_stack.length - 1];
+        var red_text_step = red_text_step_stack[red_text_step_stack.length - 1];
 
-          // Highlight line of code
-          var code_step = code_steps[step_number];
-          //console.log("Step " + code_step);
-          code_step = (code_step === 'move_left_return') ? 'move_left': code_step;
-          code_step = (code_step === 'move_base_return') ? 'move_base': code_step;
-          code_step = (code_step === 'move_right_return') ? 'move_right': code_step;
-          code_step = (code_step === 'move_disc_return') ? 'move_disc': code_step;
+        // Highlight line of code
+        var code_step = code_steps[step_number];
+        //console.log("Step " + code_step);
+        code_step = (code_step === 'move_left_return') ? 'move_left' : code_step;
+        code_step = (code_step === 'move_base_return') ? 'move_base' : code_step;
+        code_step = (code_step === 'move_right_return') ? 'move_right' : code_step;
+        code_step = (code_step === 'move_disc_return') ? 'move_disc' : code_step;
 
-          $('#' + code_step).addClass('highlight');
+        $('#' + code_step).addClass('highlight');
 
-          // Draw call stack boxes
-          var call_stack_number = 10;
-          var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
+        // Draw call stack boxes
+        var call_stack_number = 10;
+        var call_stack_div = get_call_stack_div(call_stack_number--, 'Main');
+        $('#call_stack_grid_container').append(call_stack_div);
+        call_stack_div = get_call_stack_div(call_stack_number--, 'Solve(4)');
+        $('#call_stack_grid_container').append(call_stack_div);
+        //console.log(red_text_step_stack);
+        for (var i = 0; i < red_text_step_stack.length; i++) {
+          // Add stack div to call stack grid.
+          var step = tree_code[red_text_step_stack[i]];
+          call_stack_div = get_call_stack_div(call_stack_number--, step.tree_code);
           $('#call_stack_grid_container').append(call_stack_div);
-          call_stack_div = get_call_stack_div(call_stack_number--, 'Solve(4)');
-          $('#call_stack_grid_container').append(call_stack_div);
-          //console.log(red_text_step_stack);
-          for (var i = 0; i < red_text_step_stack.length; i++) {
-            // Add stack div to call stack grid.
-              var step = tree_code[red_text_step_stack[i]];
-              call_stack_div = get_call_stack_div(call_stack_number--, step.tree_code);
-              $('#call_stack_grid_container').append(call_stack_div);
+        }
+
+        // Draw call tree based on above collected tree data.
+        for (var i = 0; i <= tree_step; i++) {
+          var step = tree_code[i];
+          //console.log('Tree Step Index ' + i);
+          //console.log('Tree Step ' + step);
+          text_color = '#000000';
+          line_color = '#000000';
+          if (i === red_text_step) {
+            text_color = '#ff0000';
           }
 
-          // Draw call tree based on above collected tree data.
-          for (var i = 0; i <= tree_step; i++) {
-            var step = tree_code[i];
-            //console.log('Tree Step Index ' + i);
-            //console.log('Tree Step ' + step);
-            text_color = '#000000';
-            line_color = '#000000';
-            if (i === red_text_step) {
-              text_color = '#ff0000';
-            }
-
-            // Draw call tree code if the data to do so exists.
-            if (
-              !is_null(step.tree_code)
-              && !is_null(step.tree_code_x)
-              && !is_null(step.tree_code_y)
-            ) {
-              // Show the call tree steps
-              tree_ctx.fillStyle = text_color
-              tree_ctx.fillText(step.tree_code, step.tree_code_x, step.tree_code_y);
-            }
-
-            // Add a line between the code calls if the data to do so exists.
-            if (
-              !is_null(step.tree_line_start_x)
-              && !is_null(step.tree_line_start_y)
-              && !is_null(step.tree_line_end_x)
-              && !is_null(step.tree_line_end_y)
-            ) {
-              tree_ctx.strokeStyle = line_color;
-              tree_ctx.beginPath();
-              tree_ctx.moveTo(step.tree_line_start_x, step.tree_line_start_y);
-              tree_ctx.lineTo(step.tree_line_end_x, step.tree_line_end_y);
-              tree_ctx.stroke();
-            }
+          // Draw call tree code if the data to do so exists.
+          if (
+            !is_null(step.tree_code)
+            && !is_null(step.tree_code_x)
+            && !is_null(step.tree_code_y)
+          ) {
+            // Show the call tree steps
+            tree_ctx.fillStyle = text_color
+            tree_ctx.fillText(step.tree_code, step.tree_code_x, step.tree_code_y);
           }
 
-          // Draw the current state of the visualization
-          var visualization_step = get_current_visualization_step(step_number);
-          //console.log(visualization_step);
-          var disc_step = disc_steps[visualization_step];
-          //console.log(disc_step);
-          for (var i = 0; i < disc_code.length; i++) {
-            var disc = disc_code[i];
-            //console.log(disc);
-            var x_pos = disc_step['disc_' + i + '_x'];
-            var y_pos = disc_step['disc_' + i + '_y'];
-            visualization_ctx.fillStyle = disc.color;
-            visualization_ctx.beginPath();
-            visualization_ctx.moveTo(x_pos, y_pos);
-            visualization_ctx.fillRect(x_pos, y_pos, disc.width, disc.height);
-          }
-
-          visualization_ctx.strokeStyle = disc_steps
-
-          // Draw output
-          var output_y = 25;
-          var output_x = 850;
-          for (var i = 0; i < visualization_step; i++) {
-            var output_step = output_steps[i];
-            visualization_ctx.fillStyle = '#000000';
-            visualization_ctx.font = '14px courier';
-            visualization_ctx.fillText(output_step, output_x, output_y);
-            output_y += 25;
-          }
-        };
-
-        draw_pegs = function() {
-          for (var i = 0; i < peg_code.length; i++) {
-            peg_step = peg_code[i];
-            visualization_ctx.strokeStyle = '#000000';
-            // Horizontal line
-            visualization_ctx.beginPath();
-            visualization_ctx.moveTo(peg_step.peg_line_h_start_x, peg_step.peg_line_h_start_y);
-            visualization_ctx.lineTo(peg_step.peg_line_h_end_x, peg_step.peg_line_h_end_y);
-            visualization_ctx.stroke();
-            // Vertical line
-            visualization_ctx.beginPath();
-            visualization_ctx.moveTo(peg_step.peg_line_v_start_x, peg_step.peg_line_v_start_y);
-            visualization_ctx.lineTo(peg_step.peg_line_v_end_x, peg_step.peg_line_v_end_y);
-            visualization_ctx.stroke();
-            // Peg letter
-            visualization_ctx.fillStyle = '#000000';
-            visualization_ctx.font = '32px courier';
-            visualization_ctx.fillText(peg_step.peg_letter, peg_step.peg_line_v_end_x - 10, peg_step.peg_line_v_end_y + 30);
+          // Add a line between the code calls if the data to do so exists.
+          if (
+            !is_null(step.tree_line_start_x)
+            && !is_null(step.tree_line_start_y)
+            && !is_null(step.tree_line_end_x)
+            && !is_null(step.tree_line_end_y)
+          ) {
+            tree_ctx.strokeStyle = line_color;
+            tree_ctx.beginPath();
+            tree_ctx.moveTo(step.tree_line_start_x, step.tree_line_start_y);
+            tree_ctx.lineTo(step.tree_line_end_x, step.tree_line_end_y);
+            tree_ctx.stroke();
           }
         }
 
-        clear_everything = function() {
-          // clear all things on screen
-          //console.log('Clear Everything');
+        // Draw the current state of the visualization
+        var visualization_step = get_current_visualization_step(step_number);
+        //console.log(visualization_step);
+        var disc_step = disc_steps[visualization_step];
+        //console.log(disc_step);
+        for (var i = 0; i < disc_code.length; i++) {
+          var disc = disc_code[i];
+          //console.log(disc);
+          var x_pos = disc_step['disc_' + i + '_x'];
+          var y_pos = disc_step['disc_' + i + '_y'];
+          visualization_ctx.fillStyle = disc.color;
+          visualization_ctx.beginPath();
+          visualization_ctx.moveTo(x_pos, y_pos);
+          visualization_ctx.fillRect(x_pos, y_pos, disc.width, disc.height);
+        }
 
-          $('#solve').removeClass('highlight');
-          $('#move_disc').removeClass('highlight');
-          $('#move_disc_declaration').removeClass('highlight');
-          $('#base_case').removeClass('highlight');
-          $('#print_line').removeClass('highlight');
-          $('#base_case_return').removeClass('highlight');
-          $('#move_left').removeClass('highlight');
-          //$('#move_left_return').removeClass('highlight');
-          $('#move_base').removeClass('highlight');
-          //$('#move_base_return').removeClass('highlight');
-          $('#move_right').removeClass('highlight');
-          //$('#move_right_return').removeClass('highlight');
+        visualization_ctx.strokeStyle = disc_steps
 
-          $('#call_stack_grid_container').html('');
+        // Draw output
+        var output_y = 25;
+        var output_x = 850;
+        for (var i = 0; i < visualization_step; i++) {
+          var output_step = output_steps[i];
+          visualization_ctx.fillStyle = '#000000';
+          visualization_ctx.font = '14px courier';
+          visualization_ctx.fillText(output_step, output_x, output_y);
+          output_y += 25;
+        }
+      };
 
-          visualization_ctx.clearRect(0, 0, visualization_canvas.width, visualization_canvas.height);
-          tree_ctx.clearRect(0, 0, tree_canvas.width, tree_canvas.height);
+      draw_pegs = function () {
+        for (var i = 0; i < peg_code.length; i++) {
+          peg_step = peg_code[i];
+          visualization_ctx.strokeStyle = '#000000';
+          // Horizontal line
+          visualization_ctx.beginPath();
+          visualization_ctx.moveTo(peg_step.peg_line_h_start_x, peg_step.peg_line_h_start_y);
+          visualization_ctx.lineTo(peg_step.peg_line_h_end_x, peg_step.peg_line_h_end_y);
+          visualization_ctx.stroke();
+          // Vertical line
+          visualization_ctx.beginPath();
+          visualization_ctx.moveTo(peg_step.peg_line_v_start_x, peg_step.peg_line_v_start_y);
+          visualization_ctx.lineTo(peg_step.peg_line_v_end_x, peg_step.peg_line_v_end_y);
+          visualization_ctx.stroke();
+          // Peg letter
+          visualization_ctx.fillStyle = '#000000';
+          visualization_ctx.font = '32px courier';
+          visualization_ctx.fillText(peg_step.peg_letter, peg_step.peg_line_v_end_x - 10, peg_step.peg_line_v_end_y + 30);
+        }
+      }
 
-          draw_pegs();
-        };
+      clear_everything = function () {
+        // clear all things on screen
+        //console.log('Clear Everything');
 
-        $('#play_button').click(function() {
-          // Time for each step
-          var step_time = 2000;
-          var speed = 1;
-          var speed_radios = $("[name='speed']");
-          for (var i = 0, len = speed_radios.length; i < len; i++) {
-            if (speed_radios[i].checked) {
-              speed = $(speed_radios[i]).val();
-            }
+        $('#solve').removeClass('highlight');
+        $('#move_disc').removeClass('highlight');
+        $('#move_disc_declaration').removeClass('highlight');
+        $('#base_case').removeClass('highlight');
+        $('#print_line').removeClass('highlight');
+        $('#base_case_return').removeClass('highlight');
+        $('#move_left').removeClass('highlight');
+        //$('#move_left_return').removeClass('highlight');
+        $('#move_base').removeClass('highlight');
+        //$('#move_base_return').removeClass('highlight');
+        $('#move_right').removeClass('highlight');
+        //$('#move_right_return').removeClass('highlight');
+
+        $('#call_stack_grid_container').html('');
+
+        visualization_ctx.clearRect(0, 0, visualization_canvas.width, visualization_canvas.height);
+        tree_ctx.clearRect(0, 0, tree_canvas.width, tree_canvas.height);
+
+        draw_pegs();
+      };
+
+      $('#play_button').click(function () {
+        // Time for each step
+        var step_time = 2000;
+        var speed = 1;
+        var speed_radios = $("[name='speed']");
+        for (var i = 0, len = speed_radios.length; i < len; i++) {
+          if (speed_radios[i].checked) {
+            speed = $(speed_radios[i]).val();
           }
-          step_time = (step_time / speed);
-          // Disable play button
-          $('#play_button').hide();
-          $('#pause_button').show();
-          $('#reset_button').prop('disabled', true);
-          $('#forward_button').prop('disabled', true);
-          $('#backward_button').prop('disabled', true);
+        }
+        step_time = (step_time / speed);
+        // Disable play button
+        $('#play_button').hide();
+        $('#pause_button').show();
+        $('#reset_button').prop('disabled', true);
+        $('#forward_button').prop('disabled', true);
+        $('#backward_button').prop('disabled', true);
 
-          // Reinitialize play_timeouts array
-          play_timeouts = [];
-          // For each step, set a timeout.
-          processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
-          // Calculate offset for when paused in middle.
-          var offset = processed_step * step_time;
-          //console.log(processed_step);
-          for (current_step = processed_step; current_step < code_steps.length; current_step++) {
-            // Calculate timeout
-            var timeout = (step_time * current_step) - offset;
-            //console.log("Current Step " + current_step);
-            //console.log("Timeout " + timeout);
-            timeout_id = setTimeout(function(current_step) {
-              clear_everything();
-              draw(current_step);
-              processed_step++;
-            }, timeout, current_step);
-            // Add timeout to array of timeouts
-            play_timeouts.push(timeout_id);
-          }
-
-          // Add a timeout to re-enable the play button
-          var button_timeout = (step_time * code_steps.length) - offset;
-          timeout_id = setTimeout(function() {
-            //$('#play_button').prop('disabled', false);
-            $('#pause_button').hide();
-            $('#play_button').show();
-            $('#reset_button').prop('disabled', false);
-            $('#forward_button').prop('disabled', false);
-            $('#backward_button').prop('disabled', false);
-          }, button_timeout);
+        // Reinitialize play_timeouts array
+        play_timeouts = [];
+        // For each step, set a timeout.
+        processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
+        // Calculate offset for when paused in middle.
+        var offset = processed_step * step_time;
+        //console.log(processed_step);
+        for (current_step = processed_step; current_step < code_steps.length; current_step++) {
+          // Calculate timeout
+          var timeout = (step_time * current_step) - offset;
+          //console.log("Current Step " + current_step);
+          //console.log("Timeout " + timeout);
+          timeout_id = setTimeout(function (current_step) {
+            clear_everything();
+            draw(current_step);
+            processed_step++;
+          }, timeout, current_step);
+          // Add timeout to array of timeouts
           play_timeouts.push(timeout_id);
-        });
+        }
 
-        $('#pause_button').click(function() {
-          for (i = 0; i < play_timeouts.length; i++) {
-            clearTimeout(play_timeouts[i]);
-          }
+        // Add a timeout to re-enable the play button
+        var button_timeout = (step_time * code_steps.length) - offset;
+        timeout_id = setTimeout(function () {
+          //$('#play_button').prop('disabled', false);
           $('#pause_button').hide();
           $('#play_button').show();
           $('#reset_button').prop('disabled', false);
           $('#forward_button').prop('disabled', false);
           $('#backward_button').prop('disabled', false);
-        });
+        }, button_timeout);
+        play_timeouts.push(timeout_id);
+      });
 
-        $('#reset_button').click(function() {
-          processed_step = 0;
-          current_step = 0;
-          clear_everything();
-          draw(current_step);
-        });
+      $('#pause_button').click(function () {
+        for (i = 0; i < play_timeouts.length; i++) {
+          clearTimeout(play_timeouts[i]);
+        }
+        $('#pause_button').hide();
+        $('#play_button').show();
+        $('#reset_button').prop('disabled', false);
+        $('#forward_button').prop('disabled', false);
+        $('#backward_button').prop('disabled', false);
+      });
 
-        $('#forward_button').click(function() {
-          if (processed_step + 1 < code_steps.length) {
-            current_step = current_step + 1;
-            processed_step = processed_step + 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        $('#backward_button').click(function() {
-          if (processed_step - 1 >= 0) {
-            current_step = current_step - 1;
-            processed_step = processed_step - 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        code_steps = create_code_steps();
-        //console.log(code_steps);
-
-        // Setup the inital display.
+      $('#reset_button').click(function () {
         processed_step = 0;
         current_step = 0;
         clear_everything();
         draw(current_step);
-
       });
-    </script>
-  </body>
+
+      $('#forward_button').click(function () {
+        if (processed_step + 1 < code_steps.length) {
+          current_step = current_step + 1;
+          processed_step = processed_step + 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      $('#backward_button').click(function () {
+        if (processed_step - 1 >= 0) {
+          current_step = current_step - 1;
+          processed_step = processed_step - 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      code_steps = create_code_steps();
+      //console.log(code_steps);
+
+      // Setup the inital display.
+      processed_step = 0;
+      current_step = 0;
+      clear_everything();
+      draw(current_step);
+
+    });
+  </script>
+</body>
+
 </html>

@@ -1,122 +1,147 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <style>
-      body {
-        padding: 5px 10px;
-      }
-      .flex-container {
-        display: grid;
-        grid-template-rows: 585px 495px;
-        grid-template-columns: 40% 60%;
-      }
-      .code-div {
-        grid-row: 1;
-        grid-column: 1;
-      }
-      .memory-div {
-        grid-row: 1 / 3;
-        grid-column: 2;
-      }
-      .output-div {
-        grid-row: 2;
-        grid-column: 1;
-      }
-      .button-span {
-        float: right;
-      }
 
-      .highlight {
-        background-color: yellow;
-      }
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 5px 10px;
+    }
 
-      .memory-grid-container {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 40px 80px 80px 80px 40px 40px 40px 40px 40px 40px 40px 480px;
-        width: 70%;
-        border: 1px solid black;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        font-size: 30px;
-      }
-      .section-item {
-        border-top: 1px solid black;
-      }
-      .stack-item,
-      .heap-item {
-        font-size: 14px;
-        border: 1px dotted black;
-      }
-      .method-name {
-        font-size: 16px;
-        font-weight: 900;
-      }
+    .flex-container {
+      display: grid;
+      grid-template-rows: 585px 495px;
+      grid-template-columns: 40% 60%;
+    }
 
-    </style>
-  </head>
-  <body>
-    <h1>
-      System Memory
-      <span class="button-span">
-        <div class="btn-group">
-          <button class="btn btn-info" disabled="true">Speed:</button>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-info active">
-              <input type="radio" name="speed" id="option1" value="1" checked> 1x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option2" value="2"> 2x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option3" value="4"> 4x
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="speed" id="option4" value="8"> 8x
-            </label>
-          </div>
+    .code-div {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .memory-div {
+      grid-row: 1 / 3;
+      grid-column: 2;
+    }
+
+    .output-div {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    .button-span {
+      float: right;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+
+    .memory-grid-container {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 40px 80px 80px 80px 40px 40px 40px 40px 40px 40px 40px 480px;
+      width: 70%;
+      border: 1px solid black;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .section-item {
+      border-top: 1px solid black;
+    }
+
+    .stack-item,
+    .heap-item {
+      font-size: 14px;
+      border: 1px dotted black;
+    }
+
+    .method-name {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    System Memory
+    <span class="button-span">
+      <div class="btn-group">
+        <button class="btn btn-info" disabled="true">Speed:</button>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info active">
+            <input type="radio" name="speed" id="option1" value="1" checked> 1x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option2" value="2"> 2x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option3" value="4"> 4x
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="speed" id="option4" value="8"> 8x
+          </label>
         </div>
-        <button id="play_button" class="btn btn-success">
-          <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-          </svg>
-          Play
-        </button>
-        <button id="pause_button" class="btn btn-warning" style="display: none;">
-          <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
-          </svg>
-          Pause
-        </button>
-        <button id="reset_button" class="btn btn-danger">
-          <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
-            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
-          </svg>
-          Reset
-        </button>
-        <button id="backward_button" class="btn btn-primary">
-          <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-          </svg>
-          Step Backward
-        </button>
-        <button id="forward_button" class="btn btn-primary">
-          Step Forward
-          <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-          </svg>
-        </button>
-      </span>
-    </h1>
-    <div class="flex-container">
-      <div class="code-div">
-        <h2>Code</h2>
-        <pre style="font-size: 12px;">
+      </div>
+      <button id="play_button" class="btn btn-success">
+        <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+        </svg>
+        Play
+      </button>
+      <button id="pause_button" class="btn btn-warning" style="display: none;">
+        <svg class="bi bi-pause-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+        </svg>
+        Pause
+      </button>
+      <button id="reset_button" class="btn btn-danger">
+        <svg class="bi bi-arrow-clockwise" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z" />
+          <path fill-rule="evenodd"
+            d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z" />
+        </svg>
+        Reset
+      </button>
+      <button id="backward_button" class="btn btn-primary">
+        <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+        </svg>
+        Step Backward
+      </button>
+      <button id="forward_button" class="btn btn-primary">
+        Step Forward
+        <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </button>
+    </span>
+  </h1>
+  <div class="flex-container">
+    <div class="code-div">
+      <h2>Code</h2>
+      <pre style="font-size: 12px;">
           def main(*args):
               number = 12;
               my_emp = new Employee();
@@ -145,10 +170,10 @@
           if __name__ == "__main__":
               main(*sys.argv[1:])
         </pre>
-      </div>
-      <div class="output-div">
-        <h2>Output</h2>
-        <pre>
+    </div>
+    <div class="output-div">
+      <h2>Output</h2>
+      <pre>
           <span id="out_1">main</span>
           <span id="out_2">12</span>
           <span id="out_3">37489757</span>
@@ -175,40 +200,40 @@
           <span id="out_24">Fred</span>
           <span id="out_25"></span>
         </pre>
-      </div>
-      <div class="memory-div">
-        <h2>Memory</h2>
-        <div id="memory_grid_container" class="memory-grid-container">
-          <div class="memory-item section-item" style="grid-row: 1; grid-column: 1;">Stack</div>
-          <div class="memory-item stack-item" style="grid-row: 2; grid-column: 1;">
-            <span id="method_1_name" class="method-name">main</span><br>
-            <span id="num_1">number = 12;</span><br>
-            <span id="emp_1">my_emp = 0x5b42314e</span><br>
-          </div>
-          <div id="stack_2" class="memory-item stack-item" style="grid-row: 3; grid-column: 1; display: none;">
-            <span id="method_2_name" class="method-name">show</span><br>
-            <span id="num_2">num = 12;</span><br>
-            <span id="emp_2">emp = 0x5b42314e</span><br>
-          </div>
-          <div id="stack_3" class="memory-item stack-item" style="grid-row: 4; grid-column: 1; display: none;">
-            <span id="method_3_name" class="method-name">show</span><br>
-            <span id="num_3">num = 12;</span><br>
-            <span id="emp_3">emp = 0x5b42314e</span><br>
-          </div>
-          <div class="memory-item section-item" style="grid-row: 5; grid-column: 1;">Heap</div>
-          <div id="heap_2" class="memory-item heap-item" style="grid-row: 7; grid-column: 1; display: none;">
-            Employee Instance @ 0x8a429df<br>
-            <span id="emp_2_name">instance.name = "Fred"</span>
-          </div>
-          <div class="memory-item heap-item" style="grid-row: 8; grid-column: 1;">
-            Employee Instance @ 0x5b42314e<br>
-            <span id="emp_1_name">instance.name = "Ben"</span>
-          </div>
-          <div class="memory-item section-item" style="grid-row: 9; grid-column: 1;">BSS</div>
-          <div class="memory-item section-item" style="grid-row: 10; grid-column: 1;">Data</div>
-          <div class="memory-item section-item" style="grid-row: 11; grid-column: 1;">Text</div>
-          <div class="memory-item text-item" style="grid-row: 12; grid-column: 1;">
-            <pre style="font-size: 8pt; text-align: left;">
+    </div>
+    <div class="memory-div">
+      <h2>Memory</h2>
+      <div id="memory_grid_container" class="memory-grid-container">
+        <div class="memory-item section-item" style="grid-row: 1; grid-column: 1;">Stack</div>
+        <div class="memory-item stack-item" style="grid-row: 2; grid-column: 1;">
+          <span id="method_1_name" class="method-name">main</span><br>
+          <span id="num_1">number = 12;</span><br>
+          <span id="emp_1">my_emp = 0x5b42314e</span><br>
+        </div>
+        <div id="stack_2" class="memory-item stack-item" style="grid-row: 3; grid-column: 1; display: none;">
+          <span id="method_2_name" class="method-name">show</span><br>
+          <span id="num_2">num = 12;</span><br>
+          <span id="emp_2">emp = 0x5b42314e</span><br>
+        </div>
+        <div id="stack_3" class="memory-item stack-item" style="grid-row: 4; grid-column: 1; display: none;">
+          <span id="method_3_name" class="method-name">show</span><br>
+          <span id="num_3">num = 12;</span><br>
+          <span id="emp_3">emp = 0x5b42314e</span><br>
+        </div>
+        <div class="memory-item section-item" style="grid-row: 5; grid-column: 1;">Heap</div>
+        <div id="heap_2" class="memory-item heap-item" style="grid-row: 7; grid-column: 1; display: none;">
+          Employee Instance @ 0x8a429df<br>
+          <span id="emp_2_name">instance.name = "Fred"</span>
+        </div>
+        <div class="memory-item heap-item" style="grid-row: 8; grid-column: 1;">
+          Employee Instance @ 0x5b42314e<br>
+          <span id="emp_1_name">instance.name = "Ben"</span>
+        </div>
+        <div class="memory-item section-item" style="grid-row: 9; grid-column: 1;">BSS</div>
+        <div class="memory-item section-item" style="grid-row: 10; grid-column: 1;">Data</div>
+        <div class="memory-item section-item" style="grid-row: 11; grid-column: 1;">Text</div>
+        <div class="memory-item text-item" style="grid-row: 12; grid-column: 1;">
+          <pre style="font-size: 8pt; text-align: left;">
               def main(*args):
                   number = 12;
                   my_emp = new Employee();
@@ -237,380 +262,381 @@
               if __name__ == "__main__":
                   run(*sys.argv[1:])
             </pre>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      $(document).ready(function() {
+  <script>
+    $(document).ready(function () {
 
-        var tree_canvas, tree_ctx, play_timeouts;
-        var code_steps, tree_code, current_step, processed_step;
-        var clear_everything, play_all_steps, draw, is_null;
-        var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
+      var tree_canvas, tree_ctx, play_timeouts;
+      var code_steps, tree_code, current_step, processed_step;
+      var clear_everything, play_all_steps, draw, is_null;
+      var create_code_steps, get_current_tree_step_stacks, get_call_stack_div;
 
-        is_null = function(value) {
-          return (typeof value === 'undefined' || value === null);
-        }
+      is_null = function (value) {
+        return (typeof value === 'undefined' || value === null);
+      }
 
-        create_code_steps = function() {
-          var steps = ['print_1'];
-          add_print_steps(steps);
-          steps.push('return_print_1');
-          steps.push('do_stuff_call');
+      create_code_steps = function () {
+        var steps = ['print_1'];
+        add_print_steps(steps);
+        steps.push('return_print_1');
+        steps.push('do_stuff_call');
 
-          steps.push('do_stuff_print_1');
-          add_print_steps(steps);
-          steps.push('return_do_stuff_print_1');
-          steps.push('new_num');
-          steps.push('new_name');
-          steps.push('do_stuff_print_2');
-          add_print_steps(steps);
-          steps.push('return_do_stuff_print_2');
+        steps.push('do_stuff_print_1');
+        add_print_steps(steps);
+        steps.push('return_do_stuff_print_1');
+        steps.push('new_num');
+        steps.push('new_name');
+        steps.push('do_stuff_print_2');
+        add_print_steps(steps);
+        steps.push('return_do_stuff_print_2');
 
-          steps.push('return_do_stuff_call');
-          steps.push('print_2');
-          add_print_steps(steps);
-          steps.push('return_print_2');
-          steps.push('new_emp');
-          steps.push('new_emp_name');
-          steps.push('print_3');
-          add_print_steps(steps);
-          steps.push('return_print_3');
+        steps.push('return_do_stuff_call');
+        steps.push('print_2');
+        add_print_steps(steps);
+        steps.push('return_print_2');
+        steps.push('new_emp');
+        steps.push('new_emp_name');
+        steps.push('print_3');
+        add_print_steps(steps);
+        steps.push('return_print_3');
 
-          return steps;
-        };
+        return steps;
+      };
 
-        add_print_steps = function(steps) {
-          steps.push('cw_1');
-          steps.push('cw_2');
-          steps.push('cw_3');
-          steps.push('cw_4');
-          steps.push('cw_5');
-        }
+      add_print_steps = function (steps) {
+        steps.push('cw_1');
+        steps.push('cw_2');
+        steps.push('cw_3');
+        steps.push('cw_4');
+        steps.push('cw_5');
+      }
 
-        get_current_tree_step_stacks = function(step_number) {
+      get_current_tree_step_stacks = function (step_number) {
 
-          var current_tree_step_stack = [];
-          var current_red_text_stack = [];
-          var current_tree_step = -1;
-          for (var i = 0; i <= step_number; i++) {
-            var code_step = code_steps[i];
-            if (code_step === 'sort_declaration' || code_step === 'merge') {
-              // Increase current_tree_step
-              current_tree_step++;
-              // Add step number to step stack
-              current_tree_step_stack.push(current_tree_step);
-              current_red_text_stack.push(current_tree_step);
-            }
-            if (
-              code_step === 'return_sort_left'
-              || code_step === 'return_sort_right'
-              || code_step === 'return_merge'
-              || code_step === 'return_sort_start'
-            ) {
-              current_red_text_stack.pop();
-            }
-          }
-
-          return {
-            tree_step_stack: current_tree_step_stack,
-            red_text_step_stack: current_red_text_stack,
-          };
-        };
-
-        get_call_stack_div = function(call_stack_number, code_line) {
-          return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
-        };
-
-        clear_stack_entries = function() {
-          $('#stack_2').hide();
-          $('#stack_3').hide();
-          $('#heap_2').hide();
-        }
-
-        clear_output_entries = function() {
-          for (var i = 1; i < 25; i++) {
-            $('#out_' + i).hide();
-          }
-        }
-
-        get_output_step = function(step_number) {
-          var output_step = 0;
-          var output_steps = [
-            'cw_1',
-            'cw_2',
-            'cw_3',
-            'cw_4',
-            'cw_5',
-          ];
-          for (var i = 0; i < step_number; i++) {
-            if (output_steps.includes(code_steps[i])) {
-              output_step++;
-            }
-          }
-          return output_step;
-        }
-
-        get_stack_step = function(step_number) {
-          var stack_step = '';
-          var stack_steps = [
-            'print_1',
-            'print_2',
-            'print_3',
-            'do_stuff_print_1',
-            'do_stuff_print_2',
-            'do_stuff_call',
-
-            'new_emp',
-            'new_emp_name',
-            'new_num',
-            'new_name',
-
-            'return_print_1',
-            'return_print_2',
-            'return_print_3',
-            'return_do_stuff_print_1',
-            'return_do_stuff_print_2',
-            'return_do_stuff_call'
-          ];
-          for (var i = 0; i < step_number; i++) {
-            if (stack_steps.includes(code_steps[i])) {
-              stack_step = code_steps[i];
-            }
-          }
-          return stack_step;
-        }
-
-        update_stack_entry = function(stack, method, num, emp) {
-          $('#stack_' + stack).show();
-          $('#method_' + stack + '_name').html(method);
-          $('#num_' + stack).html(num);
-          $('#emp_' + stack).html(emp);
-        }
-
-        update_output = function(output_step) {
-          for (var i = 1; i <= output_step; i++) {
-            $('#out_' + i).show();
-          }
-        }
-
-        draw = function(step_number) {
-          //console.log("Step Number " + step_number)
-
-          var code_step = code_steps[step_number];
-          //console.log("Step " + code_step);
-
-          var stack_step = get_stack_step(step_number);
-          //console.log("Stack Step " + stack_step);
-
-          var output_step = get_output_step(step_number);
-          clear_output_entries();
-          update_output(output_step);
-
-          if (
-            stack_step === '' ||
-            stack_step === 'return_print_1' ||
-            stack_step === 'return_do_stuff_call' ||
-            stack_step === 'return_print_2'
-          ) {
-            clear_stack_entries();
-            $('#emp_1').html('my_emp = 0x5b42314e');
-          }
-          if (stack_step === 'print_1') {
-            clear_stack_entries();
-            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
+        var current_tree_step_stack = [];
+        var current_red_text_stack = [];
+        var current_tree_step = -1;
+        for (var i = 0; i <= step_number; i++) {
+          var code_step = code_steps[i];
+          if (code_step === 'sort_declaration' || code_step === 'merge') {
+            // Increase current_tree_step
+            current_tree_step++;
+            // Add step number to step stack
+            current_tree_step_stack.push(current_tree_step);
+            current_red_text_stack.push(current_tree_step);
           }
           if (
-            stack_step === 'do_stuff_call' ||
-            stack_step === 'return_do_stuff_print_1'
+            code_step === 'return_sort_left'
+            || code_step === 'return_sort_right'
+            || code_step === 'return_merge'
+            || code_step === 'return_sort_start'
           ) {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
+            current_red_text_stack.pop();
           }
-          if (stack_step === 'do_stuff_print_1') {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
-            update_stack_entry('3', 'show', 'num = 12;', 'emp = 0x5b42314e');
-          }
-          if (stack_step === 'new_num') {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
-          }
-          if (stack_step === 'new_name') {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
-          if (stack_step === 'do_stuff_print_2') {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
-            update_stack_entry('3', 'show', 'num = 24;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
-          if (stack_step === 'return_do_stuff_print_2') {
-            clear_stack_entries();
-            update_stack_entry('2', 'do_stuff', 'num = 24', 'emp = 0x5b42314e')
-          }
-          if (stack_step === 'print_2') {
-            clear_stack_entries();
-            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
-          if (stack_step === 'new_emp') {
-            clear_stack_entries();
-            $('#emp_1').html('my_emp = 0x8a429df');
-            $('#heap_2').show();
-            $('#emp_2_name').html('');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
-          if (stack_step === 'new_emp_name') {
-            clear_stack_entries();
-            $('#emp_1').html('my_emp = 0x8a429df');
-            $('#heap_2').show();
-            $('#emp_2_name').html('instance.name = "Fred"');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
-          if (stack_step === 'print_3') {
-            clear_stack_entries();
-            $('#emp_1').html('my_emp = 0x8a429df');
-            update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x8a429df');
-            $('#heap_2').show();
-            $('#emp_2_name').html('instance.name = "Fred"');
-            $('#emp_1_name').html('instance.name = "Joe"');
-          }
+        }
 
-          code_step = (code_step === 'return_print_1') ? 'print_1': code_step;
-          code_step = (code_step === 'return_print_2') ? 'print_2': code_step;
-          code_step = (code_step === 'return_print_3') ? 'print_3': code_step;
-          code_step = (code_step === 'return_do_stuff_print_1') ? 'do_stuff_print_1': code_step;
-          code_step = (code_step === 'return_do_stuff_print_2') ? 'do_stuff_print_2': code_step;
-          code_step = (code_step === 'return_do_stuff_call') ? 'do_stuff_call': code_step;
-
-          $('#' + code_step).addClass('highlight');
-
+        return {
+          tree_step_stack: current_tree_step_stack,
+          red_text_step_stack: current_red_text_stack,
         };
+      };
 
-        clear_everything = function() {
-          // clear all things on screen
-          //console.log('Clear Everything');
+      get_call_stack_div = function (call_stack_number, code_line) {
+        return '<div class="call-stack-item call-stack-main-item" style="grid-row: ' + call_stack_number + '; grid-column: 1;">' + code_line + '</div>'
+      };
 
-          $('#print_1').removeClass('highlight');
-          $('#do_stuff_call').removeClass('highlight');
-          $('#do_stuff_print_1').removeClass('highlight');
-          $('#new_num').removeClass('highlight');
-          $('#new_name').removeClass('highlight');
-          $('#do_stuff_print_2').removeClass('highlight');
-          $('#print_2').removeClass('highlight');
-          $('#new_emp').removeClass('highlight');
-          $('#new_emp_name').removeClass('highlight');
-          $('#print_3').removeClass('highlight');
-          $('#cw_1').removeClass('highlight');
-          $('#cw_2').removeClass('highlight');
-          $('#cw_3').removeClass('highlight');
-          $('#cw_4').removeClass('highlight');
-          $('#cw_5').removeClass('highlight');
-        };
+      clear_stack_entries = function () {
+        $('#stack_2').hide();
+        $('#stack_3').hide();
+        $('#heap_2').hide();
+      }
 
-        $('#play_button').click(function() {
-          // Time for each step
-          var step_time = 2000;
-          var speed = 1;
-          var speed_radios = $("[name='speed']");
-          for (var i = 0, len = speed_radios.length; i < len; i++) {
-            if (speed_radios[i].checked) {
-              speed = $(speed_radios[i]).val();
-            }
+      clear_output_entries = function () {
+        for (var i = 1; i < 25; i++) {
+          $('#out_' + i).hide();
+        }
+      }
+
+      get_output_step = function (step_number) {
+        var output_step = 0;
+        var output_steps = [
+          'cw_1',
+          'cw_2',
+          'cw_3',
+          'cw_4',
+          'cw_5',
+        ];
+        for (var i = 0; i < step_number; i++) {
+          if (output_steps.includes(code_steps[i])) {
+            output_step++;
           }
-          step_time = (step_time / speed);
-          // Disable play button
-          $('#play_button').hide();
-          $('#pause_button').show();
-          $('#reset_button').prop('disabled', true);
-          $('#forward_button').prop('disabled', true);
-          $('#backward_button').prop('disabled', true);
+        }
+        return output_step;
+      }
 
-          // Reinitialize play_timeouts array
-          play_timeouts = [];
-          // For each step, set a timeout.
-          processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
-          // Calculate offset for when paused in middle.
-          var offset = processed_step * step_time;
-          //console.log(processed_step);
-          for (current_step = processed_step; current_step < code_steps.length; current_step++) {
-            // Calculate timeout
-            var timeout = (step_time * current_step) - offset;
-            //console.log("Current Step " + current_step);
-            //console.log("Timeout " + timeout);
-            timeout_id = setTimeout(function(current_step) {
-              clear_everything();
-              draw(current_step);
-              processed_step++;
-            }, timeout, current_step);
-            // Add timeout to array of timeouts
-            play_timeouts.push(timeout_id);
+      get_stack_step = function (step_number) {
+        var stack_step = '';
+        var stack_steps = [
+          'print_1',
+          'print_2',
+          'print_3',
+          'do_stuff_print_1',
+          'do_stuff_print_2',
+          'do_stuff_call',
+
+          'new_emp',
+          'new_emp_name',
+          'new_num',
+          'new_name',
+
+          'return_print_1',
+          'return_print_2',
+          'return_print_3',
+          'return_do_stuff_print_1',
+          'return_do_stuff_print_2',
+          'return_do_stuff_call'
+        ];
+        for (var i = 0; i < step_number; i++) {
+          if (stack_steps.includes(code_steps[i])) {
+            stack_step = code_steps[i];
           }
+        }
+        return stack_step;
+      }
 
-          // Add a timeout to re-enable the play button
-          var button_timeout = (step_time * code_steps.length) - offset;
-          timeout_id = setTimeout(function() {
-            //$('#play_button').prop('disabled', false);
-            $('#pause_button').hide();
-            $('#play_button').show();
-            $('#reset_button').prop('disabled', false);
-            $('#forward_button').prop('disabled', false);
-            $('#backward_button').prop('disabled', false);
-          }, button_timeout);
+      update_stack_entry = function (stack, method, num, emp) {
+        $('#stack_' + stack).show();
+        $('#method_' + stack + '_name').html(method);
+        $('#num_' + stack).html(num);
+        $('#emp_' + stack).html(emp);
+      }
+
+      update_output = function (output_step) {
+        for (var i = 1; i <= output_step; i++) {
+          $('#out_' + i).show();
+        }
+      }
+
+      draw = function (step_number) {
+        //console.log("Step Number " + step_number)
+
+        var code_step = code_steps[step_number];
+        //console.log("Step " + code_step);
+
+        var stack_step = get_stack_step(step_number);
+        //console.log("Stack Step " + stack_step);
+
+        var output_step = get_output_step(step_number);
+        clear_output_entries();
+        update_output(output_step);
+
+        if (
+          stack_step === '' ||
+          stack_step === 'return_print_1' ||
+          stack_step === 'return_do_stuff_call' ||
+          stack_step === 'return_print_2'
+        ) {
+          clear_stack_entries();
+          $('#emp_1').html('my_emp = 0x5b42314e');
+        }
+        if (stack_step === 'print_1') {
+          clear_stack_entries();
+          update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
+        }
+        if (
+          stack_step === 'do_stuff_call' ||
+          stack_step === 'return_do_stuff_print_1'
+        ) {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
+        }
+        if (stack_step === 'do_stuff_print_1') {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 12;', 'emp = 0x5b42314e');
+          update_stack_entry('3', 'show', 'num = 12;', 'emp = 0x5b42314e');
+        }
+        if (stack_step === 'new_num') {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+        }
+        if (stack_step === 'new_name') {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+        if (stack_step === 'do_stuff_print_2') {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 24;', 'emp = 0x5b42314e');
+          update_stack_entry('3', 'show', 'num = 24;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+        if (stack_step === 'return_do_stuff_print_2') {
+          clear_stack_entries();
+          update_stack_entry('2', 'do_stuff', 'num = 24', 'emp = 0x5b42314e')
+        }
+        if (stack_step === 'print_2') {
+          clear_stack_entries();
+          update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x5b42314e');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+        if (stack_step === 'new_emp') {
+          clear_stack_entries();
+          $('#emp_1').html('my_emp = 0x8a429df');
+          $('#heap_2').show();
+          $('#emp_2_name').html('');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+        if (stack_step === 'new_emp_name') {
+          clear_stack_entries();
+          $('#emp_1').html('my_emp = 0x8a429df');
+          $('#heap_2').show();
+          $('#emp_2_name').html('instance.name = "Fred"');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+        if (stack_step === 'print_3') {
+          clear_stack_entries();
+          $('#emp_1').html('my_emp = 0x8a429df');
+          update_stack_entry('2', 'show', 'num = 12;', 'emp = 0x8a429df');
+          $('#heap_2').show();
+          $('#emp_2_name').html('instance.name = "Fred"');
+          $('#emp_1_name').html('instance.name = "Joe"');
+        }
+
+        code_step = (code_step === 'return_print_1') ? 'print_1' : code_step;
+        code_step = (code_step === 'return_print_2') ? 'print_2' : code_step;
+        code_step = (code_step === 'return_print_3') ? 'print_3' : code_step;
+        code_step = (code_step === 'return_do_stuff_print_1') ? 'do_stuff_print_1' : code_step;
+        code_step = (code_step === 'return_do_stuff_print_2') ? 'do_stuff_print_2' : code_step;
+        code_step = (code_step === 'return_do_stuff_call') ? 'do_stuff_call' : code_step;
+
+        $('#' + code_step).addClass('highlight');
+
+      };
+
+      clear_everything = function () {
+        // clear all things on screen
+        //console.log('Clear Everything');
+
+        $('#print_1').removeClass('highlight');
+        $('#do_stuff_call').removeClass('highlight');
+        $('#do_stuff_print_1').removeClass('highlight');
+        $('#new_num').removeClass('highlight');
+        $('#new_name').removeClass('highlight');
+        $('#do_stuff_print_2').removeClass('highlight');
+        $('#print_2').removeClass('highlight');
+        $('#new_emp').removeClass('highlight');
+        $('#new_emp_name').removeClass('highlight');
+        $('#print_3').removeClass('highlight');
+        $('#cw_1').removeClass('highlight');
+        $('#cw_2').removeClass('highlight');
+        $('#cw_3').removeClass('highlight');
+        $('#cw_4').removeClass('highlight');
+        $('#cw_5').removeClass('highlight');
+      };
+
+      $('#play_button').click(function () {
+        // Time for each step
+        var step_time = 2000;
+        var speed = 1;
+        var speed_radios = $("[name='speed']");
+        for (var i = 0, len = speed_radios.length; i < len; i++) {
+          if (speed_radios[i].checked) {
+            speed = $(speed_radios[i]).val();
+          }
+        }
+        step_time = (step_time / speed);
+        // Disable play button
+        $('#play_button').hide();
+        $('#pause_button').show();
+        $('#reset_button').prop('disabled', true);
+        $('#forward_button').prop('disabled', true);
+        $('#backward_button').prop('disabled', true);
+
+        // Reinitialize play_timeouts array
+        play_timeouts = [];
+        // For each step, set a timeout.
+        processed_step = (processed_step === code_steps.length) ? 0 : processed_step;
+        // Calculate offset for when paused in middle.
+        var offset = processed_step * step_time;
+        //console.log(processed_step);
+        for (current_step = processed_step; current_step < code_steps.length; current_step++) {
+          // Calculate timeout
+          var timeout = (step_time * current_step) - offset;
+          //console.log("Current Step " + current_step);
+          //console.log("Timeout " + timeout);
+          timeout_id = setTimeout(function (current_step) {
+            clear_everything();
+            draw(current_step);
+            processed_step++;
+          }, timeout, current_step);
+          // Add timeout to array of timeouts
           play_timeouts.push(timeout_id);
-        });
+        }
 
-        $('#pause_button').click(function() {
-          for (i = 0; i < play_timeouts.length; i++) {
-            clearTimeout(play_timeouts[i]);
-          }
+        // Add a timeout to re-enable the play button
+        var button_timeout = (step_time * code_steps.length) - offset;
+        timeout_id = setTimeout(function () {
+          //$('#play_button').prop('disabled', false);
           $('#pause_button').hide();
           $('#play_button').show();
           $('#reset_button').prop('disabled', false);
           $('#forward_button').prop('disabled', false);
           $('#backward_button').prop('disabled', false);
-        });
+        }, button_timeout);
+        play_timeouts.push(timeout_id);
+      });
 
-        $('#reset_button').click(function() {
-          processed_step = 0;
-          current_step = 0;
-          clear_everything();
-          draw(current_step);
-        });
+      $('#pause_button').click(function () {
+        for (i = 0; i < play_timeouts.length; i++) {
+          clearTimeout(play_timeouts[i]);
+        }
+        $('#pause_button').hide();
+        $('#play_button').show();
+        $('#reset_button').prop('disabled', false);
+        $('#forward_button').prop('disabled', false);
+        $('#backward_button').prop('disabled', false);
+      });
 
-        $('#forward_button').click(function() {
-          if (processed_step + 1 < code_steps.length) {
-            current_step = current_step + 1;
-            processed_step = processed_step + 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        $('#backward_button').click(function() {
-          if (processed_step - 1 >= 0) {
-            current_step = current_step - 1;
-            processed_step = processed_step - 1;
-          }
-          clear_everything();
-          draw(processed_step);
-        });
-
-        code_steps = create_code_steps();
-        //console.log(code_steps);
-
-        // Setup the inital display.
+      $('#reset_button').click(function () {
         processed_step = 0;
         current_step = 0;
         clear_everything();
         draw(current_step);
-
       });
-    </script>
-  </body>
+
+      $('#forward_button').click(function () {
+        if (processed_step + 1 < code_steps.length) {
+          current_step = current_step + 1;
+          processed_step = processed_step + 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      $('#backward_button').click(function () {
+        if (processed_step - 1 >= 0) {
+          current_step = current_step - 1;
+          processed_step = processed_step - 1;
+        }
+        clear_everything();
+        draw(processed_step);
+      });
+
+      code_steps = create_code_steps();
+      //console.log(code_steps);
+
+      // Setup the inital display.
+      processed_step = 0;
+      current_step = 0;
+      clear_everything();
+      draw(current_step);
+
+    });
+  </script>
+</body>
+
 </html>
