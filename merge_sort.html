@@ -179,41 +179,41 @@
               self._aux = []
 
           # Main entry point to sort
-          def sort(self, iter):
-              self._aux = [None for i in range(len(iter))]
-              <span id="sort_start">self._sort(iter, 0, len(iter) - 1)</span>
+          def sort(self, iterable):
+              self._aux = [None for i in range(len(iterable))]
+              <span id="sort_start">self._sort(iterable, 0, len(iterable) - 1)</span>
 
 
           # mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-          <span id="sort_declaration">def _sort(self, iter, lo, hi):</span>
+          <span id="sort_declaration">def _sort(self, iterable, lo, hi):</span>
               <span id="base_case">if hi <= lo:
                   return</span>
               <span id="mid_point">mid = lo + int((hi - lo) / 2)</span>
-              <span id="sort_left">self._sort(iter, lo, mid)</span>
-              <span id="sort_right">self._sort(iter, mid + 1, hi)</span>
-              <span id="merge">self._merge(iter, lo, mid, hi)</span>
+              <span id="sort_left">self._sort(iterable, lo, mid)</span>
+              <span id="sort_right">self._sort(iterable, mid + 1, hi)</span>
+              <span id="merge">self._merge(iterable, lo, mid, hi)</span>
 
 
           <!--
           # Stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
-          def _merge(self, iter, lo, mid, hi):
+          def _merge(self, iterable, lo, mid, hi):
 
               # Copy to aux[]
               for k in range(lo, hi + 1):
-                  self._aux[k] = iter[k]
+                  self._aux[k] = iterable[k]
 
               # Merge back to a[]
               i = lo
               j = mid+1
               for k in range(lo, hi + 1):
                   if i > mid: # Index past left subarray max index
-                      iter[k] = self._aux[j++]
+                      iterable[k] = self._aux[j++]
                   if j > hi: # index past right subarray max index
-                      iter[k] = self._aux[i++]
+                      iterable[k] = self._aux[i++]
                   elif self._aux[j] < self._aux[i]:  # compare
-                      iter[k] = self._aux[j++]
+                      iterable[k] = self._aux[j++]
                   else:
-                      iter[k] = self._aux[i++]
+                      iterable[k] = self._aux[i++]
               return
           -->
 
@@ -444,102 +444,102 @@
 
       tree_code = [
         {
-          tree_code: '_sort(iter, 0, 7)',
+          tree_code: '_sort(iterable, 0, 7)',
           tree_code_x: 0,
           tree_code_y: 350,
         },
         // Level 2
         {
-          tree_code: '_sort(iter, 0, 3)',
+          tree_code: '_sort(iterable, 0, 3)',
           tree_code_x: 250,
           tree_code_y: 150,
-          tree_line_start_x: 150,
+          tree_line_start_x: 175,
           tree_line_start_y: 350,
           tree_line_end_x: 250,
           tree_line_end_y: 150,
         },
         // Level 3
         {
-          tree_code: '_sort(iter, 0, 1)',
+          tree_code: '_sort(iterable, 0, 1)',
           tree_code_x: 500,
           tree_code_y: 50,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 150,
           tree_line_end_x: 500,
           tree_line_end_y: 50,
         },
         // Level 4
         {
-          tree_code: '_sort(iter, 0, 0)',
+          tree_code: '_sort(iterable, 0, 0)',
           tree_code_x: 750,
           tree_code_y: 25,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 50,
           tree_line_end_x: 750,
           tree_line_end_y: 25,
         },
         {
-          tree_code: '_sort(iter, 1, 1)',
+          tree_code: '_sort(iterable, 1, 1)',
           tree_code_x: 750,
           tree_code_y: 50,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 50,
           tree_line_end_x: 750,
           tree_line_end_y: 50,
         },
         {
-          tree_code: 'merge(iter, 0, 0, 1)',
+          tree_code: 'merge(iterable, 0, 0, 1)',
           tree_code_x: 750,
           tree_code_y: 75,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 50,
           tree_line_end_x: 750,
           tree_line_end_y: 75,
         },
         // Level 3
         {
-          tree_code: '_sort(iter, 2, 3)',
+          tree_code: '_sort(iterable, 2, 3)',
           tree_code_x: 500,
           tree_code_y: 150,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 150,
           tree_line_end_x: 500,
           tree_line_end_y: 150,
         },
         // Level 4
         {
-          tree_code: '_sort(iter, 2, 2)',
+          tree_code: '_sort(iterable, 2, 2)',
           tree_code_x: 750,
           tree_code_y: 125,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 150,
           tree_line_end_x: 750,
           tree_line_end_y: 125,
         },
         {
-          tree_code: '_sort(iter, 3, 3)',
+          tree_code: '_sort(iterable, 3, 3)',
           tree_code_x: 750,
           tree_code_y: 150,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 150,
           tree_line_end_x: 750,
           tree_line_end_y: 150,
         },
         {
-          tree_code: 'merge(iter, 2, 2, 3)',
+          tree_code: 'merge(iterable, 2, 2, 3)',
           tree_code_x: 750,
           tree_code_y: 175,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 150,
           tree_line_end_x: 750,
           tree_line_end_y: 175,
         },
         // Level 3
         {
-          tree_code: 'merge(iter, 0, 1, 3)',
+          tree_code: 'merge(iterable, 0, 1, 3)',
           tree_code_x: 500,
           tree_code_y: 200,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 150,
           tree_line_end_x: 500,
           tree_line_end_y: 200,
@@ -547,106 +547,106 @@
 
         // Level 2
         {
-          tree_code: '_sort(iter, 4, 7)',
+          tree_code: '_sort(iterable, 4, 7)',
           tree_code_x: 250,
           tree_code_y: 350,
-          tree_line_start_x: 150,
+          tree_line_start_x: 175,
           tree_line_start_y: 350,
           tree_line_end_x: 250,
           tree_line_end_y: 350,
         },
         // Level 3
         {
-          tree_code: '_sort(iter, 4, 5)',
+          tree_code: '_sort(iterable, 4, 5)',
           tree_code_x: 500,
           tree_code_y: 250,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 350,
           tree_line_end_x: 500,
           tree_line_end_y: 250,
         },
         // Level 4
         {
-          tree_code: '_sort(iter, 4, 4)',
+          tree_code: '_sort(iterable, 4, 4)',
           tree_code_x: 750,
           tree_code_y: 225,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 250,
           tree_line_end_x: 750,
           tree_line_end_y: 225,
         },
         {
-          tree_code: '_sort(iter, 5, 5)',
+          tree_code: '_sort(iterable, 5, 5)',
           tree_code_x: 750,
           tree_code_y: 250,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 250,
           tree_line_end_x: 750,
           tree_line_end_y: 250,
         },
         {
-          tree_code: 'merge(iter, 4, 4, 5)',
+          tree_code: 'merge(iterable, 4, 4, 5)',
           tree_code_x: 750,
           tree_code_y: 275,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 250,
           tree_line_end_x: 750,
           tree_line_end_y: 275,
         },
         // Level 3
         {
-          tree_code: '_sort(iter, 6, 7)',
+          tree_code: '_sort(iterable, 6, 7)',
           tree_code_x: 500,
           tree_code_y: 350,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 350,
           tree_line_end_x: 500,
           tree_line_end_y: 350,
         },
         // Level 4
         {
-          tree_code: '_sort(iter, 6, 6)',
+          tree_code: '_sort(iterable, 6, 6)',
           tree_code_x: 750,
           tree_code_y: 325,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 350,
           tree_line_end_x: 750,
           tree_line_end_y: 325,
         },
         {
-          tree_code: '_sort(iter, 7, 7)',
+          tree_code: '_sort(iterable, 7, 7)',
           tree_code_x: 750,
           tree_code_y: 350,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 350,
           tree_line_end_x: 750,
           tree_line_end_y: 350,
         },
         {
-          tree_code: 'merge(iter, 6, 6, 7)',
+          tree_code: 'merge(iterable, 6, 6, 7)',
           tree_code_x: 750,
           tree_code_y: 375,
-          tree_line_start_x: 650,
+          tree_line_start_x: 675,
           tree_line_start_y: 350,
           tree_line_end_x: 750,
           tree_line_end_y: 375,
         },
         // Level 3
         {
-          tree_code: 'merge(iter, 4, 5, 7)',
+          tree_code: 'merge(iterable, 4, 5, 7)',
           tree_code_x: 500,
           tree_code_y: 400,
-          tree_line_start_x: 400,
+          tree_line_start_x: 425,
           tree_line_start_y: 350,
           tree_line_end_x: 500,
           tree_line_end_y: 400,
         },
         // Level 2
         {
-          tree_code: 'merge(iter, 0, 3, 7)',
+          tree_code: 'merge(iterable, 0, 3, 7)',
           tree_code_x: 250,
           tree_code_y: 425,
-          tree_line_start_x: 150,
+          tree_line_start_x: 175,
           tree_line_start_y: 350,
           tree_line_end_x: 250,
           tree_line_end_y: 425,
@@ -734,7 +734,7 @@
         var call_stack_number = 10;
         var call_stack_div = get_call_stack_div(call_stack_number--, 'main');
         $('#call_stack_grid_container').append(call_stack_div);
-        call_stack_div = get_call_stack_div(call_stack_number--, 'sort(iter)');
+        call_stack_div = get_call_stack_div(call_stack_number--, 'sort(iterable)');
         $('#call_stack_grid_container').append(call_stack_div);
 
         //console.log(red_text_step_stack);

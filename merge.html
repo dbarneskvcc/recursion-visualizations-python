@@ -139,28 +139,28 @@
       <h2>Code</h2>
       <pre style="font-size: 12px;">
 
-          # Merge iter[lo .. mid] with iter[mid+1 .. hi] using aux[lo .. hi]
-          <span id="merge_declaration">def _merge(self, iter, lo, mid, hi):</span>
+          # Merge iterable[lo .. mid] with iterable[mid+1 .. hi] using aux[lo .. hi]
+          <span id="merge_declaration">def _merge(self, iterable, lo, mid, hi):</span>
 
               # Copy to aux[]
               <span id="copy_for">for k in range(lo, hi + 1):</span>
-                  <span id="copy_action">self._aux[k] = iter[k]</span>
+                  <span id="copy_action">self._aux[k] = iterable[k]</span>
 
-              # Merge back to iter[]
+              # Merge back to iterable[]
               <span id="init_i">i = lo</span>
               <span id="init_j">j = mid+1</span>
               <span id="merge_for">for k in range(lo, hi + 1):</span>
                   <span id="merge_if_i_out_bounds">if i > mid: # Index past left subarray max index</span>
-                      <span id="merge_move_j_out">iter[k] = self._aux[j]</span>
+                      <span id="merge_move_j_out">iterable[k] = self._aux[j]</span>
                       <span id="increment_j_out">j += 1</span>
                   <span id="merge_if_j_out_bounds">elif j > hi: # index past right subarray max index</span>
-                      <span id="merge_move_i_out">iter[k] = self._aux[i]</span>
+                      <span id="merge_move_i_out">iterable[k] = self._aux[i]</span>
                       <span id="increment_i_out">i += 1</span>
                   <span id="merge_if_j_less_than_i">elif self._aux[j] < self._aux[i]:  # compare</span>
-                      <span id="merge_move_j">iter[k] = self._aux[j]</span>
+                      <span id="merge_move_j">iterable[k] = self._aux[j]</span>
                       <span id="increment_j">j += 1</span>
                   <span id="merge_else_i_less_than_j">else:</span>
-                      <span id="merge_move_i">iter[k] = self._aux[i]</span>
+                      <span id="merge_move_i">iterable[k] = self._aux[i]</span>
                       <span id="increment_i">i += 1</span>
               <span id="merge_for_end">return</span>
 
